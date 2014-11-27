@@ -1,0 +1,80 @@
+= render partial: "partials/main_banner"
+.index-tour-tabs-wrap
+  .row
+    .columns
+      ul
+        li
+          .index-tour-tab.active
+            h2 Екскурсії
+        li
+          .index-tour-tab
+            h2 Активний туризм
+        li
+          .index-tour-tab
+            h2 Дитячі тури
+        li
+          .index-tour-tab
+            h2 Корпоративні
+.index-tour-tabs-pages-wrap
+  .row
+    .columns
+      .index-tour-page
+        .row
+          .columns
+            .right
+              |filters
+        -category = Category.find_by_name('Екскурсії')
+        -if category
+          -event = Tour.where(:category_id => category.id)
+          -if event
+            .row
+              -event.each do |e|
+                .columns.large-4
+                  .one-event-wrap
+                    .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                    .event-layer
+                      .event-content-wrap
+                        .gradient-for-event-content
+                        .one-event-content
+                          .oec-header
+                            h3
+                              =e.name
+                          .oec-text
+                            p
+                              =truncate_html e.short_description, lenght: '260'
+                    .date-time-wrap.red-gradient
+                      span
+                        |з 21.04
+
+
+      .index-tour-page.hide
+        |page 2
+      .index-tour-page.hide
+        .row
+          .columns
+            .right
+              |filters
+        -category = Category.find_by_name('Дитячі тури')
+        -if category
+          -event = Tour.where(:category_id => category.id)
+          -if event
+            .row
+              -event.each do |e|
+                .columns.large-4.end
+                  .one-event-wrap
+                    .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                    .event-layer
+                      .event-content-wrap
+                        .gradient-for-event-content
+                        .one-event-content
+                          .oec-header
+                            h3
+                              =e.name
+                          .oec-text
+                            p
+                              =truncate_html e.short_description, lenght: '260'
+                    .date-time-wrap.red-gradient
+                      span
+                        |з 21.04
+      .index-tour-page.hide
+        |page 4

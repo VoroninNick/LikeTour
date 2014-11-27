@@ -1,0 +1,33 @@
+DOCTYPE html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title
+      = content_for?(:title) ? yield(:title) : "foundation-rails"
+
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag 'ckeditor/ckeditor.js'
+    = csrf_meta_tags
+
+  body
+    .sf_container
+      .flash-container-wrap
+        - flash.each do |name, msg|
+          = content_tag :div, msg, class: "alert alert-info"
+      = render partial: "partials/header"
+      .page-wrap
+        = yield
+    .cover
+    = javascript_include_tag "application"
+    javascript:
+      $(document).ready(function() {
+        if ($('textarea').length > 0) {
+              var data = $('textarea');
+              $.each(data, function(i) {
+                  CKEDITOR.replace(data[i].id);
+              });
+        }
+      });

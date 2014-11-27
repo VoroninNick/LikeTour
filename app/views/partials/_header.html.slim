@@ -1,0 +1,51 @@
+.header-wrap.expand
+  .hide-navigation-wrap
+    #main-menu
+      .row
+        .columns
+          nav
+            ul
+              li
+                a href=about_us_path(locale: I18n.locale)
+                  |Про нас
+              - parent = Category.where(:parent_id => nil)
+              - parent.each do |c|
+                li class=("has-dropdown" if c.child_categories && c.child_categories.count > 0)
+                  =link_to category_path(c.slug, locale: I18n.locale) do
+                    =c.name
+                  -if c.child_categories && c.child_categories.count > 0
+                    ul.dropdown
+                      - c.child_categories.each do |ch|
+                        li
+                          =link_to category_path(url: "#{c.slug}/#{ch.slug}", locale: I18n.locale) do
+                            =ch.name
+                            -if ch.tours && ch.tours.count >= 0
+                              span
+                                |(
+                                =ch.tours.count
+                                |)
+
+              li
+                a href=publication_path(locale: I18n.locale)
+                  |Публікації
+              li
+                a href=contacts_path(locale: I18n.locale)
+                  |Контакти
+    #contacts-menu.hide
+      .row
+        .columns.large-4
+          |test 1
+        .columns.large-4
+          |test 2
+        .columns.large-4
+          |test 3
+  .ornament-wrap
+    .ornament-inner
+      .obj-ornaments
+  .buttons-to-navigation-wrap
+    .row
+      .buttons-contact-and-menu-wrap.right
+        .button-open-main-menu.link-to-contacts-menu
+          /= embedded_svg ("LT-menu-contacts.svg"), class: "main-menu-icon"
+        .button-open-main-menu.link-to-main-menu
+          /= embedded_svg ("LT-menu.svg"), class: "main-menu-icon"

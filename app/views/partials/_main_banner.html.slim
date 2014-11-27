@@ -1,0 +1,44 @@
+.main-banner
+  #main-banner
+    ul.bxslider.first-main-banner
+      li
+        .bi.blur-slide-image style="background: url('#{asset_path('banner_1.jpg')}')no-repeat center center;"
+      li
+        .bi.blur-slide-image style="background: url('#{asset_path('banner_2.jpg')}')no-repeat center center;"
+      li
+        .bi.blur-slide-image style="background: url('#{asset_path('banner_3.jpg')}')no-repeat center center;"
+      li
+        .bi.blur-slide-image style="background: url('#{asset_path('banner_4.jpg')}')no-repeat center center;"
+
+  #second-banner
+    .second-banner-inner
+      .slide-content-wrap
+        .slide-blur.top-blur-line
+        .row
+          .columns
+            .content-block-wrap
+              = render partial: 'partials/forms/main_banner_form'
+              .custom-thumbnails-wrap
+                ul#custom-thumbnails
+                  li
+                    a data-slide-index="0" href=""
+                      = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
+                  li
+                    a data-slide-index="1" href=""
+                      = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
+                  li
+                    a data-slide-index="2" href=""
+                      = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
+                  li
+                    a data-slide-index="3" href=""
+                      = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
+              ul.bxslider.second-main-banner
+                li
+                  .bi style="background: url('#{asset_path('banner_1.jpg')}')no-repeat center center;"
+                li
+                  .bi style="background: url('#{asset_path('banner_2.jpg')}')no-repeat center center;"
+                li
+                  .bi style="background: url('#{asset_path('banner_3.jpg')}')no-repeat center center;"
+                li
+                  .bi style="background: url('#{asset_path('banner_4.jpg')}')no-repeat center center;"
+        .slide-blur.bottom-blur-line
