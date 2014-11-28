@@ -1,0 +1,81 @@
+// Place all the styles related to the catalog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins"
+@import "compass"
+
+
+ul.event-filters
+    margin-left: 0
+    margin-top: 5px
+    margin-bottom: 20px
+    li
+        list-style: none
+        display: inline-block
+        height: 30px
+.squared-checkbox
+    width: 11px
+    height: 11px
+    margin: 0 20px 0 10px
+    position: relative
+    display: inline-block
+    +my_vertical_align(40%)
+    label.ico
+        cursor: pointer
+        position: absolute
+        width: 11px
+        height: 11px
+        left: 0px
+        top: 0px
+        -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)
+        -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)
+        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)
+
+        // needs latest Compass, add '@import "compass"' to your scss
+        background-color: #d1d3d4 // Old browsers
+        @include filter-gradient(#fff, #d1d3d4, vertical) // IE6-9
+        @include background-image(linear-gradient(top, #fff  0%,#d1d3d4 100%))
+        @include background-image(linear-gradient(top,  #fff 0%,#d1d3d4 100%))
+
+
+        &:after
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+            filter: alpha(opacity=0)
+            opacity: 0
+            content: ''
+            position: absolute
+            width: 11px
+            height: 11px
+            // needs latest Compass, add '@import "compass"' to your scss
+            background-color: #9c2242 // Old browsers
+            @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
+            @include background-image(linear-gradient(top,  #ed1555 0%, #9c2242 100%))
+
+            top: 0px
+            left: 0px
+
+            -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5)
+            -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5)
+            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5)
+
+
+        &:hover::after
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"
+            filter: alpha(opacity=30)
+            opacity: 0.3
+
+
+    & input[type=checkbox]:checked + label:after
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
+        filter: alpha(opacity=100)
+        opacity: 1
+label.text
+    display: inline-block
+    line-height: 30px
+    font:
+        family: 'Fira Sans', sans-serif
+        size: .75rem
+        weight: 300
+    color: #2A424B
+input[type=checkbox]
+    visibility: hidden

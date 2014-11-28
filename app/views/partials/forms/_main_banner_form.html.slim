@@ -2,4 +2,19 @@
   .ornament-pattern
   .header-title
     |Підберемо щось цікаве?
-
+  .form
+    .input.select-category
+      label
+        |Оберіть тип
+      - category_list = Category.order(name: :asc)
+      select.fancy-select
+        -category_list.each do |c|
+          option value=c.name
+            =c.name
+    .input.select-city
+      label
+        |Оберіть місто
+      select.fancy-select
+    .find-button
+      = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
+      = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"

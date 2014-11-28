@@ -1,12 +1,9 @@
-class Category < ActiveRecord::Base
-  attr_accessible :name, :description, :parent_id, :slug, :child_category_id
+class City < ActiveRecord::Base
+  attr_accessible :name, :slug
 
-  has_many :child_categories, class_name: "Category",
-           foreign_key: "parent_id"
-  belongs_to :parent, class_name: "Category"
-  has_many :tours
+  has_and_belongs_to_many :tours, join_table: 'city_joins'
 
-  translates :name, :slug, :description
+  translates :name, :slug
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
@@ -36,10 +33,8 @@ class Category < ActiveRecord::Base
   end
 
   class Translation
-    attr_accessible :locale, :category_id
-
-    attr_accessible  :name, :slug, :description
-
+    attr_accessible :locale, :city_id
+    attr_accessible  :name, :slug
 
     rails_admin do
       visible false
@@ -49,47 +44,27 @@ class Category < ActiveRecord::Base
           label 'Назва'
           help 'Введіть унікальну не повторювану назву'
         end
-        field :description, :ck_editor do
-          label 'Опис'
-          help ''
-        end
         field :slug do
           label 'Транслітерація назви'
           help ''
         end
       end
-
-
     end
   end
 
-  # has_attached_file :image,
-  #                   styles: { large: "600x600>" },
-  #                   convert_options: { large: "-quality 94 -interlace Plane" },
-  #                   url: "/assets/images/:class/:id/image_:style.:extension",
-  #                   path:':rails_root/public:url'
-
-
-
   rails_admin do
-    navigation_label 'Каталог'
-    label 'Категорія'
-    label_plural 'Категорії'
+    parent Tour
+    label 'Місто'
+    label_plural 'Міста'
 
     list do
       field :name
-      field :parent
       field :slug
-      field :description
     end
 
     edit do
       field :translations, :globalize_tabs do
         label 'Локалізації'
-      end
-      field :parent do
-        label 'Категорія'
-        help ''
       end
     end
 

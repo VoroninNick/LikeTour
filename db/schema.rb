@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127151014) do
+ActiveRecord::Schema.define(version: 20141128141439) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -35,6 +35,32 @@ ActiveRecord::Schema.define(version: 20141127151014) do
   add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id"
   add_index "category_translations", ["locale"], name: "index_category_translations_on_locale"
 
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "city_joins", force: true do |t|
+    t.integer  "tour_id"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "city_translations", force: true do |t|
+    t.integer  "city_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+  end
+
+  add_index "city_translations", ["city_id"], name: "index_city_translations_on_city_id"
+  add_index "city_translations", ["locale"], name: "index_city_translations_on_locale"
+
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -50,6 +76,34 @@ ActiveRecord::Schema.define(version: 20141127151014) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
+
+  create_table "filter_joins", force: true do |t|
+    t.integer  "tour_id"
+    t.integer  "filter_word_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "filter_word_translations", force: true do |t|
+    t.integer  "filter_word_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+  end
+
+  add_index "filter_word_translations", ["filter_word_id"], name: "index_filter_word_translations_on_filter_word_id"
+  add_index "filter_word_translations", ["locale"], name: "index_filter_word_translations_on_locale"
+
+  create_table "filter_words", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "photo_galleries", force: true do |t|
     t.string   "title"

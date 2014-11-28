@@ -31,4 +31,28 @@ module ApplicationHelper
     @category ||= Category.order(created_at: :asc )
   end
 
+  def get_tags_for_events(cat_name)
+    @category = Category.find_by_name(cat_name)
+    if @category
+      @events = Tour.where(:category => @category.id).includes(:filter_words)
+
+      names = []
+      @filter_words = []
+      @events.each do |e|
+        @filter_words += e.filter_words.select do|f|
+          if  !names.include?(f.name)
+            names.push(f.name)
+            true
+          else
+            false
+          end
+        end
+
+      end
+
+      #render inline: "#{@filter_words.class}"
+    end
+  end
+
+
 end

@@ -1,13 +1,9 @@
-class Tour < ActiveRecord::Base
-  attr_accessible :name, :short_description, :description, :city, :slug, :category, :category_id, :price, :date_begin, :date_end, :published
+class FilterWord < ActiveRecord::Base
+  attr_accessible :name, :description, :slug
 
-  has_and_belongs_to_many :cities, join_table: 'city_joins'
-  attr_accessible :city, :city_ids
-  has_and_belongs_to_many :filter_words, join_table: 'filter_joins'
-  attr_accessible :filter_words, :filter_word_ids
-  belongs_to :category
+  has_and_belongs_to_many :tours, join_table: 'filter_joins'
 
-  translates :name, :slug, :short_description, :description, :city
+  translates :name, :slug, :description
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
@@ -37,8 +33,8 @@ class Tour < ActiveRecord::Base
   end
 
   class Translation
-    attr_accessible :locale, :tour_id
-    attr_accessible  :name, :slug, :short_description, :description, :city
+    attr_accessible :locale, :filter_word_id
+    attr_accessible  :name, :slug, :description
 
     rails_admin do
       visible false
@@ -47,10 +43,6 @@ class Tour < ActiveRecord::Base
         field :name do
           label 'Назва'
           help 'Введіть унікальну не повторювану назву'
-        end
-        field :short_description, :ck_editor do
-          label 'Короткий опис'
-          help ''
         end
         field :description, :ck_editor do
           label 'Опис'
@@ -64,55 +56,20 @@ class Tour < ActiveRecord::Base
     end
   end
 
-  has_many :photo_galleries, as: :imageable
-  attr_accessible :photo_galleries
-  accepts_nested_attributes_for :photo_galleries
-  attr_accessible :photo_galleries_attributes
-
   rails_admin do
-    parent Category
-    label 'Подія'
-    label_plural 'Події'
+    parent Tour
+    label 'Фільтр'
+    label_plural 'Фільтри'
 
     list do
       field :name
       field :slug
-      field :short_description
       field :description
     end
 
     edit do
       field :translations, :globalize_tabs do
         label 'Локалізації'
-      end
-      field :cities do
-        label 'Місто'
-      end
-      field :filter_words do
-        label 'Слово фільтр'
-      end
-      field :photo_galleries do
-        label 'Фотогалерея'
-      end
-      field :price do
-        label 'Вартість'
-        help ''
-      end
-      field :category do
-        label 'Категорія'
-        help ''
-      end
-      field :date_begin do
-        label 'Дата початку'
-        help ''
-      end
-      field :date_end do
-        label 'Дата завершення'
-        help ''
-      end
-      field :published do
-        label 'Зняти з публікації?'
-        help ''
       end
     end
   end

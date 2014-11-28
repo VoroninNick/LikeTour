@@ -67,6 +67,7 @@ jQuery(document).ready ($) ->
     pause: 6000
 #    auto: true
     pagerCustom: '#custom-thumbnails'
+    responsive: true
   }
 
   b = {
@@ -74,6 +75,7 @@ jQuery(document).ready ($) ->
     pause: 6000
 #    auto: true
     pagerCustom: '#custom-thumbnails'
+    responsive: true
   }
 
   $(".bxslider").each (i) ->
