@@ -1,0 +1,33 @@
+.index-tour-page class="#{'hide' if hide }"
+  -get_tags_for_events(name)
+  -if @category
+    -if @events.count > 0
+      .row
+        .columns
+          .right
+            ul.event-filters
+              - @filter_words.each do |ef|
+                li
+                  .squared-checkbox
+                    input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}" name="check"
+                    label.ico for="squared-#{ef.slug}-#{ef.id}"
+                  label.text for="squared-#{ef.slug}-#{ef.id}"
+                    =ef.name
+      .row
+        -@events.each do |e|
+          .columns.large-4.end
+            .one-event-wrap
+              .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+              .event-layer
+                .event-content-wrap
+                  .gradient-for-event-content
+                  .one-event-content
+                    .oec-header
+                      h3
+                        =e.name
+                    .oec-text
+                      p
+                        =truncate_html e.short_description, lenght: '260'
+              .date-time-wrap.red-gradient
+                span
+                  |з 21.04
