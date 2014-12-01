@@ -21,39 +21,39 @@
           - names << c.name
         - names.each_with_index do |n,i|
           = render partial: 'main/event', locals: { hide: i != 0, name: n }
--if @regions && @regions.count >0
-  .regions-of-working-wrap.grey-gradient
-    .background-ornament-layer
-    .row
-      .columns
-        h2
-          |Ми працюємо у наступних областях:
-    .row
-      .columns
-        ul.owl-carousel
-          -@regions.each do |r|
-            li
-              =image_tag r.image.url(:large), title: r.name
--if @publication
-  .clearfix
-  .index-publication-wrap
-    .row
-      .columns
-        h2
-          |Цікаві публікації
-    .row
-      -@publication.each do |o|
-        .columns.large-3.medium-3.small-6.end
-          .one-item-wrap
-            .image
-              =image_tag o.image.url(:large)
-            .text
-              h3
-                = truncate o.name, length: 52
-              span.date
-                =o.created_at.strftime("%d.%m.%Y")
-              p
-                = truncate_html o.short_description, length: 140
+/-if @regions && @regions.count >0
+/  .regions-of-working-wrap.grey-gradient
+/    .background-ornament-layer
+/    .row
+/      .columns
+/        h2
+/          |Ми працюємо у наступних областях:
+/    .row
+/      .columns
+/        ul.owl-carousel
+/          -@regions.each do |r|
+/            li
+/              =image_tag r.image.url(:large), title: r.name
+/-if @publication
+/  .clearfix
+/  .index-publication-wrap
+/    .row
+/      .columns
+/        h2
+/          |Цікаві публікації
+/    .row
+/      -@publication.each do |o|
+/        .columns.large-3.medium-3.small-6.end
+/          .one-item-wrap
+/            .image
+/              =image_tag o.image.url(:large)
+/            .text
+/              h3
+/                = truncate o.name, length: 52
+/              span.date
+/                =o.created_at.strftime("%d.%m.%Y")
+/              p
+/                = truncate_html o.short_description, length: 140
 
 
 
