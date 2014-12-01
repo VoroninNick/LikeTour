@@ -15,6 +15,7 @@
       label
         |Оберіть місто
       select.fancy-select
-    .find-button
-      = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
-      = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"
+    .custom-button-wrap.find-button-wrap
+      .find-button data-name="Підібрати!"
+        = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
+        = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"

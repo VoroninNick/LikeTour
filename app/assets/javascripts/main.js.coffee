@@ -46,6 +46,30 @@ $(document).on "click", '.header-wrap .button-open-main-menu', ->
 
 
 $(document).ready ->
+#  index page region carousel
+  owl1 = $("ul.owl-carousel")
+  owl1.owlCarousel
+    pagination: false,
+    navigation: false,
+#    navigationText: [
+#      '<%= ApplicationHelper.embedded_svg_js "MO-arrow.svg", class: "owl_arrow_prev"%>',
+#      '<%= ApplicationHelper.embedded_svg_js "MO-arrow.svg", class: "owl_arrow_next"%>'
+#    ],
+    items: 6 #10 items above 1000px browser width
+    itemsDesktop: [ #5 items between 1000px and 901px
+      1000
+      3
+    ]
+    itemsDesktopSmall: [ # betweem 900px and 601px
+      900
+      2
+    ]
+    itemsTablet: [ #2 items between 600 and 0
+      780
+      2
+    ]
+    itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
+    autoPlay : false
 #  tabs index
   $('.index-tour-tabs-wrap ul li').click ->
     current_position = $(this).index()
@@ -94,6 +118,29 @@ jQuery(document).ready ($) ->
     else if $(this).hasClass("bx-next")
       $.each slider_array, (i, elem) ->
         elem.goToNextSlide()
+
+$(document).on "click", 'ul.event-filters label', ->
+  $this = $(this)
+  currentEvent = $(this).text()
+  $parentElement = $(this).closest('.index-tour-page')
+  $childrenList = $parentElement.find('.one-event-wrap')
+  childrenDataWord = $childrenList.attr "data-filter-word"
+
+  arr = childrenDataWord.toLowerCase().split(",")
+
+  $childrenList.filter(->
+    alert 'filter'
+    arr = $(this).attr("data-filter-word").toLowerCase().split(",")
+    for item in arr
+      alert 'for'
+      if item.indexOf(currentEventtoLowerCase()) == 0
+        alert 'if'
+        return true
+    return false
+  )
+
+
+
 
 
 

@@ -7,7 +7,18 @@
 @import "mixins"
 @import "compass"
 
+// sticky footer
+.sf_container
+    display: table
+    height: 100%
+    width: 100%
+    @media (min-width : 0em) and (max-width : 1022px)
+        display: block
 
+.sf_footer
+    display: table-row
+    height: 1px
+// end sf
 .controls-css3-wrap
     position: absolute
     top: 0
@@ -436,22 +447,8 @@
                             @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
                             @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
                             color: #d1d3d4
-        .find-button
-            position: absolute
-            left: 0
-            right: 0
-            bottom: 0
-            cursor: pointer
-            &:hover
-                svg.main-find-icon-passive
-                    display: none
-                svg.main-find-icon-active
-                    display: block
-            svg
-                width: 100%
-                height: 100%
-                &.main-find-icon-active
-                    display: none
+
+
     .ornament-pattern
         height: 540px
         width: 540px
@@ -485,7 +482,51 @@
             +triangle(bottom, 10px, #ed1555)
             right: 35px
             position: absolute
-
+.custom-button-wrap
+    cursor: pointer
+    &.find-button-wrap
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 0
+        cursor: pointer
+        height: 66px
+    &.buttons-to-more-events-wrap
+        height: 71px
+        margin:
+            top: 13px
+            bottom: 102px
+    &:hover
+        svg.main-find-icon-passive
+            display: none
+        svg.main-find-icon-active
+            display: block
+    svg
+        width: 100%
+        height: 100%
+        &.main-find-icon-active
+            display: none
+    .find-button
+        width: 100%
+        height: 100%
+        position: relative
+        &:before
+            display: block
+            content: attr(data-name)
+            position: absolute
+            left: 33px
+            top: 0
+            right: 0
+            bottom: 0
+            color: #F1F2F2
+            font:
+                family: 'Fira Sans', sans-serif
+                size: 1.675rem
+                weight: 400
+            color: #fff
+            line-height: 66px
+            text-transform: uppercase
+            text-align: center
 .index-tour-tabs-wrap
     margin-top: -53px
     ul
@@ -534,6 +575,8 @@
 
 .one-event-wrap
     position: relative
+    cursor: pointer
+    margin-bottom: 30px
     .event-layer
         position: relative
         overflow: hidden
@@ -619,5 +662,117 @@
     background-color: #ed1555 // Old browsers
     @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
     @include background-image(linear-gradient(top,  #ed1555 0%,#9c2242 100%))
+.black-gradient
+    // needs latest Compass, add '@import "compass"' to your scss
+    background-color: #2A3A4B // Old browsers
+    @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
+    @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
+
+.grey-gradient
+    // needs latest Compass, add '@import "compass"' to your scss
+    background-color: #d1d3d4 // Old browsers
+    @include filter-gradient(#d1d3d4, #ffffff, vertical) // IE6-9
+    @include background-image(linear-gradient(top,  #d1d3d4 0%,#ffffff 100%))
+footer
+    position: relative
+    overflow: hidden
+
+.f-navigation-wrap
+    .f-content-part-wrap
+        h4
+            font:
+                family: 'Fira Sans', sans-serif
+                size: 1.625rem
+                weight: 300
+            color: #F1F2F2
+            text-transform: uppercase
+        nav
+            ul
+                margin-left: 0
+                li
+                    list-style: none
+                    a
+                        family: 'Fira Sans', sans-serif
+                            size: 1.1875rem
+                            weight: 300
+                        color: #F1F2F2
+ul.social-icons-with-link
+    margin-left: 0
+    li
+        list-style: none
+        width: 32px
+        height: 32px
+        display: inline-block
+        svg
+            width: 100%
+            height: 100%
+            &.social-icon-active
+                display: none
+        &:hover
+            .social-icon-passive
+                display: none
+            .social-icon-active
+                display: block
+
+.regions-of-working-wrap
+    height: 182px
+    height: 250px
+    position: relative
+    overflow: hidden
+    h2
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 300
+        color: #2A424B
+    ul.owl-carousel
+        li
+            list-style: none
+            img
+                width: 80%
+    .background-ornament-layer
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        background-image: url('<%=asset_path("LT-Ornament.svg")%>'), url('<%=asset_path("LT-Ornament.svg")%>')
+        background-size: 45%, 20%
+        background-repeat: no-repeat
+        background-position: -16% center, 70% 69%
+        opacity: .1
+
+.index-publication-wrap
+    h2
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 300
+        color: #2A424B
+    .one-item-wrap
+        .image
+            img
+        .text
+            background-color: #2A3A4B
+            padding: 15px
+            h3, span, p
+                font:
+                    family: 'Fira Sans', sans-serif
+            h3
+                font:
+                    size: 1rem
+                    weight: 400
+                color: #fff
+            span.date
+                fort:
+                    size: .6875rem
+                    weight: 300
+                color: #ED1555
+            p
+                font:
+                    size: .875rem
+                    weight: 300
+                color: #A7A9AC
+
 
 

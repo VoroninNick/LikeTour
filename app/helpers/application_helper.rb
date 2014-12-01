@@ -53,6 +53,9 @@ module ApplicationHelper
       #render inline: "#{@filter_words.class}"
     end
   end
-
+  def words_limit(limit)
+    string_arr = self.split(' ')
+    string_arr.count > limit ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
+  end
 
 end

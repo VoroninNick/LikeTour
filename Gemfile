@@ -47,6 +47,7 @@ gem 'nokogiri'
 gem 'compass-rails'
 
 gem 'bxslider-rails'
+gem 'owlcarousel-rails'
 
 gem 'rails_admin'
 gem 'devise'

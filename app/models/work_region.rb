@@ -1,13 +1,7 @@
-class Category < ActiveRecord::Base
-  attr_accessible :name, :description, :parent_id, :slug, :child_category_id
-  attr_accessible  :published, :index_sort
+class WorkRegion < ActiveRecord::Base
+  attr_accessible :name, :slug, :published, :image
 
-  has_many :child_categories, class_name: "Category",
-           foreign_key: "parent_id"
-  belongs_to :parent, class_name: "Category"
-  has_many :tours
-
-  translates :name, :slug, :description
+  translates :name, :slug
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
@@ -37,10 +31,8 @@ class Category < ActiveRecord::Base
   end
 
   class Translation
-    attr_accessible :locale, :category_id
-
-    attr_accessible  :name, :slug, :description
-
+    attr_accessible :locale, :work_region_id
+    attr_accessible  :name, :slug
 
     rails_admin do
       visible false
@@ -50,58 +42,57 @@ class Category < ActiveRecord::Base
           label 'Назва'
           help 'Введіть унікальну не повторювану назву'
         end
-        field :description, :ck_editor do
-          label 'Опис'
-          help ''
-        end
         field :slug do
           label 'Транслітерація назви'
           help ''
         end
       end
-
-
     end
   end
 
-  # has_attached_file :image,
-  #                   styles: { large: "600x600>" },
-  #                   convert_options: { large: "-quality 94 -interlace Plane" },
-  #                   url: "/assets/images/:class/:id/image_:style.:extension",
-  #                   path:':rails_root/public:url'
+
+  has_attached_file :image,
+                    styles: { large: "200x200>"},
+                    convert_options: { thumb: "-quality 94 -interlace Plane",
+                                       large: "-quality 94 -interlace Plane" },
+                    url: "/assets/images/:class/:id/image_:style.:extension",
+                    path:':rails_root/public:url'
 
 
+  validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
 
   rails_admin do
-    navigation_label 'Каталог'
-    label 'Категорія'
-    label_plural 'Категорії'
+    navigation_label 'Головна сторінка'
+    label 'Область'
+    label_plural 'Області'
 
     list do
-      field :name
-      field :parent
-      field :slug
-      # field :description
-      # field :published
+      field :name do
+        label 'Назва'
+      end
+      field :slug do
+        label 'Транслітерація'
+      end
+      field :image do
+        label 'Зображення'
+      end
+      field :published do
+      label 'Зняти з публікації?'
+      end
     end
 
     edit do
       field :translations, :globalize_tabs do
         label 'Локалізації'
       end
-      field :parent do
-        label 'Категорія'
-        help ''
+      field :image, :paperclip do
+        label 'Зображення'
+        help 'Зображення повинне мати розмір 200px / 200px'
       end
       field :published do
-        label 'Публікувати'
-        help 'Для табів на головну'
-      end
-      field :index_sort do
-        label 'Порядок сортування'
-        help 'Для табів на головну'
+        label 'Зняти з публікації?'
+        help ''
       end
     end
-
   end
 end

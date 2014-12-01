@@ -1,23 +1,60 @@
 = render partial: "partials/main_banner"
-.index-tour-tabs-wrap
-  .row
-    .columns
-      ul
-        li
-          .index-tour-tab.active
-            h2 Екскурсії
-        li
-          .index-tour-tab
-            h2 Активний туризм
-        li
-          .index-tour-tab
-            h2 Дитячі тури
-        li
-          .index-tour-tab
-            h2 Корпоративні
-.index-tour-tabs-pages-wrap
-  .row
-    .columns
-      - names =['Екскурсії','Активний туризм','Дитячі тури','Корпоративні']
-      - names.each_with_index do |n,i|
-        = render partial: 'main/event', locals: { hide: i != 0, name: n }
+- if @categories && @categories.count > 0
+  .index-tour-tabs-wrap
+    .row
+      .columns
+        ul
+          - @categories.each_with_index do |c,i|
+            li
+              .index-tour-tab class="#{if i == 0 then 'active' end}"
+                - title = c.name
+                -if title.size >= 16
+                  - label_tag = title.split(" ").first(1).join(" ")
+                  h2 =label_tag
+                -else
+                  h2 = title
+  .index-tour-tabs-pages-wrap
+    .row
+      .columns
+        - names ||= []
+        - @categories.each_with_index do |c,i|
+          - names << c.name
+        - names.each_with_index do |n,i|
+          = render partial: 'main/event', locals: { hide: i != 0, name: n }
+-if @regions && @regions.count >0
+  .regions-of-working-wrap.grey-gradient
+    .background-ornament-layer
+    .row
+      .columns
+        h2
+          |Ми працюємо у наступних областях:
+    .row
+      .columns
+        ul.owl-carousel
+          -@regions.each do |r|
+            li
+              =image_tag r.image.url(:large), title: r.name
+-if @publication
+  .clearfix
+  .index-publication-wrap
+    .row
+      .columns
+        h2
+          |Цікаві публікації
+    .row
+      -@publication.each do |o|
+        .columns.large-3.medium-3.small-6.end
+          .one-item-wrap
+            .image
+              =image_tag o.image.url(:large)
+            .text
+              h3
+                = truncate o.name, length: 52
+              span.date
+                =o.created_at.strftime("%d.%m.%Y")
+              p
+                = truncate_html o.short_description, length: 140
+
+
+
+

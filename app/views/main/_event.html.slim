@@ -9,14 +9,17 @@
               - @filter_words.each do |ef|
                 li
                   .squared-checkbox
-                    input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}" name="check"
-                    label.ico for="squared-#{ef.slug}-#{ef.id}"
-                  label.text for="squared-#{ef.slug}-#{ef.id}"
+                    input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}.#{hide}" name="check"
+                    label.ico for="squared-#{ef.slug}-#{ef.id}.#{hide}"
+                  label.text for="squared-#{ef.slug}-#{ef.id}.#{hide}"
                     =ef.name
       .row
         -@events.each do |e|
           .columns.large-4.end
-            .one-event-wrap
+            - names ||= []
+            - e.filter_words.each do |c|
+              - names << c.name
+            .one-event-wrap data-filter-word=names.join(",")
               .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
               .event-layer
                 .event-content-wrap
@@ -30,4 +33,11 @@
                         =truncate_html e.short_description, lenght: '260'
               .date-time-wrap.red-gradient
                 span
-                  |з 21.04
+                  |з&nbsp;
+                  =e.date_begin.strftime("%d.%m")
+      .row
+        .columns.large-4.right
+          .custom-button-wrap.buttons-to-more-events-wrap
+            .find-button data-name="ще більше!"
+              = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
+              = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"

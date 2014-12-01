@@ -1,0 +1,63 @@
+footer.sf_footer.black-gradient
+  .f-navigation-wrap
+    .f-content-part-wrap
+      .row
+        .columns.large-4
+          h4 Меню сайту:
+          nav
+            ul
+              li
+                a href=about_us_path(locale: I18n.locale)
+                  |Про нас
+              - parent = Category.where(:parent_id => nil)
+              - parent.each do |c|
+                li
+                  =link_to category_path(c.slug, locale: I18n.locale) do
+                    =c.name
+              li
+                a href=publication_path(locale: I18n.locale)
+                  |Публікації
+              li
+                a href=contacts_path(locale: I18n.locale)
+                  |Контакти
+        .columns.large-4
+          h4 Ми соціальні:
+          ul.social-icons-with-link
+            li
+              a
+                = embedded_svg ("LT-social-facebook (passive).svg"), class: "social-icon-passiwe"
+                = embedded_svg ("LT-social-facebook (active).svg"), class: "social-icon-active"
+            li
+              a
+                = embedded_svg ("LT-social-g+ (passive).svg"), class: "social-icon-passiwe"
+                = embedded_svg ("LT-social-g+ (active).svg"), class: "social-icon-active"
+            li
+              a
+                = embedded_svg ("LT-social-Twitter (passive).svg"), class: "social-icon-passiwe"
+                = embedded_svg ("LT-social-Twitter (active).svg"), class: "social-icon-active"
+            li
+              a
+                = embedded_svg ("LT-social-VK (passive).svg"), class: "social-icon-passiwe"
+                = embedded_svg ("LT-social-VK (active).svg"), class: "social-icon-active"
+        .columns.large-4
+          h4 Конктакти:
+          .row
+            .columns
+              a href="cell:+300676750323"
+                |+38 (067) 675 03 23
+          .row
+            .columns
+              a href="cell:+380322444492"
+                |+38 (032) 244 44 92
+          .row
+            .columns.large-3
+              = image_tag('LT-map-marker.png')
+            .columns.large-9
+              .row
+                .columns
+                  p
+                    |вул. Менцинського, 5
+              .row
+                .columns
+                  p
+                    |м.Львів, Україна

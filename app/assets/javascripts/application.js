@@ -17,5 +17,6 @@
 //= require_tree .
 
 //= require bxslider
+//= require owl.carousel
 
 $(function(){ $(document).foundation(); });

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128141439) do
+ActiveRecord::Schema.define(version: 20141201164351) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20141128141439) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "published"
+    t.integer  "index_sort"
   end
 
   create_table "category_translations", force: true do |t|
@@ -130,6 +132,40 @@ ActiveRecord::Schema.define(version: 20141128141439) do
   add_index "photo_gallery_translations", ["locale"], name: "index_photo_gallery_translations_on_locale"
   add_index "photo_gallery_translations", ["photo_gallery_id"], name: "index_photo_gallery_translations_on_photo_gallery_id"
 
+  create_table "publication_translations", force: true do |t|
+    t.integer  "publication_id",    null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "short_description"
+    t.text     "description"
+  end
+
+  add_index "publication_translations", ["locale"], name: "index_publication_translations_on_locale"
+  add_index "publication_translations", ["publication_id"], name: "index_publication_translations_on_publication_id"
+
+  create_table "publications", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "short_description"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "banner_image_file_name"
+    t.string   "banner_image_content_type"
+    t.integer  "banner_image_file_size"
+    t.datetime "banner_image_updated_at"
+    t.boolean  "banner"
+    t.boolean  "published"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tour_translations", force: true do |t|
     t.integer  "tour_id",           null: false
     t.string   "locale",            null: false
@@ -177,5 +213,29 @@ ActiveRecord::Schema.define(version: 20141128141439) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "work_region_translations", force: true do |t|
+    t.integer  "work_region_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+  end
+
+  add_index "work_region_translations", ["locale"], name: "index_work_region_translations_on_locale"
+  add_index "work_region_translations", ["work_region_id"], name: "index_work_region_translations_on_work_region_id"
+
+  create_table "work_regions", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
