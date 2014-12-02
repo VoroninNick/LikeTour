@@ -30,12 +30,14 @@
 
 .header-wrap
     transition: transform 0.5s
-    transform: translateY(-95px)
+    -webkit-transform: translateY(-82px)
+    -o-transform: translateY(-82px)
+    transform: translateY(-82px)
     position: absolute
     top: 0
     left: 0
     right: 0
-    z-index: 10
+    z-index: 100
     &.expand
         transform: translateY(0px)
     .hide-navigation-wrap
@@ -185,16 +187,19 @@
                 position: absolute
             &:before
                 width: 2992px
-                left: -2995px
+                left: -3006px
             &:after
                 width: 1000px
-                right: -1002px
+                right: -988px
 
     .buttons-to-navigation-wrap
-        .buttons-contact-and-menu-wrap
+        .buttons-to-navigation-inner
             position: relative
+        .buttons-contact-and-menu-wrap
+            position: absolute
             width: 74px
             top: -7px
+            right: .8rem
             .button-open-main-menu
                 display: inline-block
                 width: 33px
@@ -210,23 +215,6 @@
                 &.active
                     background-image: url('<%=asset_path("LT-menu-close.svg")%>')
                     background-size: 100%
-                /*border:*/
-                    /*left: 1px solid #9C2242*/
-                    /*right: 1px solid #9C2242*/
-                    /*bottom: 1px solid #9C2242*/
-                /*svg*/
-                    /*width: 100%*/
-                    /*height: 100%*/
-/*.controls-css3-wrap*/
-/*input.mms-contact[type=checkbox]:checked ~ .sf_container*/
-    /*.header-wrap*/
-        /*transform: translateY(0px)*/
-        /*@media (min-width : 0em) and (max-width : 40em)*/
-            /*width: 100%    */
-
-/*input.mms[type=checkbox]:checked ~ .sf_container*/
-    /*.header-wrap*/
-        /*transform: translateY(0px)*/
 
 
 
@@ -244,7 +232,7 @@
 
 .slide-blur
     &.top-blur-line
-        height: 75px
+        height: 83px
     &.bottom-blur-line
         height: 105px
 
@@ -334,6 +322,21 @@
                 &.active
                     rect
                         fill: #fff
+.logo-wrap
+    position: relative
+    #logo
+        width: 160px
+        position: absolute
+        left: 0
+        top: 7px
+        z-index: 1
+        padding-top: 23px
+        a
+            display: block
+            width: inherit
+            svg
+                width: 100%
+                height: 100%
 #main-banner-form
     width: 353px
     height: 100%

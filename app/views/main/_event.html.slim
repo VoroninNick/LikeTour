@@ -20,21 +20,23 @@
             - e.filter_words.each do |c|
               - names << c.name
             .one-event-wrap data-filter-word=names.join(",")
-              .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
-              .event-layer
-                .event-content-wrap
-                  .gradient-for-event-content
-                  .one-event-content
-                    .oec-header
-                      h3
-                        =e.name
-                    .oec-text
-                      p
-                        =truncate_html e.short_description, lenght: '260'
-              .date-time-wrap.red-gradient
-                span
-                  |з&nbsp;
-                  =e.date_begin.strftime("%d.%m")
+              -category = e.category
+              a href=one_event_path(category.slug, e.slug, locale: I18n.locale)
+                .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                .event-layer
+                  .event-content-wrap
+                    .gradient-for-event-content
+                    .one-event-content
+                      .oec-header
+                        h3
+                          =e.name
+                      .oec-text
+                        p
+                          =truncate_html e.short_description, lenght: '260'
+                .date-time-wrap.red-gradient
+                  span
+                    |з&nbsp;
+                    =e.date_begin.strftime("%d.%m")
       .row
         .columns.large-4.right
           .custom-button-wrap.buttons-to-more-events-wrap

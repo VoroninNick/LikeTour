@@ -82,6 +82,10 @@ class Tour < ActiveRecord::Base
     end
 
     edit do
+      field :published do
+        label 'Опубліковано:'
+        help ''
+      end
       field :translations, :globalize_tabs do
         label 'Локалізації'
       end
@@ -108,10 +112,6 @@ class Tour < ActiveRecord::Base
       end
       field :date_end do
         label 'Дата завершення'
-        help ''
-      end
-      field :published do
-        label 'Зняти з публікації?'
         help ''
       end
     end

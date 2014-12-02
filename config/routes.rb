@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     get 'publication' => 'static_page#publication'
     get 'contacts' => 'static_page#contacts'
 
+    get 'category/*url/tour/:event' => 'catalog#one_tour', as: 'one_event'
     get 'category/*url' => 'catalog#category', as: 'category'
+
+    # get 'one_item' => 'catalog#one_tour', as: 'one_event'
   end
 
   # Example of regular route:

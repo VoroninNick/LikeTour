@@ -44,8 +44,13 @@
       .obj-ornaments
   .buttons-to-navigation-wrap
     .row
-      .buttons-contact-and-menu-wrap.right
-        .button-open-main-menu.link-to-contacts-menu
-          /= embedded_svg ("LT-menu-contacts.svg"), class: "main-menu-icon"
-        .button-open-main-menu.link-to-main-menu
-          /= embedded_svg ("LT-menu.svg"), class: "main-menu-icon"
+      .buttons-to-navigation-inner
+        .buttons-contact-and-menu-wrap.right
+          .button-open-main-menu.link-to-contacts-menu
+          .button-open-main-menu.link-to-main-menu
+.row
+  .columns
+    .logo-wrap
+      #logo
+        a href=root_path(locale: I18n.locale)
+          = embedded_svg ("LT-tipa logo.svg"), class: "logo"

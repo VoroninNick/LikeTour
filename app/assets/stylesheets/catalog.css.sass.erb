@@ -79,3 +79,193 @@ label.text
     color: #2A424B
 input[type=checkbox]
     visibility: hidden
+
+.page_header_banner_wrap
+    width: 100%
+    height: 590px
+    position: relative
+    .bx-wrapper
+        height: inherit !important
+        .bx-viewport
+            height: inherit !important
+    ul.page-header-slides
+        margin-left: 0
+        height: inherit !important
+        li
+            list-style: none
+            height: inherit !important
+    ul.event-banner-thumbnails
+        bottom: 32px
+        margin-left: 0
+        z-index: 50
+        +my_horizontal_align()
+            position: absolute
+        li
+            list-style: none
+            display: inline-block
+            width: 20px
+            height: 20px
+            margin-right: 10px
+            svg
+                width: 100%
+                height: 100%
+            a.active
+                rect
+                    fill: #fff
+    h2
+        z-index: 1
+        color: #fff
+        +my_center_align()
+            position: absolute
+        text:
+            transform: uppercase
+            align: center
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 4.124rem
+            weight: bold
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
+        letter-spacing: .1rem
+
+
+.breadcrumb-wrap
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    height: 32px
+    background: rgba(255, 255, 255, .6)
+    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4)
+    -moz-box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4)
+    box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4)
+    ul.breadcrumbs
+        padding: 0 !important
+        background: none !important
+        border: none !important
+        margin: 0
+        height: 32px
+        overflow: visible !important
+        & > li
+            +my_vertical_align()
+        li
+            position: relative
+            z-index: 8
+            &:hover
+                ul
+                    display: block
+
+            ul.sub-category-breadcrumbs
+                display: none
+                position: absolute
+                z-index: 11111
+                background: #fff
+                margin-left: 0
+                top: 25px
+                li
+                    list-style: none
+
+.event-forms-wrap
+    overflow: hidden
+    -webkit-transform: translateY(-82px)
+    -o-transform: translateY(-82px)
+    transform: translateY(-82px)
+    -webkit-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+    -moz-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+    box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+    .event-form
+        position: relative
+        // needs latest Compass, add '@import "compass"' to your scss
+        background-color: #d1d3d4 // Old browsers
+        @include filter-gradient(#ffffff, #d1d3d4, vertical) // IE6-9
+        @include background-image(linear-gradient(top,  #ffffff 0%, #d1d3d4 100%))
+        .ornament-pattern
+            height: 540px
+            width: 540px
+            background-image: url('<%=asset_path("LT-Ornament.svg")%>')
+            background-size: 70%
+            background-repeat: no-repeat
+            background-position: center top
+            position: absolute
+            top: 0
+            left: 0
+            opacity: 0.1
+            z-index: 0
+        .header-title
+            height: 50px
+            width: 100%
+            // needs latest Compass, add '@import "compass"' to your scss
+            background-color: #9c2242 // Old browsers
+            @include filter-gradient(#9c2242, #ed1555, vertical) // IE6-9
+            @include background-image(linear-gradient(top,  #9c2242 0%,#ed1555 100%))
+            font:
+                family: 'Bad Script', cursive
+                size: 1.3rem
+            color: #fff
+            line-height: 50px
+            text-align: center
+            letter-spacing: .06rem
+            position: relative
+            &:after
+                display: block
+                content: ''
+                +triangle(bottom, 10px, #ed1555)
+                right: 35px
+                position: absolute
+        .info
+            padding: 15px 20px 35px 20px
+            position: relative
+            z-index: 1
+            span
+                font:
+                    size: 0.631875rem
+                display: block
+            p
+                font:
+                    size: 1.125rem
+                margin-bottom: 15px
+                line-height: 29px
+                svg
+                    width: 32px
+                    height: 32px
+                    position: relative
+                    top: 8px
+            .form-button
+                cursor: pointer
+                position: relative
+                margin-top: 10px
+                img
+                    width: 100%
+                    height: auto
+                &:hover
+                    .passive-button
+                        display: none
+                    .active-button
+                        display: block
+                &:before
+                    display: block
+                    content: attr(data-name)
+                    position: absolute
+                    left: 33px
+                    top: 0
+                    right: 0
+                    bottom: 0
+                    color: #F1F2F2
+                    font:
+                        family: 'Fira Sans', sans-serif
+                        size: 1.675rem
+                        weight: 400
+                    color: #fff
+                    line-height: 60px
+                    text-transform: uppercase
+                    text-align: center
+
+.event-detail-page
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+.event-detail-wrap
+    border-bottom: 1px solid #BCBEC0
+
+.share-links-wrap
+    height: 100px
+    padding-top: 30px

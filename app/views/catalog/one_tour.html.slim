@@ -1,0 +1,119 @@
+-if @event
+  .page_header_banner_wrap
+    h2 = @event.name
+    -if @event && @event.photo_galleries.count > 0
+      ul.page-header-slides
+        -@event.photo_galleries.each_with_index do |p, i|
+          li
+            .bi.blur-slide-image style="background: url('#{p.image.url(:large)}')no-repeat center center;"
+    -if @event && @event.photo_galleries.count > 0
+      ul.event-banner-thumbnails
+        -@event.photo_galleries.each_with_index do |p, i|
+          li
+            a data-slide-index=i href=""
+              = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
+    .breadcrumb-wrap
+      .row
+        .columns.large
+          -category = Category.order(created_at: :asc)
+          ul.breadcrumbs
+            li
+              a href=root_path
+                |// Головна
+            li
+              a href="#"
+                = category[0].name
+              -if category
+                ul.sub-category-breadcrumbs
+                  -category.each do |c|
+                    li
+                      a href=""
+                        =c.name
+                    -if c.child_categories
+                      -c.child_categories do |chc|
+                        li
+                          a href=""
+                            =chc.name
+            li.unavailable
+              a href="#" Gene Splicing
+            li.current
+              a href="#"
+                =@event.name
+
+  .event-detail-page
+    .row
+      .columns.large-8.medium-8
+        -if @event
+          .event-detail-wrap
+            h2 =@event.name
+            = raw @event.description
+          .row
+            .columns
+              .share-links-wrap
+                .fb-share-button data-href=request.original_url data-layout="button_count"
+      .columns.large-4.medium-4
+        .event-forms-wrap
+          .event-form
+            .ornament-pattern
+            .header-title
+              |Коротка інформація
+            .info
+              .row
+                .columns
+                  span
+                    |Дата проведення
+              .row
+                .columns
+                  p
+                    = embedded_svg ("LT-calendar.svg"), class: "form-icon"
+                    =@event.date_begin.strftime("%d.%m.%Y")
+                    |&nbsp;-&nbsp;
+                    =@event.date_end.strftime("%d.%m.%Y")
+              .row
+                .columns
+                  span
+                    |Місце проведення
+              .row
+                .columns
+                  p
+                    = embedded_svg ("LT-world.svg"), class: "form-icon"
+                    = @event.cities[0].name
+              .row
+                .columns
+                  span
+                    |Ціна
+              .row
+                .columns
+                  p
+                    = embedded_svg ("LT-gruvna.svg"), class: "form-icon"
+                    = @event.price.round
+              .form-button data-name="Замовити"
+                = image_tag "LT-button order (passive)-v2.svg", class: 'passive-button'
+                = image_tag "LT-button order (active).svg", class: 'active-button hide'
+-if @events
+  .row
+    .columns
+      h3
+        |Рекомендовані тури
+  .row
+    -@events.each_with_index do |e, i|
+      .columns.large-4.medium-4.end
+        .one-event-wrap
+          -category = e.category
+          a href=one_event_path(category.slug, e.slug, locale: I18n.locale)
+            .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+            .event-layer
+              .event-content-wrap
+                .gradient-for-event-content
+                .one-event-content
+                  .oec-header
+                    h3
+                      =e.name
+                  .oec-text
+                    p
+                      =truncate_html e.short_description, lenght: '260'
+            .date-time-wrap.red-gradient
+              span
+                |з&nbsp;
+                =e.date_begin.strftime("%d.%m")
+

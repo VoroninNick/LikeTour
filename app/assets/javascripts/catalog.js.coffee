@@ -9,3 +9,14 @@ $(document).ready ->
   $('.fancy-select').fancySelect()
   $(".select-category select").change ->
     alert $(this).val()
+
+#  bx slider for one event header page
+  $('ul.page-header-slides').bxSlider
+#    mode: 'fade'
+    controls: false
+    auto: true
+    pause: 6000
+    pagerCustom: 'ul.event-banner-thumbnails'
+    responsive: true
+  $('.form-button').click ->
+    alert "На етапі розробки!"

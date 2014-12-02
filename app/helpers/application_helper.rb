@@ -34,7 +34,7 @@ module ApplicationHelper
   def get_tags_for_events(cat_name)
     @category = Category.find_by_name(cat_name)
     if @category
-      @events = Tour.where(:category => @category.id).includes(:filter_words)
+      @events = Tour.where(:category => @category.id, published: true).includes(:filter_words)
 
       names = []
       @filter_words = []
