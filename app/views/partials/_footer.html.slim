@@ -1,5 +1,18 @@
-footer.sf_footer.black-gradient
-  .f-navigation-wrap
+footer.sf_footer
+  -if partners.count > 0
+    .partners-wrap.red-gradient
+      .row
+        .columns
+          ul
+            -partners.each do |item|
+              li
+                a
+                  -if item.image.content_type == "image/svg+xml"
+                    = image_tag item.image
+                  -else
+                    = image_tag item.image.url(:large)
+  .f-navigation-wrap.black-gradient
+    .f-navigation-ornament-layer
     .f-content-part-wrap
       .row
         .columns.large-4

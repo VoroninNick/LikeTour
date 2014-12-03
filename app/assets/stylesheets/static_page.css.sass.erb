@@ -1,0 +1,43 @@
+// Place all the styles related to the static_page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins"
+@import "compass"
+
+.page-header-banner
+    height: 240px
+    position: relative
+    .page-header-banner-title
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        .title
+            height: 240px
+            h2
+                z-index: 1
+                color: #fff
+                +my_vertical_align()
+                    position: absolute
+                text:
+                    transform: uppercase
+                    align: center
+                font:
+                    family: 'Fira Sans', sans-serif
+                    size: 4.124rem
+                    weight: bold
+                text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
+                letter-spacing: .1rem
+                width: 100%
+.g-map-wrap
+    .g-map
+        height: 250px
+        +transition(height, .5s, ease-out)
+        &.expand
+            height: 500px
+    .drop-down-map
+        width: 40px
+        height: 40px
+        background: black
+        cursor: pointer

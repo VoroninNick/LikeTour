@@ -70,6 +70,33 @@ $(document).ready ->
     ]
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false
+
+
+#  index page region carousel
+  owl2 = $(".partners-wrap ul")
+  owl2.owlCarousel
+    pagination: false,
+    navigation: false,
+#    navigationText: [
+#      '<%= ApplicationHelper.embedded_svg_js "MO-arrow.svg", class: "owl_arrow_prev"%>',
+#      '<%= ApplicationHelper.embedded_svg_js "MO-arrow.svg", class: "owl_arrow_next"%>'
+#    ],
+    items: 5 #10 items above 1000px browser width
+    itemsDesktop: [ #5 items between 1000px and 901px
+      1000
+      5
+    ]
+    itemsDesktopSmall: [ # betweem 900px and 601px
+      900
+      2
+    ]
+    itemsTablet: [ #2 items between 600 and 0
+      780
+      2
+    ]
+    itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
+    autoPlay : false
+
 #  tabs index
   $('.index-tour-tabs-wrap ul li').click ->
     current_position = $(this).index()

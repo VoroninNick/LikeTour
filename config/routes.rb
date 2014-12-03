@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root 'main#index'
     get 'about_us' => 'static_page#about'
     get 'publication' => 'static_page#publication'
+    get 'publication/:url' => 'static_page#one_publication', as: 'one_publication'
     get 'contacts' => 'static_page#contacts'
 
     get 'category/*url/tour/:event' => 'catalog#one_tour', as: 'one_event'

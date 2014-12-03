@@ -57,5 +57,7 @@ module ApplicationHelper
     string_arr = self.split(' ')
     string_arr.count > limit ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
   end
-
+  def partners
+    brands = BrandCarousel.where(published: true).order(position: :asc)
+  end
 end

@@ -42,18 +42,21 @@
         h2
           |Цікаві публікації
     .row
-      -@publication.each do |o|
-        .columns.large-3.medium-3.small-6.end
+      -@publication.each_with_index do |o, i|
+        .columns.large-3.medium-3.small-6 class="#{'end' if i == @publication.count-1}"
           .one-item-wrap
-            .image
-              =image_tag o.image.url(:large)
-            .text
-              h3
-                = truncate o.name, length: 52
-              span.date
-                =o.created_at.strftime("%d.%m.%Y")
-              p
-                = truncate_html o.short_description, length: 140
+            a href=one_publication_path(o.slug, locale: I18n.locale)
+              .image
+                .pbi style="background: url('#{o.image.url(:large)}')no-repeat center center;"
+              .text-wrap
+                .triangle
+                .text
+                  h3
+                    = truncate o.name, length: 52
+                  span.date
+                    =o.created_at.strftime("%d.%m.%Y")
+                  p
+                    = truncate_html o.short_description, length: 131
 
 
 

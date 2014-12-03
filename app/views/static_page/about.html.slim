@@ -1,0 +1,17 @@
+.page-header-banner
+  .bi style="background: url('#{asset_path('LT-add-banner-about-us.jpg')}')no-repeat center center;"
+  .page-header-banner-title
+    .row
+      .columns
+        .title
+          h2 Про нас
+  .breadcrumb-wrap
+    .row
+      .columns.large
+        ul.breadcrumbs
+          li
+            a href=root_path(locale: I18n.locale)
+              |// Головна
+          li.current
+            a href="#"
+              |Про нас

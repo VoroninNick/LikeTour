@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201164351) do
+ActiveRecord::Schema.define(version: 20141203102939) do
+
+  create_table "brand_carousel_translations", force: true do |t|
+    t.integer  "brand_carousel_id", null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+    t.string   "link"
+  end
+
+  add_index "brand_carousel_translations", ["brand_carousel_id"], name: "index_brand_carousel_translations_on_brand_carousel_id"
+  add_index "brand_carousel_translations", ["locale"], name: "index_brand_carousel_translations_on_locale"
+
+  create_table "brand_carousels", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "link"
+    t.boolean  "published"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"

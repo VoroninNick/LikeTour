@@ -68,3 +68,5 @@ gem 'truncate_html'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-rails'
+
+gem 'simple_form', '~> 3.0.0.rc'

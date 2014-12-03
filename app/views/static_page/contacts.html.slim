@@ -1,0 +1,62 @@
+.page-header-banner
+  .bi style="background: url('#{asset_path('LT-add-banner-contacts.jpg')}')no-repeat center center;"
+  .page-header-banner-title
+    .row
+      .columns
+        .title
+          h2 Контакти
+  .breadcrumb-wrap
+    .row
+      .columns.large
+        ul.breadcrumbs
+          li
+            a href=root_path(locale: I18n.locale)
+              |// Головна
+          li.current
+            a href="#"
+              |Контакти
+.row
+  .columns.large-4.medium-4
+    h4 Наша адреса
+    p
+      |вул. Менцинського, 5
+    p
+      |м.Львів, Україна
+    a href="mailto:info@travel.lviv.ua"
+      |info@travel.lviv.ua
+  .columns.large-4.medium-4
+    h4 Ми в соціальних мережах
+  .columns.large-4.medium-4
+    h4 Контактний телефон
+    a href="cell:+380676750323"
+      |+38 (067) 675 03 23
+    a href="cell:+380322444492"
+      |+38 (032) 244 44 92
+.g-map-wrap
+  #g-map.g-map
+  .row
+    .columns
+      .drop-down-map.right
+.row
+  .columns
+    h2 Форма зворотнього звязку
+.row
+  form
+    .columns.large-4.medium-4
+      .input
+        label Ваше ім’я
+        input type="text" placeholder="Воронін Микола"
+      .input
+        label Контактний телефон
+        input type="text" placeholder="+38 (050) 417 07 28|"
+      .input
+        label Електронна скринька
+        input type="text" placeholder="voronin.nick@gmail.com"
+    .columns.large-4.medium-4
+      .input
+        label Додаткові відомості
+        textarea type="textarea" placeholder="Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон."
+      .send-feedback.form-button data-name="Надіслати"
+        = image_tag "LT-button order (passive)-v2.svg", class: 'passive-button'
+        = image_tag "LT-button order (active).svg", class: 'active-button hide'
+
