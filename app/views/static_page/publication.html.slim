@@ -15,3 +15,26 @@
           li.current
             a href="#"
               |Цікаві публікації
+- if 1==1
+  .publications-wrap
+    - if @future_publications && @future_publications.count > 0
+      .publications-banner-wrap
+        .row
+          .columns.large-8.medium-8.no-padding-right
+            ul.publications-banner
+              - @future_publications.each do |fp|
+                li
+                  .bi style="background: url('#{fp.image.url(:large)}')no-repeat center center;"
+          .columns.large-4.medium-4.no-padding-left
+            ul.publications-pagers-preview
+              - @future_publications.each_with_index do |t, i|
+                li
+                  a data-slide-index=i href=""
+                    span
+                      = truncate t.name, length: 60
+
+
+    .row
+      .columns
+        h2
+          |Інші публікації

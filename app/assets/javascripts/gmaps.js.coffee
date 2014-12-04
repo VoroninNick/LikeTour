@@ -9,11 +9,11 @@ initializeGMaps = ->
     {
       elementType: "geometry"
       stylers: [
-        { "visibility": "on" },
+#        { "visibility": "on" },
         { "weight": 1.2 },
-        { "hue": "#ffd500" },
-        { "lightness": 2 },
-        { "gamma": 0.8 }
+#        { "hue": "#ffd500" },
+#        { "lightness": 2 },
+#        { "gamma": 0.8 }
         {
           visibility: "simplified"
         }

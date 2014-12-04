@@ -1,12 +1,12 @@
 class StaticPageController < ApplicationController
   def about
-
+    @content = About.where(published: true).first
   end
   def custom_tour
 
   end
   def publication
-
+    @future_publications = Publication.where(banner: true).order(position: :asc).limit(5)
   end
   def contacts
 

@@ -33,11 +33,198 @@
 .g-map-wrap
     .g-map
         height: 250px
+        border-top: 1px solid #fff
+        border-bottom: 1px solid #fff
+        -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4)
+        -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4)
+        box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4)
         +transition(height, .5s, ease-out)
         &.expand
             height: 500px
+        .gmnoprint img
+            max-width: none
     .drop-down-map
         width: 40px
         height: 40px
-        background: black
+        background: #fff
         cursor: pointer
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4)
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4)
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4)
+        position: relative
+        &:before
+            display: block
+            content: ''
+            +triangle(bottom, 10px, #2A3A4B)
+            position: absolute
+            top: 16px
+            left: 10px
+        &.expand:before
+            display: block
+            content: ''
+            +triangle(top, 10px, #2A3A4B)
+            position: absolute
+            top: 6px
+            left: 10px
+
+.about-photo-banner-wrap
+    /*height: 627px*/
+    // needs latest Compass, add '@import "compass"' to your scss
+    background-color: #2A3A4B // Old browsers
+    @include filter-gradient(#2A3A4B, #0B1B2A, vertical) // IE6-9
+    @include background-image(linear-gradient(top,  #2A3A4B 0%, #0B1B2A 100%))
+    h3
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 300
+            style: italic
+        color: #F1F2F2
+        margin:
+            top: 40px
+            bottom: 25px
+    ul
+        margin-left: 0
+.about-wrap
+    padding-bottom: 50px
+    .custom-thumbnails-wrap
+        position: static
+        text-align: center
+        ul
+            position: static
+            left: 0
+            margin:
+                bottom: 50px
+                top: 15px
+                left: 0
+
+.command-wrap
+    margin-top: 70px
+    h3
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 300
+            style: italic
+        color: #2A424B
+        margin-bottom: 25px
+    .one-person-wrap
+        padding-bottom: 32px
+        .image
+            .pbi
+                padding-bottom: 95%
+    .text-wrap
+        background-color: #2A3A4A
+        .triangle
+        .text
+            padding: 15px
+            h3
+                font:
+                    family: 'Fira Sans', sans-serif
+                    size: 1.3125rem
+                    weight: 400
+                color: #fff
+                margin: 0
+                text:
+                    transform: uppercase
+                    align: center
+            h5
+                font:
+                    family: 'Fira Sans', sans-serif
+                    size: 1.125rem
+                    weight: 100
+                color: #A7A9AC
+                margin: 0
+                text:
+                    align: center
+            a
+                font:
+                    family: 'Fira Sans', sans-serif
+                    size: .875rem
+                    weight: 300
+                    style: italic
+                color: #ED1555
+                margin: 0
+                text:
+                    align: center
+                display: block
+.feedback-form
+    padding-bottom: 30px
+    h2
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 300
+            style: italic
+        color: #2A424B
+        margin: 0
+    form
+        padding-top: 20px
+        .input
+            label
+                font:
+                    family: 'Fira Sans', sans-serif
+                    size: .875rem
+                    weight: 300
+                color: #939598
+                padding-left: 24px
+            input
+                height: 42px
+                padding-left: 24px
+            textarea
+                min-height: 200px
+.contacts-wrap
+    padding: 50px 0 75px 0
+    h4
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.125rem
+            weight: 300
+            style: italic
+        color: #BCBEC0
+        margin: 0
+    p
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 400
+        color: #2A3A4B
+        margin: 0
+        line-height: 1.6rem
+    a
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 400
+        color: #ED1555
+    p
+        a
+            font:
+                family: 'Fira Sans', sans-serif
+                size: 1.875rem
+                weight: 400
+            color: #2A3A4B
+            margin: 0
+            line-height: 1.6rem
+
+ul.publications-banner
+    height: 400px
+    margin-left: 0
+    li
+        height: inherit
+
+ul.publications-pagers-preview
+    margin-left: 0
+    li
+        list-style: none
+        a
+            display: block
+            height: 80px
+            background-color: #d1d3d4 // Old browsers
+            @include filter-gradient(#ffffff, #d1d3d4, vertical) // IE6-9
+            @include background-image(linear-gradient(top,  #ffffff 0%, #d1d3d4 100%))
+            &:hover
+                background-color: #2A3A4B // Old browsers
+                @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
+                @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
+

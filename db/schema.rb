@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203102939) do
+ActiveRecord::Schema.define(version: 20141204123238) do
+
+  create_table "about_translations", force: true do |t|
+    t.integer  "about_id",    null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+  end
+
+  add_index "about_translations", ["about_id"], name: "index_about_translations_on_about_id"
+  add_index "about_translations", ["locale"], name: "index_about_translations_on_locale"
+
+  create_table "abouts", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "brand_carousel_translations", force: true do |t|
     t.integer  "brand_carousel_id", null: false
@@ -130,6 +149,39 @@ ActiveRecord::Schema.define(version: 20141203102939) do
     t.string   "name"
     t.string   "slug"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "personnel_translations", force: true do |t|
+    t.integer  "personnel_id", null: false
+    t.string   "locale",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "work"
+  end
+
+  add_index "personnel_translations", ["locale"], name: "index_personnel_translations_on_locale"
+  add_index "personnel_translations", ["personnel_id"], name: "index_personnel_translations_on_personnel_id"
+
+  create_table "personnels", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "work"
+    t.string   "phone_number"
+    t.string   "email"
+    t.integer  "position"
+    t.boolean  "published"
+    t.integer  "personnel_id"
+    t.string   "personnel_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

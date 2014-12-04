@@ -146,6 +146,7 @@ jQuery(document).ready ($) ->
       $.each slider_array, (i, elem) ->
         elem.goToNextSlide()
 
+#index page filter
 $(document).on "click", 'ul.event-filters label', ->
   $this = $(this)
   currentEvent = $(this).text()
@@ -155,16 +156,18 @@ $(document).on "click", 'ul.event-filters label', ->
 
   arr = childrenDataWord.toLowerCase().split(",")
 
-  $childrenList.filter(->
-    alert 'filter'
+  $items_to_hide = $childrenList.filter(->
     arr = $(this).attr("data-filter-word").toLowerCase().split(",")
     for item in arr
-      alert 'for'
-      if item.indexOf(currentEventtoLowerCase()) == 0
-        alert 'if'
+      if item.indexOf(currentEvent.toLowerCase()) == 0
+
         return true
     return false
   )
+  if $items_to_hide
+    $childrenList.addClass('hide')
+    if $items_to_hide.hasClass('hide')
+      $items_to_hide.removeClass('hide')
 
 
 
