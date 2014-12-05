@@ -13,13 +13,14 @@
                 li class=("has-dropdown" if c.child_categories && c.child_categories.count > 0)
                   =link_to category_path(c.slug, locale: I18n.locale) do
                     =c.name
+
                   -if c.child_categories && c.child_categories.count > 0
                     ul.dropdown
                       - c.child_categories.each do |ch|
-                        li
-                          =link_to category_path(url: "#{c.slug}/#{ch.slug}", locale: I18n.locale) do
-                            =ch.name
-                            -if ch.tours && ch.tours.count >= 0
+                        -if ch.tours.count > 0
+                          li
+                            =link_to category_path(url: "#{c.slug}/#{ch.slug}", locale: I18n.locale) do
+                              =ch.name
                               span
                                 |(
                                 =ch.tours.count
@@ -33,12 +34,59 @@
                   |Контакти
     #contacts-menu.hide
       .row
-        .columns.large-4
-          |test 1
-        .columns.large-4
-          |test 2
-        .columns.large-4
-          |test 3
+        .columns.large-4.medium-4
+          .main-menu-social-links
+            .row
+              .columns.large-3.medium-3
+                .header-height.soc-icon
+                  a
+                    = image_tag "LT-social-facebook (passive).svg", class: "social-icon-passiwe"
+                    = image_tag ("LT-social-facebook (active).svg"), class: "social-icon-active"
+              .columns.large-3.medium-3
+                .header-height.soc-icon
+                  a
+                    = image_tag ("LT-social-g+ (passive).svg"), class: "social-icon-passiwe"
+                    = image_tag ("LT-social-g+ (active).svg"), class: "social-icon-active"
+              .columns.large-3.medium-3
+                .header-height.soc-icon
+                  a
+                    = image_tag ("LT-social-Twitter (passive).svg"), class: "social-icon-passiwe"
+                    = image_tag ("LT-social-Twitter (active).svg"), class: "social-icon-active"
+              .columns.large-3.medium-3
+                .header-height.soc-icon
+                  a
+                    = image_tag ("LT-social-VK (passive).svg"), class: "social-icon-passiwe"
+                    = image_tag ("LT-social-VK (active).svg"), class: "social-icon-active"
+
+        .columns.large-4.medium-4
+          .main-menu-location
+            .row
+              .columns.large-3.medium-3
+                .header-height.location-ico
+                  = image_tag('LT-map-marker.png')
+              .columns.large-9.medium-9.no-padding-left
+                .header-height
+                  .address
+                    .row
+                      .columns
+                        p
+                          |вул. Менцинського, 5
+                    .row
+                      .columns
+                        p
+                          |м.Львів, Україна
+        .columns.large-4.medium-4
+          .header-height
+            .main-menu-phones
+              .row
+                .columns
+                  a.phone href="cell:+300676750323"
+                    |+38 (067) 675 03 23
+
+              .row
+                .columns
+                  a.phone href="cell:+380322444492"
+                    |+38 (032) 244 44 92
   .ornament-wrap
     .ornament-inner
       .obj-ornaments

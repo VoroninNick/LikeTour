@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'category/*url/tour/:event' => 'catalog#one_tour', as: 'one_event'
     get 'category/*url' => 'catalog#category', as: 'category'
 
+    get 'test' => 'static_page#test_page'
     # get 'one_item' => 'catalog#one_tour', as: 'one_event'
   end
 

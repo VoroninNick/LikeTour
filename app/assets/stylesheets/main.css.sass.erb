@@ -113,7 +113,7 @@
                             ul
                                 display: block
                         ul.dropdown
-                            width: 335px
+                            width: 410px
                             margin-left: 0
                             display: none
                             position: absolute
@@ -139,6 +139,10 @@
                                     height: 75px
                                     line-height: 75px
                                     padding: 0 0 0 25px
+                                    span
+                                        font-size: .9rem
+                                        vertical-align: super
+                                        padding-left: .4rem
                                 &:hover
                                     // needs latest Compass, add '@import "compass"' to your scss
                                     background-color: #2A3A4B // Old browsers
@@ -717,21 +721,11 @@ footer
         top: 0
         right: 0
         bottom: 0
-        background-image: url('<%=asset_path("LT-Pattern.png")%>'), url('<%=asset_path("LT-Pattern.png")%>'), url('<%=asset_path("LT-Pattern.png")%>')
-        background-size: 45%, 20%, 45%
-        background-repeat: no-repeat
-        background-position: -16% center, 70% 69%, -16% center
+        background-image: url('<%=asset_path("LT-Pattern.png")%>'), url('<%=asset_path("LT-Pattern.png")%>')
+        background-size: 45%, 20%
+        background-repeat: repeat-x
+        background-position: -16% center, 70% 69%
         opacity: .3
-        /*position: absolute*/
-        /*left: 0*/
-        /*top: 0*/
-        /*right: 0*/
-        /*bottom: 0*/
-        /*background-image: url('<%=asset_path("LT-Pattern.png")%>')*/
-        /*background-size: 35%*/
-        /*background-repeat: repeat-x*/
-        /*background-position: center*/
-        /*opacity: .3*/
     .f-content-part-wrap
         h4
             font:
@@ -787,7 +781,7 @@ ul.social-icons-with-link
                     display: none
             &:hover
                 .social-icon-active
-                    display: block
+                    display: inline-block
 
 .regions-of-working-wrap
     height: 182px
@@ -835,6 +829,8 @@ ul.social-icons-with-link
         .image
             img
         .text-wrap
+            position: relative
+            top: -10px
         .text
             background-color: #2A3A4B
             padding: 15px
@@ -861,25 +857,32 @@ ul.social-icons-with-link
                 color: #A7A9AC
                 line-height: 1rem
 
-        .triangle
-            border: 10px solid #f8f9f9
-            border-top: none
-            border-color: transparent #fdfdfd transparent
+.triangle-wrap
+    position: relative
+    overflow: hidden
+    height: 10px
+    width: 100%
+    .triangle
+        border: 10px solid #2a3a4b
+        border-bottom: none
+        border-color: transparent #2a3a4b transparent
+        position: absolute
+        right: 40px
+        top: 0
+        z-index: 11
+        &:before, &:after
+            content: ''
             position: absolute
-            left: 46%
             z-index: 11
-            &:before, &:after
-                content: ''
-                position: absolute
-                z-index: 11
-                height: 10px
-                width: 100px
-                top: 0px
-                background: #fdfdfd
-            &:before
-                right: 10px
-            &:after
-                left: 10px
+            height: 10px
+            top: -10px
+            background: #2a3a4b
+        &:before
+            right: 10px
+            width: 160px
+        &:after
+            left: 10px
+            width: 40px
 
 .partners-wrap
     position: relative
@@ -975,5 +978,49 @@ ul.voronin-block-wrap
 .no-padding-right
     padding-right: 0
 
-
-
+.header-height
+    height: 100px
+    position: relative
+#contacts-menu
+    .main-menu-social-links
+        a
+            display: block
+            width: 40px
+            +my_vertical_align()
+                position: absolute
+            img
+                &.social-icon-active
+                    display: none
+            &:hover
+                .social-icon-passiwe
+                    display: none
+                .social-icon-active
+                    display: inline-block
+    .main-menu-location
+        .location-ico
+            img
+                +my_vertical_align()
+                    position: absolute
+        .address
+            +my_vertical_align()
+                position: absolute
+            p
+                color: #BCBEC0
+                font:
+                    size: 1.125rem
+                    family: 'Fira Sans', sans-serif
+                    weight: 300
+                line-height: 1.5rem
+                margin-bottom: 0
+    .main-menu-phones
+        +my_vertical_align()
+            position: absolute
+        a
+            color: #F1F2F2
+            font:
+                size: 1.5rem
+                family: 'Fira Sans', sans-serif
+                weight: 400
+            line-height: 2rem
+.text-page-wrap
+    padding-top: 145px

@@ -31,7 +31,7 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-  included_models = [ User, Category, Tour, PhotoGallery, City, FilterWord, WorkRegion, Publication, BrandCarousel, About, Personnel]
+  included_models = [ User, Category, Tour, PhotoGallery, City, FilterWord, WorkRegion, Publication, BrandCarousel, About, Personnel, IndexBanner]
 
   included_models.each do |model|
 

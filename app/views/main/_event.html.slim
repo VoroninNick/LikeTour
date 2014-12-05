@@ -14,8 +14,8 @@
                   label.text for="squared-#{ef.slug}-#{ef.id}.#{hide}"
                     =ef.name
       .row
-        -@events.each do |e|
-          .columns.large-4.end
+        -@events.each_with_index do |e, i|
+          .columns.large-4  class="#{'end' if i == @events.count-1}"
             - names ||= []
             - e.filter_words.each do |c|
               - names << c.name

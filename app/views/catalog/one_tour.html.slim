@@ -77,7 +77,13 @@
                 .columns
                   p
                     = embedded_svg ("LT-world.svg"), class: "form-icon"
-                    = @event.cities[0].name
+                    - if @event.cities.count > 0
+                      - @event.cities.each_with_index do |c, i|
+                        - if i == @event.cities.count-1
+                          = c.name
+                        - else
+                          = c.name
+                          |,&nbsp;
               .row
                 .columns
                   span

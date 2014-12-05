@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204123238) do
+ActiveRecord::Schema.define(version: 20141205152143) do
 
   create_table "about_translations", force: true do |t|
     t.integer  "about_id",    null: false
@@ -149,6 +149,35 @@ ActiveRecord::Schema.define(version: 20141204123238) do
     t.string   "name"
     t.string   "slug"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "index_banner_translations", force: true do |t|
+    t.integer  "index_banner_id", null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "description"
+    t.string   "link"
+    t.string   "slug"
+  end
+
+  add_index "index_banner_translations", ["index_banner_id"], name: "index_index_banner_translations_on_index_banner_id"
+  add_index "index_banner_translations", ["locale"], name: "index_index_banner_translations_on_locale"
+
+  create_table "index_banners", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "link"
+    t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "published"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

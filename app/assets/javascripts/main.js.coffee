@@ -165,6 +165,7 @@ $(document).on "click", 'ul.event-filters label', ->
     return false
   )
   if $items_to_hide
+    alert $items_to_hide.attr "data-filter-word"
     $childrenList.addClass('hide')
     if $items_to_hide.hasClass('hide')
       $items_to_hide.removeClass('hide')
