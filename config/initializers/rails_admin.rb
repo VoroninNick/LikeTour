@@ -12,7 +12,7 @@ RailsAdmin.config do |config|
   # config.authorize_with :cancan
 
   ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
@@ -27,9 +27,14 @@ RailsAdmin.config do |config|
     delete
     show_in_app
 
+    # multi
+    multiple_upload
+
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+    # Add the nestable action for configured models
+    nestable
   end
   included_models = [ User, Category, Tour, PhotoGallery, City, FilterWord, WorkRegion, Publication, BrandCarousel, About, Personnel, IndexBanner]
 

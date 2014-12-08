@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -70,3 +70,16 @@ gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-rails'
 
 gem 'simple_form', '~> 3.0.0.rc'
+
+gem 'rails_admin_nestable'
+gem 'paper_trail', '~> 3.0.6'
+# for paper_trail
+gem 'globalize-versioning'
+
+# gem 'rails_admin_multi_upload', :path => '../rails_admin_multi_upload'
+gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
+
+group :development do
+  gem "better_errors"
+  gem 'binding_of_caller'
+end

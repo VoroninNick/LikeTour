@@ -69,6 +69,14 @@ class Tour < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries
   attr_accessible :photo_galleries_attributes
 
+  def self.get_item_class
+    PhotoGallery
+  end
+  def self.get_item_field_name
+    :photo_galleries
+  end
+
+
   rails_admin do
     parent Category
     label 'Подія'
@@ -98,6 +106,7 @@ class Tour < ActiveRecord::Base
       field :photo_galleries do
         label 'Фотогалерея'
       end
+
       field :price do
         label 'Вартість'
         help ''

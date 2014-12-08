@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205152143) do
+ActiveRecord::Schema.define(version: 20141205170820) do
 
   create_table "about_translations", force: true do |t|
     t.integer  "about_id",    null: false
@@ -321,6 +321,19 @@ ActiveRecord::Schema.define(version: 20141205152143) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+    t.string   "locale"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
   create_table "work_region_translations", force: true do |t|
     t.integer  "work_region_id", null: false

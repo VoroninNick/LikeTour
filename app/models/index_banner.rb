@@ -1,7 +1,8 @@
 class IndexBanner < ActiveRecord::Base
+  has_paper_trail
   attr_accessible :name, :description, :slug, :link,  :published, :position, :image
 
-  translates :name, :slug, :description, :link
+  translates :name, :slug, :description, :link, :versioning => :paper_trail # , :versioning => :paper_trail for paper_trail
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
@@ -68,10 +69,19 @@ class IndexBanner < ActiveRecord::Base
   validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
   validates_presence_of :name, :message => "Введіть назву! Поле не може бути пустим."
 
+
+  # def self.get_item_class
+  #
+  # end
+
   rails_admin do
     navigation_label 'Головна сторінка'
     label 'Банер'
     label_plural 'Банери'
+
+    # for nestable
+    #nestable_tree( { position_field: :position, max_depth: 3 } )
+    nestable_list true
 
     list do
       field :name
