@@ -19,7 +19,7 @@
                       - c.child_categories.each do |ch|
                         -if ch.tours.count > 0
                           li
-                            =link_to category_path(url: "#{c.slug}/#{ch.slug}", locale: I18n.locale) do
+                            =link_to category_path(ch.slug, locale: I18n.locale) do
                               =ch.name
                               span
                                 |(

@@ -1,7 +1,8 @@
 class City < ActiveRecord::Base
   attr_accessible :name, :slug
 
-  has_and_belongs_to_many :tours, join_table: 'city_joins'
+  has_many :city_joins
+  has_many :tours, through: :city_joins
 
   translates :name, :slug
   attr_accessible :translations

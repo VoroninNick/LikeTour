@@ -21,7 +21,8 @@
               - names << c.name
             .one-event-wrap data-filter-word=names.join(",")
               -category = e.category
-              a href=one_event_path(category.slug, e.slug, locale: I18n.locale)
+              -city = e.cities[0]
+              a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
                 .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
                 .event-layer
                   .event-content-wrap

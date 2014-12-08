@@ -1,0 +1,42 @@
+.page-header-banner
+  .bi style="background: url('#{asset_path('LT-add-banner-tours-active-turism.jpg')}')no-repeat center center;"
+  .page-header-banner-title
+    .row
+      .columns
+        .title
+          h2 Активний туризм
+  .breadcrumb-wrap
+    .row
+      .columns.large-8.medium-8.large-offset-4
+        ul.breadcrumbs
+          li
+            a href=root_path(locale: I18n.locale)
+              |// Головна
+          li.current
+            a href="#"
+              |test catalog
+.event-detail-page
+    .row
+      .columns.large-4.medium-4
+        .event-forms-wrap
+          .event-form
+            .ornament-pattern
+            .header-title
+              |Підберемо щось цікаве?
+            .form
+              .input.select-category
+                label
+                  |Оберіть тип
+                - category_list = Category.order(name: :asc)
+                select.fancy-select
+                  -category_list.each do |c|
+                    option value=c.name
+                      =c.name
+              .input.select-city
+                label
+                  |Оберіть місто
+                select.fancy-select
+              .form-button data-name="Замовити"
+                = image_tag "LT-button find (passive) 2.svg", class: 'passive-button'
+                = image_tag "LT-button find (active) 2.svg", class: 'active-button hide'
+      .columns.large-8.medium-8

@@ -386,103 +386,6 @@
     background: linear-gradient(to bottom,  #ffffff 0%,#d1d3d4 100%) /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d1d3d4',GradientType=0 ) /* IE6-9 */
 
-    .form
-        margin: 0 30px 30px 30px
-        height: 325px
-        position: relative
-        .input
-            padding-top: 10px
-            label
-                font:
-                    family: 'Fira Sans', sans-serif
-                    size: .75rem
-                    weight: 300
-                color: #939598
-                line-height: 1rem
-                padding-left: .75rem
-            .fancy-select
-                color: #2A424B
-                .trigger
-                    width: 100%
-                    height: 42px
-                    color: #2A424B
-                    // needs latest Compass, add '@import "compass"' to your scss
-                    background-color: #d1d3d4 // Old browsers
-                    @include filter-gradient(#fff, #d1d3d4, vertical) // IE6-9
-                    @include background-image(linear-gradient(top, #fff  0%,#d1d3d4 100%))
-                    @include background-image(linear-gradient(top,  #fff 0%,#d1d3d4 100%))
-                    font:
-                        family: 'Fira Sans', sans-serif
-                        size: 1.0625rem
-                        weight: 500
-                    border: 1px solid #BCBEC0
-                    &.open:after
-                        display: block
-                        content: ''
-                        +triangle(top, 6px, #ed1555)
-                        right: 11px
-                        top: 8px
-                        position: absolute
-                    &:before
-                        display: block
-                        content: ''
-                        width: 1px
-                        height: 42px
-                        background: #BCBEC0
-                        top: 0
-                        right: 40px
-                        position: absolute
-                    &:after
-                        display: block
-                        content: ''
-                        +triangle(bottom, 6px, #ed1555)
-                        right: 11px
-                        top: 15px
-                        position: absolute
-                ul.options
-                    width: 252px
-                    border-top: 1px solid #bcbec0
-                    border-bottom: 1px solid #bcbec0
-                    li
-                        width: 100%
-                        height: 42px
-                        color: #2A424B
-                        // needs latest Compass, add '@import "compass"' to your scss
-                        background-color: #d1d3d4 // Old browsers
-                        @include filter-gradient(#fff, #d1d3d4, vertical) // IE6-9
-                        @include background-image(linear-gradient(top, #fff  0%,#d1d3d4 100%))
-                        @include background-image(linear-gradient(top,  #fff 0%,#d1d3d4 100%))
-                        position: relative
-                        border-left: 1px solid #bcbec0
-                        border-right: 1px solid #bcbec0
-                        border-bottom: 1px solid #bcbec0
-                        padding-left: 30px
-                        &:hover
-                            // needs latest Compass, add '@import "compass"' to your scss
-                            background-color: #2A3A4B // Old browsers
-                            @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
-                            @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
-                            color: #d1d3d4
-                            padding-left: 40px
-                            &:before
-                                display: block
-                                content: ''
-                                width: 10px
-                                height: 100%
-                                // needs latest Compass, add '@import "compass"' to your scss
-                                background-color: #9c2242 // Old browsers
-                                @include filter-gradient(#9c2242, #ed1555, horizontal) // IE6-9
-                                @include background-image(linear-gradient(left,  #9c2242 0%,#ed1555 100%))
-                                position: absolute
-                                left: 0
-                                top: 0
-                        &.selected
-                            // needs latest Compass, add '@import "compass"' to your scss
-                            background-color: #2A3A4B // Old browsers
-                            @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
-                            @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
-                            color: #d1d3d4
-
 
     .ornament-pattern
         height: 540px
@@ -517,6 +420,106 @@
             +triangle(bottom, 10px, #ed1555)
             right: 35px
             position: absolute
+.form
+    margin: 0 30px 0 30px
+    position: relative
+    min-height: 325px
+    &.index-page-form
+        height: 325px
+    .input
+        padding-top: 10px
+        label
+            font:
+                family: 'Fira Sans', sans-serif
+                size: .75rem
+                weight: 300
+            color: #939598
+            line-height: 1rem
+            padding-left: .75rem
+        .fancy-select
+            color: #2A424B
+            .trigger
+                width: 100%
+                height: 42px
+                color: #2A424B
+                // needs latest Compass, add '@import "compass"' to your scss
+                background-color: #d1d3d4 // Old browsers
+                @include filter-gradient(#fff, #d1d3d4, vertical) // IE6-9
+                @include background-image(linear-gradient(top, #fff  0%,#d1d3d4 100%))
+                @include background-image(linear-gradient(top,  #fff 0%,#d1d3d4 100%))
+                font:
+                    family: 'Fira Sans', sans-serif
+                    size: 1.0625rem
+                    weight: 500
+                border: 1px solid #BCBEC0
+                &.open:after
+                    display: block
+                    content: ''
+                    +triangle(top, 6px, #ed1555)
+                    right: 11px
+                    top: 8px
+                    position: absolute
+                &:before
+                    display: block
+                    content: ''
+                    width: 1px
+                    height: 42px
+                    background: #BCBEC0
+                    top: 0
+                    right: 40px
+                    position: absolute
+                &:after
+                    display: block
+                    content: ''
+                    +triangle(bottom, 6px, #ed1555)
+                    right: 11px
+                    top: 15px
+                    position: absolute
+            ul.options
+                width: 252px
+                border-top: 1px solid #bcbec0
+                border-bottom: 1px solid #bcbec0
+                li
+                    width: 100%
+                    height: 42px
+                    color: #2A424B
+                    // needs latest Compass, add '@import "compass"' to your scss
+                    background-color: #d1d3d4 // Old browsers
+                    @include filter-gradient(#fff, #d1d3d4, vertical) // IE6-9
+                    @include background-image(linear-gradient(top, #fff  0%,#d1d3d4 100%))
+                    @include background-image(linear-gradient(top,  #fff 0%,#d1d3d4 100%))
+                    position: relative
+                    border-left: 1px solid #bcbec0
+                    border-right: 1px solid #bcbec0
+                    border-bottom: 1px solid #bcbec0
+                    padding-left: 30px
+                    &:hover
+                        // needs latest Compass, add '@import "compass"' to your scss
+                        background-color: #2A3A4B // Old browsers
+                        @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
+                        @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
+                        color: #d1d3d4
+                        padding-left: 40px
+                        &:before
+                            display: block
+                            content: ''
+                            width: 10px
+                            height: 100%
+                            // needs latest Compass, add '@import "compass"' to your scss
+                            background-color: #9c2242 // Old browsers
+                            @include filter-gradient(#9c2242, #ed1555, horizontal) // IE6-9
+                            @include background-image(linear-gradient(left,  #9c2242 0%,#ed1555 100%))
+                            position: absolute
+                            left: 0
+                            top: 0
+                    &.selected
+                        // needs latest Compass, add '@import "compass"' to your scss
+                        background-color: #2A3A4B // Old browsers
+                        @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
+                        @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
+                        color: #d1d3d4
+
+
 .custom-button-wrap
     cursor: pointer
     &.find-button-wrap

@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
   attr_accessible :name, :description, :parent_id, :slug, :child_category_id
   attr_accessible  :published, :index_sort
+  attr_accessible :image
 
   has_many :child_categories, class_name: "Category",
            foreign_key: "parent_id"
@@ -64,11 +65,11 @@ class Category < ActiveRecord::Base
     end
   end
 
-  # has_attached_file :image,
-  #                   styles: { large: "600x600>" },
-  #                   convert_options: { large: "-quality 94 -interlace Plane" },
-  #                   url: "/assets/images/:class/:id/image_:style.:extension",
-  #                   path:':rails_root/public:url'
+  has_attached_file :image,
+                    styles: { large: "1920x337>" },
+                    convert_options: { large: "-quality 94 -interlace Plane" },
+                    url: "/assets/images/:class/:id/image_:style.:extension",
+                    path:':rails_root/public:url'
 
 
 
@@ -80,6 +81,7 @@ class Category < ActiveRecord::Base
     list do
       field :name
       field :parent
+      field :image
       field :slug
       # field :description
       # field :published
@@ -88,6 +90,10 @@ class Category < ActiveRecord::Base
     edit do
       field :translations, :globalize_tabs do
         label 'Локалізації'
+      end
+      field :image, :paperclip do
+        label 'Зображення для банера'
+        help 'Зображення повинне мати розмір 1920x337px'
       end
       field :parent do
         label 'Категорія'

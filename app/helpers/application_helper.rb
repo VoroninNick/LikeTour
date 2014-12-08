@@ -47,10 +47,7 @@ module ApplicationHelper
             false
           end
         end
-
       end
-
-      #render inline: "#{@filter_words.class}"
     end
   end
   def words_limit(limit)

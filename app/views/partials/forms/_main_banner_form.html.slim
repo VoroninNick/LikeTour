@@ -2,7 +2,7 @@
   .ornament-pattern
   .header-title
     |Підберемо щось цікаве?
-  .form
+  .form.index-page-form.event-form
     .input.select-category
       label
         |Оберіть тип
@@ -15,7 +15,8 @@
       label
         |Оберіть місто
       select.fancy-select
+      /- cities = all_city_from_current_category()
     .custom-button-wrap.find-button-wrap
-      .find-button data-name="Підібрати!"
-        = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
-        = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"
+      .form-button data-name="Замовити"
+        = image_tag "LT-button find (passive) 2.svg", class: 'passive-button'
+        = image_tag "LT-button find (active) 2.svg", class: 'active-button hide'

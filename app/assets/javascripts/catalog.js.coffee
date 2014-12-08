@@ -6,7 +6,9 @@ $(document).on "click", ".fancy-select ul.options li", ->
   $value = $(this).attr "data-raw-value"
   alert $value
 $(document).ready ->
-  $('.fancy-select').fancySelect()
+  fancySelect = $('.fancy-select')
+  fancySelect.fancySelect()
+  fancySelect.trigger('update')
   $(".select-category select").change ->
     alert $(this).val()
 

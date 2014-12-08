@@ -20,27 +20,31 @@
             li
               a href=root_path
                 |// Головна
-            li
+            li.has-sub-category
               a href="#"
-                = category[0].name
-              -if category
-                ul.sub-category-breadcrumbs
-                  -category.each do |c|
-                    li
-                      a href=""
-                        =c.name
-                    -if c.child_categories
-                      -c.child_categories do |chc|
-                        li
-                          a href=""
-                            =chc.name
-            li.unavailable
-              a href="#" Gene Splicing
+                = @event.category.name
+                - categories = other_category(@event.category.id)
+                -if categories
+                  ul.sub-category-breadcrumbs
+                    -categories.each do |c|
+                      li
+                        =link_to category_path(c.slug, locale: I18n.locale) do
+                          =c.name
+            /-------------------------------------------
+            li.has-sub-category
+              - city_name = @event.cities[0].name
+              a href="#"
+                = city_name
+            - cities = other_city(@event.id,city_name)
             li.current
               a href="#"
                 =@event.name
 
   .event-detail-page
+    .row
+      .columns
+        - @cities.each do |c|
+          =c.name
     .row
       .columns.large-8.medium-8
         -if @event
@@ -104,9 +108,10 @@
   .row
     -@events.each_with_index do |e, i|
       .columns.large-4.medium-4.end
-        .one-event-wrap
+        .event-detail-wrap
           -category = e.category
-          a href=one_event_path(category.slug, e.slug, locale: I18n.locale)
+          -city = e.cities[0]
+          a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
             .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
             .event-layer
               .event-content-wrap

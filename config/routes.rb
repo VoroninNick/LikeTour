@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     get 'contacts' => 'static_page#contacts'
 
     get 'category/*url/tour/:event' => 'catalog#one_tour', as: 'one_event'
-    get 'category/*url' => 'catalog#category', as: 'category'
+    # get 'category/*url' => 'catalog#category', as: 'category'
+
+    get ':category_name' => 'catalog#category', as: 'category'
+    # get ':category_name/:city_name' => 'catalog#category_with_city', as: 'category_with_city'
+    get 'category_city' => 'catalog#category_with_city', as: 'category_with_city'
+    get ':category_name/:city_name/:tour_name' => 'catalog#tour', as: 'tour'
 
     get 'test' => 'static_page#test_page'
     # get 'one_item' => 'catalog#one_tour', as: 'one_event'

@@ -1,7 +1,9 @@
 class Tour < ActiveRecord::Base
   attr_accessible :name, :short_description, :description, :city, :slug, :category, :category_id, :price, :date_begin, :date_end, :published
 
-  has_and_belongs_to_many :cities, join_table: 'city_joins'
+  has_many :city_joins
+  has_many :cities, through: :city_joins
+
   attr_accessible :city, :city_ids
   has_and_belongs_to_many :filter_words, join_table: 'filter_joins'
   attr_accessible :filter_words, :filter_word_ids

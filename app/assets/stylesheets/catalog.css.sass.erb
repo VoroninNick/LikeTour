@@ -9,6 +9,11 @@ ul.event-filters
     margin-left: 0
     margin-top: 5px
     margin-bottom: 20px
+    &.for-category-page
+        li
+            display: block
+            .squared-checkbox
+                margin-left: -7px
     li
         list-style: none
         display: inline-block
@@ -150,20 +155,58 @@ input[type=checkbox]
         li
             position: relative
             z-index: 8
+            height: 100%
+            line-height: 32px
             &:hover
-                ul
-                    display: block
-
+                a
+                    text-decoration: none
+            a
+                font:
+                    style: normal
+                &:hover
+                    color: #ed1555
             ul.sub-category-breadcrumbs
                 display: none
                 position: absolute
                 z-index: 11111
                 background: #fff
-                margin-left: 0
-                top: 25px
+                margin-left: 9px
+                -webkit-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+                -moz-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+                box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+                padding: 10px 30px 20px 20px
+                top: 32px
                 li
                     list-style: none
-
+                    &:hover
+                        >a
+                            color: #ed1555
+                    a
+                        color: #9B2141
+                        font:
+                            family: 'Fira Sans', sans-serif
+                            size: 0.6875rem
+                            weight: 400
+                        white-space: nowrap
+            &.has-sub-category
+                margin-right: 20px
+                &:after
+                    display: block
+                    content: ''
+                    right: -14px
+                    +triangle(bottom, 4px, #9b2141)
+                    +my_vertical_align(55%)
+                    position: absolute
+                &:hover
+                    &:after
+                        display: block
+                        content: ''
+                        right: -14px
+                        +triangle(top, 4px, #9b2141)
+                        +my_vertical_align(32%)
+                        position: absolute
+                    ul
+                        display: block
 .event-forms-wrap
     overflow: hidden
     -webkit-transform: translateY(-82px)
@@ -173,6 +216,7 @@ input[type=checkbox]
     -moz-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
     box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
     .event-form
+        padding-bottom: 30px
         position: relative
         // needs latest Compass, add '@import "compass"' to your scss
         background-color: #d1d3d4 // Old browsers
@@ -212,7 +256,8 @@ input[type=checkbox]
                 right: 35px
                 position: absolute
         .info
-            padding: 15px 20px 35px 20px
+            margin: 15px 20px 0 20px
+            min-height: 280px
             position: relative
             z-index: 1
             span
@@ -231,8 +276,11 @@ input[type=checkbox]
                     top: 8px
 .form-button
     cursor: pointer
-    position: relative
+    position: absolute
     margin-top: 10px
+    left: 0
+    right: 0
+    bottom: 0
     img
         width: 100%
         height: auto

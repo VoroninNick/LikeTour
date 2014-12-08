@@ -77,7 +77,7 @@ gem 'paper_trail', '~> 3.0.6'
 gem 'globalize-versioning'
 
 # gem 'rails_admin_multi_upload', :path => '../rails_admin_multi_upload'
-gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
+# gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
 
 group :development do
   gem "better_errors"

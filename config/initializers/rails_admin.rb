@@ -28,7 +28,7 @@ RailsAdmin.config do |config|
     show_in_app
 
     # multi
-    multiple_upload
+    # multiple_upload
 
     ## With an audit adapter, you can add:
     # history_index
