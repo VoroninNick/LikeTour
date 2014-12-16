@@ -19,17 +19,20 @@
   .row
     .columns.large-4.medium-4
       h4 Наша адреса
-      p = contacts.street
-      p = contacts.city
-      a href="mailto:info@travel.lviv.ua" = contacts.email
+      - if contacts
+        p = contacts.street
+        p = contacts.city
+        a href="mailto:info@travel.lviv.ua" = contacts.email
     .columns.large-4.medium-4
       h4 Ми в соціальних мережах
     .columns.large-4.medium-4
       h4 Контактний телефон
       p
-        a href="cell:+380676750323" = contacts.phone_one
+        - if contacts
+          a href="cell:+380676750323" = contacts.phone_one
       p
-        a href="cell:+380322444492" = contacts.phone_one
+        - if contacts
+          a href="cell:+380322444492" = contacts.phone_one
 .g-map-wrap
   #g-map.g-map
   .row

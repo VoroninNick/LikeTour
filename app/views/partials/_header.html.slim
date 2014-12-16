@@ -42,20 +42,6 @@
                   li
                     = link_to locale.to_s, locale: locale
                     .clearfix
-            /#switches_as.right
-            /  .active_language
-            /    -I18n.available_locales.each do |locale|
-            /      -if I18n.locale == locale
-            /        div class="lng-name class_#{locale.to_s}"
-            /          =locale.to_s
-            /  .language_menu_wrap
-            /    ul
-            /      - @page_locale_links.each_pair do |locale, url|
-            /        - if locale.to_sym != I18n.locale.to_sym
-            /          li class="class_#{locale.to_s}" data-text=locale.to_s
-            /            a href=url
-            /              = locale
-    /.clearfix
     #contacts-menu.hide
       .row
         .columns.large-4.medium-4
@@ -93,21 +79,25 @@
                   .address
                     .row
                       .columns
-                        p = contacts.street
+                        - if contacts
+                          p = contacts.street
                     .row
                       .columns
-                        p = contacts.city
+                        - if contacts
+                          p = contacts.city
 
         .columns.large-4.medium-4
           .header-height
             .main-menu-phones
               .row
                 .columns
-                  a.phone href="cell:+300676750323" = contacts.phone_one
+                  - if contacts
+                    a.phone href="cell:+300676750323" = contacts.phone_one
 
               .row
                 .columns
-                  a.phone href="cell:+380322444492" = contacts.phone_two
+                  - if contacts
+                    a.phone href="cell:+380322444492" = contacts.phone_two
   .ornament-wrap
     .ornament-inner
       .obj-ornaments

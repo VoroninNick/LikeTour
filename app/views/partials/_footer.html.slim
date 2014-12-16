@@ -53,11 +53,13 @@ footer.sf_footer
           h4 = t('footer.titles.contacts')
           .row
             .columns
-              a.phone href="cell:+300676750323" = contacts.phone_one
+              - if contacts
+                a.phone href="cell:+300676750323" = contacts.phone_one
 
           .row
             .columns
-              a.phone href="cell:+380322444492" = contacts.phone_two
+              - if contacts
+                a.phone href="cell:+380322444492" = contacts.phone_two
           .location
             .row
               .columns.large-3
@@ -65,10 +67,12 @@ footer.sf_footer
               .columns.large-9
                 .row
                   .columns
-                    p = contacts.street
+                    - if contacts
+                      p = contacts.street
                 .row
                   .columns
-                    p = contacts.city
+                    - if contacts
+                      p = contacts.city
     .f-about-wrap
       .row
         .columns
