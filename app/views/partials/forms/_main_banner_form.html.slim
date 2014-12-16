@@ -1,22 +1,36 @@
 #main-banner-form
   .ornament-pattern
-  .header-title
-    |Підберемо щось цікаве?
-  .form.index-page-form.event-form
-    .input.select-category
-      label
-        |Оберіть тип
-      - category_list = Category.order(name: :asc)
-      select.fancy-select
-        -category_list.each do |c|
-          option value=c.name
-            =c.name
-    .input.select-city
-      label
-        |Оберіть місто
-      select.fancy-select
-      /- cities = all_city_from_current_category()
+  .header-title = t('title.banner-form')
+  - category_list = Category.order(name: :asc)
+  - cities = get_cities_from_current_category(category_list[1])
+  - filters = get_filters_from_current_category(category_list[1])
+  form.form.index-page-form.event-form action="#{}"
+    - if category_list
+      .input.select-category
+        label = t('labels.type')
+        select.fancy-select name="type"
+          -category_list.each_with_index do |c, i|
+            - if i > 0
+              option value=c.slug
+                =c.name
+    - if cities && cities.count > 0
+      .input.select-city
+        label = t('labels.city')
+        select.fancy-select name="city"
+          - cities.each do |c|
+            option value=c.slug
+              =c.name
+    - if filters && filters.count > 0
+      ul.event-filters.main-banner-filters
+        - filters.each_with_index do |f, i|
+          - if i < 6
+            li
+              .squared-checkbox
+                input type="checkbox" value="flag-#{f.slug}" id="squared-#{f.slug}-#{f.id}-form" name="check[]"
+                label.ico for="squared-#{f.slug}-#{f.id}-form"
+              label.text for="squared-#{f.slug}-#{f.id}-form"
+                =f.name
+
     .custom-button-wrap.find-button-wrap
-      .form-button data-name="Замовити"
-        = image_tag "LT-button find (passive) 2.svg", class: 'passive-button'
-        = image_tag "LT-button find (active) 2.svg", class: 'active-button hide'
+      .filter-button
+        button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"

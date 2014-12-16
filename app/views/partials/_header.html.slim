@@ -2,12 +2,11 @@
   .hide-navigation-wrap
     #main-menu
       .row
-        .columns
+        .columns.large-11
           nav
             ul
               li
-                a href=about_us_path(locale: I18n.locale)
-                  |Про нас
+                a href=about_us_path(locale: I18n.locale) = t('main-menu.about')
               - parent = Category.where(:parent_id => nil)
               - parent.each do |c|
                 li class=("has-dropdown" if c.child_categories && c.child_categories.count > 0)
@@ -27,11 +26,36 @@
                                 |)
 
               li
-                a href=publication_path(locale: I18n.locale)
-                  |Публікації
+                a href=publication_path(locale: I18n.locale) = t('main-menu.publication')
               li
-                a href=contacts_path(locale: I18n.locale)
-                  |Контакти
+                a href=contacts_path(locale: I18n.locale) = t('main-menu.contacts')
+        .columns.large-1
+          .language-switcher-wrap
+            ul.language_menu_switcher
+              -I18n.available_locales.each do |locale|
+                -if I18n.locale == locale
+                  li
+                    a.active_language
+                      =locale.to_s
+                    .clearfix
+                -else
+                  li
+                    = link_to locale.to_s, locale: locale
+                    .clearfix
+            /#switches_as.right
+            /  .active_language
+            /    -I18n.available_locales.each do |locale|
+            /      -if I18n.locale == locale
+            /        div class="lng-name class_#{locale.to_s}"
+            /          =locale.to_s
+            /  .language_menu_wrap
+            /    ul
+            /      - @page_locale_links.each_pair do |locale, url|
+            /        - if locale.to_sym != I18n.locale.to_sym
+            /          li class="class_#{locale.to_s}" data-text=locale.to_s
+            /            a href=url
+            /              = locale
+    /.clearfix
     #contacts-menu.hide
       .row
         .columns.large-4.medium-4
@@ -40,53 +64,50 @@
               .columns.large-3.medium-3
                 .header-height.soc-icon
                   a
-                    = image_tag "LT-social-facebook (passive).svg", class: "social-icon-passiwe"
-                    = image_tag ("LT-social-facebook (active).svg"), class: "social-icon-active"
+                    = image_tag "LT-social-facebook-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-facebook-(active).png", class: "social-icon-active"
               .columns.large-3.medium-3
                 .header-height.soc-icon
                   a
-                    = image_tag ("LT-social-g+ (passive).svg"), class: "social-icon-passiwe"
-                    = image_tag ("LT-social-g+ (active).svg"), class: "social-icon-active"
+                    = image_tag "LT-social-g+-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-g+-(active).png", class: "social-icon-active"
               .columns.large-3.medium-3
                 .header-height.soc-icon
                   a
-                    = image_tag ("LT-social-Twitter (passive).svg"), class: "social-icon-passiwe"
-                    = image_tag ("LT-social-Twitter (active).svg"), class: "social-icon-active"
+                    = image_tag "LT-social-Twitter-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-Twitter-(active).png", class: "social-icon-active"
               .columns.large-3.medium-3
                 .header-height.soc-icon
                   a
-                    = image_tag ("LT-social-VK (passive).svg"), class: "social-icon-passiwe"
-                    = image_tag ("LT-social-VK (active).svg"), class: "social-icon-active"
+                    = image_tag "LT-social-VK-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-VK-(active).png", class: "social-icon-active"
 
         .columns.large-4.medium-4
           .main-menu-location
             .row
               .columns.large-3.medium-3
                 .header-height.location-ico
-                  = image_tag('LT-map-marker.png')
+                  = image_tag('LT-location.svg')
               .columns.large-9.medium-9.no-padding-left
                 .header-height
                   .address
                     .row
                       .columns
-                        p
-                          |вул. Менцинського, 5
+                        p = contacts.street
                     .row
                       .columns
-                        p
-                          |м.Львів, Україна
+                        p = contacts.city
+
         .columns.large-4.medium-4
           .header-height
             .main-menu-phones
               .row
                 .columns
-                  a.phone href="cell:+300676750323"
-                    |+38 (067) 675 03 23
+                  a.phone href="cell:+300676750323" = contacts.phone_one
 
               .row
                 .columns
-                  a.phone href="cell:+380322444492"
-                    |+38 (032) 244 44 92
+                  a.phone href="cell:+380322444492" = contacts.phone_two
   .ornament-wrap
     .ornament-inner
       .obj-ornaments

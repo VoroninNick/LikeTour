@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208104717) do
+ActiveRecord::Schema.define(version: 20141209140517) do
 
   create_table "about_translations", force: true do |t|
     t.integer  "about_id",    null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141208104717) do
     t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date_start"
   end
 
   create_table "brand_carousel_translations", force: true do |t|
@@ -128,6 +129,30 @@ ActiveRecord::Schema.define(version: 20141208104717) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
+
+  create_table "contacts_info_translations", force: true do |t|
+    t.integer  "contacts_info_id", null: false
+    t.string   "locale",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "street"
+    t.string   "city"
+  end
+
+  add_index "contacts_info_translations", ["contacts_info_id"], name: "index_contacts_info_translations_on_contacts_info_id"
+  add_index "contacts_info_translations", ["locale"], name: "index_contacts_info_translations_on_locale"
+
+  create_table "contacts_infos", force: true do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "email"
+    t.string   "phone_one"
+    t.string   "phone_two"
+    t.string   "lat"
+    t.string   "lng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "filter_joins", force: true do |t|
     t.integer  "tour_id"

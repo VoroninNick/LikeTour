@@ -19,22 +19,17 @@
   .row
     .columns.large-4.medium-4
       h4 Наша адреса
-      p
-        |вул. Менцинського, 5
-      p
-        |м.Львів, Україна
-      a href="mailto:info@travel.lviv.ua"
-        |info@travel.lviv.ua
+      p = contacts.street
+      p = contacts.city
+      a href="mailto:info@travel.lviv.ua" = contacts.email
     .columns.large-4.medium-4
       h4 Ми в соціальних мережах
     .columns.large-4.medium-4
       h4 Контактний телефон
       p
-        a href="cell:+380676750323"
-          |+38 (067) 675 03 23
+        a href="cell:+380676750323" = contacts.phone_one
       p
-        a href="cell:+380322444492"
-          |+38 (032) 244 44 92
+        a href="cell:+380322444492" = contacts.phone_one
 .g-map-wrap
   #g-map.g-map
   .row
@@ -64,7 +59,7 @@
               textarea type="textarea" placeholder="Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон."
         .row
           .columns.large-6.medium-6.right
-            .send-feedback.form-button data-name="Надіслати"
+            .send-feedback.form-button data-name="#{t('buttons.send')}"
               = image_tag "LT-button send (passive)-v1.svg", class: 'passive-button'
               = image_tag "LT-button send (active)-v1.svg", class: 'active-button hide'
 

@@ -12,9 +12,26 @@
           li
             a href=root_path(locale: I18n.locale)
               |// Головна
-          li.current
+          li.has-sub-category
             a href="#"
-              |test catalog
+              = @category.name
+              - categories = other_category(@category.id)
+              -if categories
+                ul.sub-category-breadcrumbs
+                  -categories.each do |c|
+                    li
+                      =link_to category_path(c.slug, locale: I18n.locale) do
+                        =c.name
+          li.has-sub-category
+            a href="#"
+              = @city.name
+            - if @cities
+              ul.sub-category-breadcrumbs
+                -@cities.each do |c|
+                  - if c.id != @city.id
+                    li
+                      =link_to category_with_city_path(@category.slug, c.slug, locale: I18n.locale) do
+                        =c.name
 .event-detail-page
     .row
       .columns.large-4.medium-4
@@ -24,18 +41,22 @@
             .header-title
               |Підберемо щось цікаве?
             .form
-              .input.select-category
-                label
-                  |Оберіть тип
-                - category_list = Category.order(name: :asc)
-                select.fancy-select
-                  -category_list.each do |c|
-                    option value=c.name
-                      =c.name
-              .input.select-city
-                label
-                  |Оберіть місто
-                select.fancy-select
+              - if @categories && @categories.count > 0
+                .input.select-category
+                  label
+                    |Оберіть тип
+                  select.fancy-select
+                    -@categories.each do |c|
+                      option value=c.name selected=("selected" if c.name == @category.name)
+                        =c.name
+              - if @cities && @cities.count > 0
+                .input.select-city
+                  label
+                    |Оберіть місто
+                  select.fancy-select
+                    - @cities.each do |c|
+                      option value=c.name selected=("selected" if c.name == @city.name)
+                        =c.name
               .form-button data-name="Замовити"
                 = image_tag "LT-button find (passive) 2.svg", class: 'passive-button'
                 = image_tag "LT-button find (active) 2.svg", class: 'active-button hide'

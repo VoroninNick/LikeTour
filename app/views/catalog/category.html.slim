@@ -25,7 +25,7 @@
                           =c.name
 
 .event-detail-page
-  -cities = all_city_from_current_category(@category.slug)
+  -cities = get_cities_from_current_category(@category.id)
   .row
     .columns.large-4.medium-4
       .event-forms-wrap
@@ -33,38 +33,38 @@
           .ornament-pattern
           .header-title
             |Підберемо щось цікаве?
-          .form
+          form.form
             .input.select-category
               label
                 |Оберіть тип
               - category_list = Category.order(name: :asc)
-              select.fancy-select
+              select.fancy-select name="type"
                 -category_list.each do |c|
-                  option value=c.name selected="#{'selected' if c.id == @category.id}"
+                  option value=c.slug selected=("selected" if c.id == @category.id)
                     =c.name
+
             - if cities.count > 0
-              .input.select-city
+              .input.select-city name="city"
                 label
                   |Оберіть місто
                 select.fancy-select
                   - cities.each_with_index do |c, i|
                     -if i==0
                       option value="" Виберіть місто
-                    option value=c
-                      =c
+                    option value=c.slug
+                      =c.name
             - get_tags_for_events(@category.name)
             - if @filter_words.count > 0
-              ul.event-filters.for-category-page
+              ul.event-filters.for-category-page.main-banner-filters
                 - @filter_words.each do |f|
                   li
                     .squared-checkbox
-                      input type="checkbox" value="None" id="squared-#{f.slug}-#{f.id}-form" name="check"
+                      input type="checkbox" value="None" id="squared-#{f.slug}-#{f.id}-form" name="check[]"
                       label.ico for="squared-#{f.slug}-#{f.id}-form"
                     label.text for="squared-#{f.slug}-#{f.id}-form"
                       =f.name
-            .form-button data-name="Підібрати"
-              = image_tag "LT-button find (passive) 2.svg", class: 'passive-button'
-              = image_tag "LT-button find (active) 2.svg", class: 'active-button hide'
+            .filter-button
+              button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
     .columns.large-8.medium-8
       -if @filter_words.count > 0
         .row
@@ -104,3 +104,4 @@
                   span
                     |з&nbsp;
                     =e.date_begin.strftime("%d.%m")
+

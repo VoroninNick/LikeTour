@@ -1,5 +1,5 @@
 class About < ActiveRecord::Base
-  attr_accessible :name, :description, :published
+  attr_accessible :name, :description, :published, :date_start
 
   translates :description
   attr_accessible :translations
@@ -62,6 +62,8 @@ class About < ActiveRecord::Base
       field :personnels do
         label 'Фахівці'
       end
+      # field :date_start do
+      # end
     end
   end
 end

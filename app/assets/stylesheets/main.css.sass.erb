@@ -1002,6 +1002,8 @@ ul.voronin-block-wrap
     .main-menu-location
         .location-ico
             img
+                height: 30%
+                right: 0
                 +my_vertical_align()
                     position: absolute
         .address
@@ -1023,7 +1025,38 @@ ul.voronin-block-wrap
             font:
                 size: 1.5rem
                 family: 'Fira Sans', sans-serif
-                weight: 400
+                weight: 300
             line-height: 2rem
 .text-page-wrap
     padding-top: 145px
+
+.language-switcher-wrap
+    height: 100px
+    position: relative
+    #switches_as
+        width: 37px
+        height: 37px
+        +my_vertical_align()
+            position: absolute
+        z-index: 2
+        .active_language
+            background-color: #ed1555 // Old browsers
+            @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
+            @include background-image(linear-gradient(top,  #ed1555 0%,#9c2242 100%))
+            -webkit-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+            -moz-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+            box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+            width: inherit
+            height: inherit
+            .lng-name
+                color: #f1f2f2
+                font-size: 1.5rem
+                font-family: "Fira Sans", sans-serif
+                font-weight: 300
+                line-height: 37px
+                text-align: center
+        .language_menu_wrap
+            ul
+                margin-left: 0
+                li
+                    list-style: none

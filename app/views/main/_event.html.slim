@@ -13,6 +13,7 @@
                     label.ico for="squared-#{ef.slug}-#{ef.id}.#{hide}"
                   label.text for="squared-#{ef.slug}-#{ef.id}.#{hide}"
                     =ef.name
+
       .row
         -@events.each_with_index do |e, i|
           .columns.large-4  class="#{'end' if i == @events.count-1}"
@@ -41,6 +42,6 @@
       .row
         .columns.large-4.right
           .custom-button-wrap.buttons-to-more-events-wrap
-            .find-button data-name="ще більше!"
+            .find-button data-name="#{t('buttons.even-more')}"
               = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
               = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"

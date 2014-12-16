@@ -18,13 +18,16 @@ module LikeTour
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :uk
-    config.i18n.enforce_available_locales = false
-    config.i18n.fallbacks = true
-    config.i18n.available_locales = [:uk, :pl, :en]
-    config.i18n.locale ||= config.i18n.default_locale
 
-    Globalize.fallbacks = {:uk => [:uk, :pl], :pl => [:pl, :uk] }
+    config.i18n.default_locale = :uk
+    config.i18n.fallbacks = true
+    config.i18n.available_locales = [:uk, :pl, :en, :ru]
+    config.i18n.locale ||= config.i18n.default_locale
+    # config.i18n.enforce_available_locales = false
+
+    Globalize.fallbacks = {:uk => [:uk, :ru, :pl, :en], :pl => [:pl, :en, :uk, :ru], :en => [:en, :pl, :uk, :ru], :ru => [:ru, :uk, :en, :pl] }
+
+
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end

@@ -16,25 +16,22 @@ footer.sf_footer
     .f-content-part-wrap
       .row
         .columns.large-4
-          h4 Меню сайту:
+          h4 = t('footer.titles.menu')
           nav
             ul
               li
-                a href=about_us_path(locale: I18n.locale)
-                  |Про нас
+                a href=about_us_path(locale: I18n.locale) = t('main-menu.about')
               - parent = Category.where(:parent_id => nil)
               - parent.each do |c|
                 li
                   =link_to category_path(c.slug, locale: I18n.locale) do
                     =c.name
               li
-                a href=publication_path(locale: I18n.locale)
-                  |Публікації
+                a href=publication_path(locale: I18n.locale) = t('main-menu.publication')
               li
-                a href=contacts_path(locale: I18n.locale)
-                  |Контакти
+                a href=contacts_path(locale: I18n.locale) = t('main-menu.contacts')
         .columns.large-4
-          h4 Ми соціальні:
+          h4 = t('footer.titles.soc-networks')
           ul.social-icons-with-link
             li
               a
@@ -53,16 +50,14 @@ footer.sf_footer
                 = image_tag ("LT-social-VK (passive).svg"), class: "social-icon-passiwe"
                 = image_tag ("LT-social-VK (active).svg"), class: "social-icon-active"
         .columns.large-4
-          h4 Конктакти:
+          h4 = t('footer.titles.contacts')
           .row
             .columns
-              a.phone href="cell:+300676750323"
-                |+38 (067) 675 03 23
+              a.phone href="cell:+300676750323" = contacts.phone_one
 
           .row
             .columns
-              a.phone href="cell:+380322444492"
-                |+38 (032) 244 44 92
+              a.phone href="cell:+380322444492" = contacts.phone_two
           .location
             .row
               .columns.large-3
@@ -70,12 +65,10 @@ footer.sf_footer
               .columns.large-9
                 .row
                   .columns
-                    p
-                      |вул. Менцинського, 5
+                    p = contacts.street
                 .row
                   .columns
-                    p
-                      |м.Львів, Україна
+                    p = contacts.city
     .f-about-wrap
       .row
         .columns

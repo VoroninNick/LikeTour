@@ -1,7 +1,9 @@
 class FilterWord < ActiveRecord::Base
   attr_accessible :name, :description, :slug
 
-  has_and_belongs_to_many :tours, join_table: 'filter_joins'
+  has_many :filter_joins
+  has_many :tours, through: :filter_joins
+  # has_and_belongs_to_many :tours, join_table: 'filter_joins'
 
   translates :name, :slug, :description
   attr_accessible :translations

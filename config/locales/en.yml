@@ -20,4 +20,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  main-menu:
+    about: "About Us"
+    publication: "Publications"
+    contacts: "Contacts"
+  buttons:
+    order: "Order"
+    even-more: "More!"
+    send: "Send"
+    pick: "Pick!"
+  title:
+    banner-form: "We choose something interesting?"
+    banner-regions: "We work in the following areas:"
+    index-publication: "Interesting publications"
+
+  labels:
+    type: "Select type"
+    city: "Choose a city"
+
+  footer:
+    titles:
+      menu: "Menu:"
+      soc-networks: "We are social:"
+      contacts: "Contacts:"

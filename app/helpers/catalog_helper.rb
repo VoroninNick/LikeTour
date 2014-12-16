@@ -25,8 +25,5 @@ module CatalogHelper
   def other_city(tour, city_name)
     @tour = Tour.find_by(tour)
     current_city = City.find_by_name(city_name)
-    # @other_cities = City.joins(:tours).first
-    # @other_cities = Tour.where(id: @tour.id).select(:cities).map(&:cities).uniq
-    # @tour
   end
 end

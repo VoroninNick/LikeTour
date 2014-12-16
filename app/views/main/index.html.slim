@@ -26,8 +26,7 @@
     .background-ornament-layer
     .row
       .columns
-        h2
-          |Ми працюємо у наступних областях:
+        h2 = t('title.banner-regions')
     .row
       .columns
         ul.owl-carousel
@@ -39,8 +38,7 @@
   .index-publication-wrap
     .row
       .columns
-        h2
-          |Цікаві публікації
+        h2 = t('title.index-publication')
     .row
       -@publication.each_with_index do |o, i|
         .columns.large-3.medium-3.small-6 class="#{'end' if i == @publication.count-1}"

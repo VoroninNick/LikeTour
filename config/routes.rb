@@ -1,24 +1,23 @@
-Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+Rails.application.routes.draw do  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get "/get_cities_from_category" => "catalog#get_cities", :as => 'get_cities'
+  get "/get_filters_from_category" => "catalog#get_filter_words", :as => 'get_filter_words'
+
   # You can have the root of your site routed with "root"
-  scope "(:locale)", :locale => /uk|pl/ do
+  scope "(:locale)", :locale => /#{I18n.available_locales.join('|')}/ do
     root 'main#index'
     get 'about_us' => 'static_page#about'
     get 'publication' => 'static_page#publication'
     get 'publication/:url' => 'static_page#one_publication', as: 'one_publication'
     get 'contacts' => 'static_page#contacts'
 
-    get 'category/*url/tour/:event' => 'catalog#one_tour', as: 'one_event'
-    # get 'category/*url' => 'catalog#category', as: 'category'
-
     get ':category_name' => 'catalog#category', as: 'category'
-    # get ':category_name/:city_name' => 'catalog#category_with_city', as: 'category_with_city'
-    get 'category_city' => 'catalog#category_with_city', as: 'category_with_city'
+    #get '', to: 'main#filter'
+    get ':category_name/:city_name(?flags=:flags)' => 'catalog#category_with_city', as: 'category_with_city'
     get ':category_name/:city_name/:tour_name' => 'catalog#tour', as: 'tour'
 
     get 'test' => 'static_page#test_page'

@@ -31,6 +31,14 @@ module ApplicationHelper
     @category ||= Category.order(created_at: :asc )
   end
 
+  def get_cities_from_current_category(category)
+    category = Category.find(category)
+    cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq)
+  end
+  def get_filters_from_current_category(category)
+    category = Category.find(category)
+    words = FilterWord.where('id in (?)', FilterJoin.joins(:tour).joins(:filter_word).where(tours: { category_id: category.id }).pluck(:filter_word_id).uniq)
+  end
   def get_tags_for_events(cat_name)
     @category = Category.find_by_name(cat_name)
     if @category
@@ -56,5 +64,8 @@ module ApplicationHelper
   end
   def partners
     brands = BrandCarousel.where(published: true).order(position: :asc)
+  end
+  def contacts
+    contact = ContactsInfo.first
   end
 end

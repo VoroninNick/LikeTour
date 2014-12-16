@@ -3,10 +3,13 @@ class Tour < ActiveRecord::Base
 
   has_many :city_joins
   has_many :cities, through: :city_joins
-
   attr_accessible :city, :city_ids
-  has_and_belongs_to_many :filter_words, join_table: 'filter_joins'
+
+  has_many :filter_joins
+  has_many :filter_words, through: :filter_joins
+  # has_and_belongs_to_many :filter_words, join_table: 'filter_joins'
   attr_accessible :filter_words, :filter_word_ids
+
   belongs_to :category
 
   translates :name, :slug, :short_description, :description, :city
@@ -78,7 +81,7 @@ class Tour < ActiveRecord::Base
     :photo_galleries
   end
 
-
+  validates_presence_of :cities, :message => "Виберіть місто! Поле не може бути пустим."
   rails_admin do
     parent Category
     label 'Подія'
@@ -86,6 +89,7 @@ class Tour < ActiveRecord::Base
 
     list do
       field :name
+      field :category
       field :slug
       field :short_description
       field :description

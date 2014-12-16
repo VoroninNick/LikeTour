@@ -5,19 +5,23 @@
 @import "compass"
 
 
+
 ul.event-filters
     margin-left: 0
     margin-top: 5px
     margin-bottom: 20px
+    &.main-banner-filters
+        li
+            width: 50%
     &.for-category-page
         li
             display: block
             .squared-checkbox
                 margin-left: -7px
     li
-        list-style: none
-        display: inline-block
-        height: 30px
+        list-style: none !important
+        display: inline-block !important
+        height: 30px !important
 .squared-checkbox
     width: 11px
     height: 11px
@@ -274,6 +278,40 @@ input[type=checkbox]
                     height: 32px
                     position: relative
                     top: 8px
+
+.filter-button
+    button
+        background-color: transparent !important
+        border: none !important
+        box-shadow: none !important
+        width: 100%
+        outline: none !important
+        height: 67px
+        background-image: url('<%=asset_path("LT-button find (passive) 2.svg")%>')
+        background-size: 100%
+        background-repeat: no-repeat
+        &:before
+            display: block
+            content: attr(data-name)
+            position: absolute
+            left: 33px
+            top: 0
+            right: 0
+            bottom: 0
+            color: #F1F2F2
+            font:
+                family: 'Fira Sans', sans-serif
+                size: 1.675rem
+                weight: 400
+            color: #fff
+            line-height: 60px
+            text-transform: uppercase
+            text-align: center
+        &:hover
+            background-image: url('<%=asset_path("LT-button find (active) 2.svg")%>')
+            background-size: 100%
+            background-repeat: no-repeat
+
 .form-button
     cursor: pointer
     position: absolute
@@ -281,6 +319,7 @@ input[type=checkbox]
     left: 0
     right: 0
     bottom: 0
+
     img
         width: 100%
         height: auto

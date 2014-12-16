@@ -79,7 +79,12 @@ gem 'globalize-versioning'
 # gem 'rails_admin_multi_upload', :path => '../rails_admin_multi_upload'
 # gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
 
-group :development do
-  gem "better_errors"
-  gem 'binding_of_caller'
-end
+# group :development do
+#   gem "better_errors"
+#   gem 'binding_of_caller'
+# end
+
+
+gem 'http_accept_language'
+
+gem 'gmaps4rails'

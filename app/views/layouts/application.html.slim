@@ -10,7 +10,11 @@ html lang="en"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag 'ckeditor/ckeditor.js'
-    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+    /= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+
+    = javascript_include_tag "https://maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry"
+    = javascript_include_tag 'https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js'
+
     = csrf_meta_tags
 
   body
@@ -31,6 +35,7 @@ html lang="en"
       = render partial: "partials/header"
       .page-wrap
         = yield
+        /= yield :scripts
       = render partial: "partials/footer"
     .cover
     = javascript_include_tag "application"

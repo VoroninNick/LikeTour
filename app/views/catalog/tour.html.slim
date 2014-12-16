@@ -28,23 +28,23 @@
                   ul.sub-category-breadcrumbs
                     -categories.each do |c|
                       li
-                        =link_to category_path(c.slug, locale: I18n.locale) do
+                        =link_to category_path( c.slug, locale: I18n.locale) do
                           =c.name
-            /-------------------------------------------
             li.has-sub-category
               - city_name = @event.cities[0].name
               a href="#"
                 = city_name
-            - cities = other_city(@event.id,city_name)
+              - if @cities
+                ul.sub-category-breadcrumbs
+                  -@cities.each do |c|
+                    li
+                      =link_to category_with_city_path(@event.category.slug, c.slug, locale: I18n.locale) do
+                        =c.name
             li.current
               a href="#"
                 =@event.name
 
   .event-detail-page
-    .row
-      .columns
-        - @cities.each do |c|
-          =c.name
     .row
       .columns.large-8.medium-8
         -if @event
@@ -97,7 +97,7 @@
                   p
                     = embedded_svg ("LT-gruvna.svg"), class: "form-icon"
                     = @event.price.round
-              .form-button data-name="Замовити"
+              .form-button data-name="#{t('buttons.order')}"
                 = image_tag "LT-button order (passive)-v2.svg", class: 'passive-button'
                 = image_tag "LT-button order (active).svg", class: 'active-button hide'
 -if @events
@@ -107,8 +107,8 @@
         |Рекомендовані тури
   .row
     -@events.each_with_index do |e, i|
-      .columns.large-4.medium-4.end
-        .event-detail-wrap
+      .columns.large-4.medium-4 class="#{'end' if i == @events.count-1}"
+        .one-event-wrap
           -category = e.category
           -city = e.cities[0]
           a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
