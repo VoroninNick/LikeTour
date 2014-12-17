@@ -18,8 +18,7 @@
           -category = Category.order(created_at: :asc)
           ul.breadcrumbs
             li
-              a href=root_path
-                |// Головна
+              a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
             li.has-sub-category
               a href="#"
                 = @event.category.name
@@ -54,6 +53,8 @@
           .row
             .columns
               .share-links-wrap
+                .icon
+                  |
                 .fb-share-button data-href=request.original_url data-layout="button_count"
       .columns.large-4.medium-4
         .event-forms-wrap

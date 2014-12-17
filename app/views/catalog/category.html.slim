@@ -11,8 +11,7 @@
         .columns.large-8.medium-8.large-offset-4.medium-offset-4
           ul.breadcrumbs
             li
-              a href=root_path(locale: I18n.locale)
-                |// Головна
+              a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
             li.has-sub-category
               a href="#"
                 = @category.name
@@ -31,12 +30,10 @@
       .event-forms-wrap
         .event-form
           .ornament-pattern
-          .header-title
-            |Підберемо щось цікаве?
+          .header-title = t('title.banner-form')
           form.form
             .input.select-category
-              label
-                |Оберіть тип
+              label = t('labels.type')
               - category_list = Category.order(name: :asc)
               select.fancy-select name="type"
                 -category_list.each do |c|
@@ -44,10 +41,9 @@
                     =c.name
 
             - if cities.count > 0
-              .input.select-city name="city"
-                label
-                  |Оберіть місто
-                select.fancy-select
+              .input.select-city
+                label = t('labels.city')
+                select.fancy-select name="city"
                   - cities.each_with_index do |c, i|
                     -if i==0
                       option value="" Виберіть місто
@@ -65,6 +61,7 @@
                       =f.name
             .filter-button
               button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
+
     .columns.large-8.medium-8
       -if @filter_words.count > 0
         .row

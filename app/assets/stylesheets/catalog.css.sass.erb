@@ -354,5 +354,34 @@ input[type=checkbox]
     border-bottom: 1px solid #BCBEC0
 
 .share-links-wrap
-    height: 100px
     padding-top: 30px
+    margin-bottom: 60px
+    border-top: 1px solid #BCBEC0
+    cursor: pointer
+    &:hover
+        .icon
+            color: #ED1555
+    .icon
+        width: 220px
+        display: inline-block
+        position: relative
+        margin-left: 42px
+        line-height: 30px
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.125rem
+            weight: 400
+        color: #2A3A4B
+        &:before
+            display: block
+            content: ''
+            background-image: url('<%=asset_path("LT-share.svg")%>')
+            background-size: 90%
+            background-repeat: no-repeat
+            height: 30px
+            width: 30px
+            position: absolute
+            top: 0
+            left: -40px
+    .share-buttons
+        display: inline-block

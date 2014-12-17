@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 uk:
+  static-pages:
+    publication:
+      title: "Цікаві публікації"
+      other: "Інші публікації"
+  breadcrumbs:
+    home: "// Головна"
   main-menu:
     about: "Про нас"
     publication: "Публікації"

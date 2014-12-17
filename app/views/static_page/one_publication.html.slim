@@ -5,22 +5,20 @@
       .row
         .columns
           .title
-            h2 Цікаві Пубілкації
+            h2 = t('static-pages.publication.title')
     .breadcrumb-wrap
       .row
         .columns.large
           ul.breadcrumbs
             li
-              a href=root_path(locale: I18n.locale)
-                |// Головна
+              a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
             li
-              a href=publication_path(locale: I18n.locale)
-                | Цікаві публікації
+              a href=publication_path(locale: I18n.locale) = t('static-pages.publication.title')
             li.current
               a href="#"
                 =@publication.name
 
-  .publication-one-item-wrap
+  .publication-one-item-wrap.publication
     .row
       .columns.large-4
         = image_tag @publication.image.url(:large)
@@ -30,11 +28,18 @@
         span.date
           =@publication.created_at.strftime("%d.%m.%Y")
         = raw @publication.description
+        .row
+          .columns
+            .share-links-wrap
+              .icon
+                |Поділитись публікацією
+              .share-buttons
+                .fb-share-button data-href=request.original_url data-layout="button_count"
 -if @publications
-  .index-publication-wrap
+  .other-publication-wrap.index-publication-wrap
     .row
       .columns
-        h3
+        h2
           |Читайте також
     .row
       -@publications.each_with_index do |o, i|

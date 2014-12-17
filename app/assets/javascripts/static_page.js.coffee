@@ -22,6 +22,6 @@ $(document).ready ->
   $('ul.publications-banner').bxSlider
 #    mode: 'fade'
     controls: false
-    auto: true
+#    auto: true
     pause: 6000
     pagerCustom: 'ul.publications-pagers-preview'

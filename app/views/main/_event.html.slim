@@ -16,13 +16,13 @@
 
       .row
         -@events.each_with_index do |e, i|
+          -category = e.category
+          -city = e.cities[0]
           .columns.large-4  class="#{'end' if i == @events.count-1}"
             - names ||= []
             - e.filter_words.each do |c|
               - names << c.name
             .one-event-wrap data-filter-word=names.join(",")
-              -category = e.category
-              -city = e.cities[0]
               a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
                 .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
                 .event-layer
@@ -42,6 +42,7 @@
       .row
         .columns.large-4.right
           .custom-button-wrap.buttons-to-more-events-wrap
-            .find-button data-name="#{t('buttons.even-more')}"
-              = embedded_svg ("LT-button find (passive).svg"), class: "main-find-icon-passive"
-              = embedded_svg ("LT-button find (active).svg"), class: "main-find-icon-active"
+            a href=category_path(@category.slug,locale: I18n.locale)
+              .find-button data-name="#{t('buttons.even-more')}"
+                = image_tag ("LT-button find (passive) 2.svg"), class: "main-find-icon-passive"
+                = image_tag ("LT-button find (active) 2.svg"), class: "main-find-icon-active"

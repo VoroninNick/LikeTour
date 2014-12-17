@@ -208,7 +208,67 @@
             color: #2A3A4B
             margin: 0
             line-height: 1.6rem
-
+.publication-one-item-wrap
+    padding-top: 35px
+    h2
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 2.25rem
+            weight: 500
+        color: #2A3A4B
+        margin: 0
+        margin-bottom: 1rem
+        line-height: 2.25rem
+        text:
+            transform: uppercase
+.publication
+    p
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.125rem
+            weight: 300
+        color: #2A3A4B
+        /*margin: 0*/
+        /*margin-bottom: 1rem*/
+        line-height: 1.5rem
+.publications-wrap
+    .publications-banner-wrap
+        padding-top: 35px
+        padding-bottom: 98px
+        -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+        -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+        position: relative
+        .bx-viewport
+            border: 1px solid #BCBEC0
+        .description-wrap
+            position: absolute
+            left: 0px
+            right: 0px
+            bottom: 0px
+            margin: 10px
+            background-color: #0B1B2A
+            .description
+                padding: 0.9375rem
+                p
+                    font:
+                        family: 'Fira Sans', sans-serif
+                        size: 1.125rem
+                        weight: 300
+                    color: #f1f2f2
+                    margin: 0
+                    line-height: 1.3125rem
+.other-publication-wrap
+    background-color: #F1F2F2
+    h2
+        font:
+            family: 'Fira Sans', sans-serif
+            size: 1.5rem
+            weight: 300
+            style: italic
+        color: #2A424B
+        margin: 0
+        /*line-height: 1.3125rem*/
 ul.publications-banner
     height: 400px
     margin-left: 0
@@ -217,16 +277,48 @@ ul.publications-banner
 
 ul.publications-pagers-preview
     margin-left: 0
+    border-top: 1px solid #BCBEC0
+    border-right: 1px solid #BCBEC0
+    border-bottom: 1px solid #BCBEC0
     li
         list-style: none
         a
+            font:
+                family: 'Fira Sans', sans-serif
+                size: 1.125rem
+                weight: 400
+            color: #2A3A4B
+            line-height: 1.3125rem
+            text:
+                transform: uppercase
+            padding: 20px
             display: block
             height: 80px
             background-color: #d1d3d4 // Old browsers
             @include filter-gradient(#ffffff, #d1d3d4, vertical) // IE6-9
             @include background-image(linear-gradient(top,  #ffffff 0%, #d1d3d4 100%))
-            &:hover
+            position: relative
+            &.active
                 background-color: #2A3A4B // Old browsers
                 @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
                 @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
-
+                color: #fff
+                &:before
+                    display: block
+                    content: ''
+                    +triangle(left, 10px, #0B1B2A)
+                    position: absolute
+                    top: 10px
+                    left: -20px
+                &:after
+                    display: block
+                    content: ''
+                    width: 10px
+                    height: 80px
+                    // needs latest Compass, add '@import "compass"' to your scss
+                    background-color: #9c2242 // Old browsers
+                    @include filter-gradient(#ed1555, #9c2242, horizontal) // IE6-9
+                    @include background-image(linear-gradient(left,  #ed1555 0%,#9c2242 100%))
+                    position: absolute
+                    right: 0
+                    top: 0

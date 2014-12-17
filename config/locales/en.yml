@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  static-pages:
+    publication:
+      title: "Interesting publications"
+      other: "Other Publications"
+  breadcrumbs:
+    home: "// Home"
   main-menu:
     about: "About Us"
     publication: "Publications"

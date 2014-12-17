@@ -31,17 +31,17 @@
                 a href=contacts_path(locale: I18n.locale) = t('main-menu.contacts')
         .columns.large-1
           .language-switcher-wrap
-            ul.language_menu_switcher
-              -I18n.available_locales.each do |locale|
-                -if I18n.locale == locale
-                  li
-                    a.active_language
-                      =locale.to_s
-                    .clearfix
-                -else
-                  li
-                    = link_to locale.to_s, locale: locale
-                    .clearfix
+            ul.language_menu_switcher.right
+              li.active_language
+                a
+                  =locale.to_s
+                  .clearfix
+                ul.sub-menu-switcher
+                  -I18n.available_locales.select{|locale| locale != I18n.locale }.each do |locale|
+                    li
+                      = link_to locale.to_s, locale: locale
+                      .clearfix
+
     #contacts-menu.hide
       .row
         .columns.large-4.medium-4

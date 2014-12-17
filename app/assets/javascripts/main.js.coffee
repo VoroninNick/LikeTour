@@ -46,6 +46,23 @@ $(document).on "click", '.header-wrap .button-open-main-menu', ->
 
 
 $(document).ready ->
+
+#  click on switcher language
+  $('li.active_language').click ->
+    $this = $(this)
+    if $this.hasClass('expand')
+      $this.removeClass('expand')
+    else
+      $this.addClass('expand')
+
+#  focusout on switcher language
+  $('ul.sub-menu-switcher').focusout ->
+    $wrap = $(this).closest('.language-switcher-wrap')
+    $obj = $wrap.find('li.active_language')
+    if $obj.hasClass('expand')
+      $obj.removeClass('expand')
+
+
 #  index page region carousel
   owl1 = $("ul.owl-carousel")
   owl1.owlCarousel
@@ -169,6 +186,7 @@ $(document).on "click", 'ul.event-filters label', ->
     $childrenList.addClass('hide')
     if $items_to_hide.hasClass('hide')
       $items_to_hide.removeClass('hide')
+
 
 
 

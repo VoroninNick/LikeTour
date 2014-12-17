@@ -42,7 +42,7 @@ class Publication < ActiveRecord::Base
           label 'Назва'
           help 'Введіть унікальну не повторювану назву'
         end
-        field :short_description, :ck_editor do
+        field :short_description do
           label 'Короткий опис'
           help ''
         end

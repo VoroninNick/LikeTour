@@ -1,17 +1,10 @@
 class CatalogController < ApplicationController
-  before_filter :filters, only: :category
+  before_filter :filters, only: [:category, :category_with_city]
   skip_before_filter :set_locale, only: [:get_cities, :get_filter_words]
 
   def category
     category_url = params[:category_name]
     @category = Category.find_by_slug(category_url)
-  end
-
-  def tour
-    category = Category.find_by_slug(params[:category_name])
-    @event = Tour.where(slug: params[:tour_name], category_id: category.id).first
-    @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq).where.not(id: @event.cities[0])
-    @events = Tour.where(category_id: category.id ).where.not(id: @event.id ).limit(3)
   end
 
   def category_with_city
@@ -20,6 +13,17 @@ class CatalogController < ApplicationController
     @city = City.find_by_slug(params[:city_name])
     @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: @category.id }).pluck(:city_id).uniq)
     params_flags = (params[:flags] || '').split('&')
+
+    # @filters = FilterWord.joins(filter_joins: [{tour: :category}, :filter_word]).where(categories: {id: @category.id}).where(cities: {id: @city.id}).pluck(:filter_word_id).uniq
+
+    @tours = Tour.joins(city_joins: [{tour: :category}, :city]).where(categories: {id: @category.id}).where(cities: {id: @city.id})
+  end
+
+  def tour
+    category = Category.find_by_slug(params[:category_name])
+    @event = Tour.where(slug: params[:tour_name], category_id: category.id).first
+    @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq).where.not(id: @event.cities[0])
+    @events = Tour.where(category_id: category.id ).where.not(id: @event.id ).limit(3)
   end
 
 #   ajax requests
