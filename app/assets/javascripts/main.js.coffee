@@ -44,8 +44,25 @@ $(document).on "click", '.header-wrap .button-open-main-menu', ->
 
 #$(document).on('page:load', init)
 
+countTourInCategory = ($this) ->
+  $page = $this.closest('.page-wrap')
+  $tours = $page.find('.one-event-wrap')
+  alert $tours.size()
+
+toggleFiltersClass = ($this) ->
+  $filter = $this.closest('li')
+  if $filter.hasClass('active')
+    $filter.removeClass('active')
+  else
+    $filter.addClass('active')
 
 $(document).ready ->
+#  $("#Container").mixItUp()
+# get count items
+#  $('ul.event-filters li label').click ->
+#    $this =$(this)
+#    toggleFiltersClass($this)
+#    countTourInCategory($this)
 
 #  click on switcher language
   $('li.active_language').click ->
@@ -164,28 +181,28 @@ jQuery(document).ready ($) ->
         elem.goToNextSlide()
 
 #index page filter
-$(document).on "click", 'ul.event-filters label', ->
-  $this = $(this)
-  currentEvent = $(this).text()
-  $parentElement = $(this).closest('.index-tour-page')
-  $childrenList = $parentElement.find('.one-event-wrap')
-  childrenDataWord = $childrenList.attr "data-filter-word"
-
-  arr = childrenDataWord.toLowerCase().split(",")
-
-  $items_to_hide = $childrenList.filter(->
-    arr = $(this).attr("data-filter-word").toLowerCase().split(",")
-    for item in arr
-      if item.indexOf(currentEvent.toLowerCase()) == 0
-
-        return true
-    return false
-  )
-  if $items_to_hide
-    alert $items_to_hide.attr "data-filter-word"
-    $childrenList.addClass('hide')
-    if $items_to_hide.hasClass('hide')
-      $items_to_hide.removeClass('hide')
+#$(document).on "click", 'ul.event-filters label', ->
+#  $this = $(this)
+#  currentEvent = $(this).text()
+#  $parentElement = $(this).closest('.index-tour-page')
+#  $childrenList = $parentElement.find('.one-event-wrap')
+#  childrenDataWord = $childrenList.attr "data-filter-word"
+#
+#  arr = childrenDataWord.toLowerCase().split(",")
+#
+#  $items_to_hide = $childrenList.filter(->
+#    arr = $(this).attr("data-filter-word").toLowerCase().split(",")
+#    for item in arr
+#      if item.indexOf(currentEvent.toLowerCase()) == 0
+#
+#        return true
+#    return false
+#  )
+#  if $items_to_hide
+#    alert $items_to_hide.attr "data-filter-word"
+#    $childrenList.addClass('hide')
+#    if $items_to_hide.hasClass('hide')
+#      $items_to_hide.removeClass('hide')
 
 
 

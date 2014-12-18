@@ -12,11 +12,11 @@ class CatalogController < ApplicationController
     @categories = Category.order(created_at: :asc)
     @city = City.find_by_slug(params[:city_name])
     @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: @category.id }).pluck(:city_id).uniq)
-    params_flags = (params[:flags] || '').split('&')
+    params_flags = (params[:flags] || '').split(',')
 
     # @filters = FilterWord.joins(filter_joins: [{tour: :category}, :filter_word]).where(categories: {id: @category.id}).where(cities: {id: @city.id}).pluck(:filter_word_id).uniq
-
     @tours = Tour.joins(city_joins: [{tour: :category}, :city]).where(categories: {id: @category.id}).where(cities: {id: @city.id})
+    @checked_flags = params_flags
   end
 
   def tour

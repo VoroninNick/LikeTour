@@ -9,36 +9,47 @@
               - @filter_words.each do |ef|
                 li
                   .squared-checkbox
-                    input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}.#{hide}" name="check"
+                    input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}.#{hide}" name="check"
                     label.ico for="squared-#{ef.slug}-#{ef.id}.#{hide}"
                   label.text for="squared-#{ef.slug}-#{ef.id}.#{hide}"
                     =ef.name
-
+      /.row
+      /  .columns
+      /    button.filter data-filter=".category-1" Category 1
+      /    button.filter data-filter=".category-2" Category 2
+      /.row
+      /  .columns
+      /    #Container
+      /      .mix.category-1 data-my-order="1" ...category-1
+      /      .mix.category-1 data-my-order="2" ...category-1
+      /      .mix.category-2 data-my-order="3" ...category-2
+      /      .mix.category-2 data-my-order="4" ...category-2
       .row
-        -@events.each_with_index do |e, i|
-          -category = e.category
-          -city = e.cities[0]
-          .columns.large-4  class="#{'end' if i == @events.count-1}"
-            - names ||= []
-            - e.filter_words.each do |c|
-              - names << c.name
-            .one-event-wrap data-filter-word=names.join(",")
-              a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
-                .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
-                .event-layer
-                  .event-content-wrap
-                    .gradient-for-event-content
-                    .one-event-content
-                      .oec-header
-                        h3
-                          =e.name
-                      .oec-text
-                        p
-                          =truncate_html e.short_description, lenght: '260'
-                .date-time-wrap.red-gradient
-                  span
-                    |з&nbsp;
-                    =e.date_begin.strftime("%d.%m")
+        .tours-container
+          -@events.each_with_index do |e, i|
+            -category = e.category
+            -city = e.cities[0]
+            .columns.large-4.mix class="#{e.filter_words[0].slug}"  class="#{'end' if i == @events.count-1}"
+              - names ||= []
+              - e.filter_words.each do |c|
+                - names << c.name
+              .one-event-wrap data-filter-word=names.join(",")
+                a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+                  .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                  .event-layer
+                    .event-content-wrap
+                      .gradient-for-event-content
+                      .one-event-content
+                        .oec-header
+                          h3
+                            =e.name
+                        .oec-text
+                          p
+                            =truncate_html e.short_description, lenght: '260'
+                  .date-time-wrap.red-gradient
+                    span
+                      |з&nbsp;
+                      =e.date_begin.strftime("%d.%m")
       .row
         .columns.large-4.right
           .custom-button-wrap.buttons-to-more-events-wrap

@@ -59,33 +59,50 @@
                   - @filter_words.each do |f|
                     li
                       .squared-checkbox
-                        input type="checkbox" value="None" id="squared-#{f.slug}-#{f.id}-form" name="check[]"
+                        input type="checkbox" value="#{f.slug}" id="squared-#{f.slug}-#{f.id}-form" name="check[]" checked=("checked" if @checked_flags.include?(f.slug) )
                         label.ico for="squared-#{f.slug}-#{f.id}-form"
                       label.text for="squared-#{f.slug}-#{f.id}-form"
                         =f.name
               .filter-button
-                button type="submit" name="filter_form" value="true" data-name="#{t('buttons.order')}"
+                button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
       .columns.large-8.medium-8
+        /-if @filter_words.count > 0
+        /  .row
+        /    .columns
+        /      .right
+        /        ul.event-filters.controls#Filters
+        /          - @filter_words.each do |ef|
+        /            li
+        /              .squared-checkbox
+        /                input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}" name="check" checked=("checked" if @checked_flags.include?(ef.slug) )
+        /                label.ico for="squared-#{ef.slug}-#{ef.id}"
+        /              label.text for="squared-#{ef.slug}-#{ef.id}"
+        /                =ef.name
         -if @filter_words.count > 0
           .row
             .columns
               .right
-                ul.event-filters
-                  - @filter_words.each do |ef|
-                    li
-                      .squared-checkbox
-                        input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}" name="check"
-                        label.ico for="squared-#{ef.slug}-#{ef.id}"
-                      label.text for="squared-#{ef.slug}-#{ef.id}"
-                        =ef.name
-        .row
+                .row
+                  .columns
+                    form.controls#Filters
+                      fieldset
+                        - @filter_words.each do |ef|
+                          .checkbox
+                            .squared-checkbox
+                              input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}" name="check" checked=("checked" if @checked_flags.include?(ef.slug) )
+                              label.ico for="squared-#{ef.slug}-#{ef.id}"
+                            label.text for="squared-#{ef.slug}-#{ef.id}"
+                              =ef.name
+                            /input type="checkbox" value=".#{ef.slug}"
+                            /label = ef.name
+        .row#Container.container.tours-container
           - if @tours
             - @tours.each_with_index do |e, i|
-              .columns.large-6 class="#{'end' if i == @tours.count-1}"
-                - names ||= []
-                - e.filter_words.each do |c|
-                  - names << c.name
-                .one-event-wrap data-filter-word=names.join(",")
+              - names ||= []
+              - e.filter_words.each do |c|
+                - names << c.slug
+              .columns.large-6.mix class="#{'end' if i == @tours.count-1}" class="#{names.join(' ')}"
+                .one-event-wrap
                   -category = e.category
                   -city = e.cities[0]
                   a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)

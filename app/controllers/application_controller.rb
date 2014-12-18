@@ -34,10 +34,11 @@ class ApplicationController < ActionController::Base
       params_type = params[:type]
       params_city = params[:city]
       params_flags = (params[:check] || '').split('&')
-      params_flags_string = params_flags.join('&')
+      params_flags_string = params_flags.join(',')
 
       redirect_to category_with_city_path(category_name: params_type, city_name: params_city, flags: params_flags_string)
       return
     end
   end
+
 end
