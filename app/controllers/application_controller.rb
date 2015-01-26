@@ -4,7 +4,30 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   skip_before_filter  :verify_authenticity_token
-  
+
+  rescue_from ActionController::RoutingError, :with => :render_404
+  # rescue_from ActionController::UnknownAction, :with => :render_404
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  # rescue_from MyApp::CustomError, :with => :custom_error_resolution
+
+  def render_404
+    if /(jpe?g|png|gif)/i === request.path
+      render :text => "404 Not Found", :status => 404
+    else
+      render :template => "main/error_404", :layout => 'application', :status => 404
+    end
+  end
+
+  # rescue_from ActionController::RoutingError, :with => :render_404
+  # private
+  # def render_404(exception = nil)
+  #   if exception
+  #     logger.info "Rendering 404: #{exception.message}"
+  #   end
+  #   render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+  # end
+
+
   before_filter :set_locale
 
   private

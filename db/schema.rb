@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209140517) do
+ActiveRecord::Schema.define(version: 20150122154629) do
 
   create_table "about_translations", force: true do |t|
     t.integer  "about_id",    null: false
@@ -152,6 +152,13 @@ ActiveRecord::Schema.define(version: 20141209140517) do
     t.string   "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phone_three"
+    t.string   "skype"
+    t.string   "facebook"
+    t.string   "vk"
+    t.string   "google"
+    t.string   "youtube"
+    t.string   "twitter"
   end
 
   create_table "filter_joins", force: true do |t|
@@ -191,6 +198,9 @@ ActiveRecord::Schema.define(version: 20141209140517) do
     t.text     "description"
     t.string   "link"
     t.string   "slug"
+    t.string   "date_from"
+    t.string   "name_text"
+    t.string   "where_to_go"
   end
 
   add_index "index_banner_translations", ["index_banner_id"], name: "index_index_banner_translations_on_index_banner_id"
@@ -303,6 +313,55 @@ ActiveRecord::Schema.define(version: 20141209140517) do
     t.datetime "updated_at"
   end
 
+  create_table "regulation_translations", force: true do |t|
+    t.integer  "regulation_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "page"
+  end
+
+  add_index "regulation_translations", ["locale"], name: "index_regulation_translations_on_locale"
+  add_index "regulation_translations", ["regulation_id"], name: "index_regulation_translations_on_regulation_id"
+
+  create_table "regulations", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.text     "page"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_translations", force: true do |t|
+    t.integer  "service_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "page"
+  end
+
+  add_index "service_translations", ["locale"], name: "index_service_translations_on_locale"
+  add_index "service_translations", ["service_id"], name: "index_service_translations_on_service_id"
+
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "page"
+    t.boolean  "published"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tour_translations", force: true do |t|
     t.integer  "tour_id",           null: false
     t.string   "locale",            null: false
@@ -313,6 +372,7 @@ ActiveRecord::Schema.define(version: 20141209140517) do
     t.text     "description"
     t.text     "short_description"
     t.string   "city"
+    t.string   "string_price"
   end
 
   add_index "tour_translations", ["locale"], name: "index_tour_translations_on_locale"

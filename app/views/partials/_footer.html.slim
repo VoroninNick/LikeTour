@@ -22,10 +22,13 @@ footer.sf_footer
               li
                 a href=about_us_path(locale: I18n.locale) = t('main-menu.about')
               - parent = Category.where(:parent_id => nil)
-              - parent.each do |c|
-                li
-                  =link_to category_path(c.slug, locale: I18n.locale) do
-                    =c.name
+              - parent.each_with_index do |c, i|
+                -if i < 2
+                  li
+                    =link_to category_path(c.slug, locale: I18n.locale) do
+                      =c.name
+              li
+                a href=services_path(locale: I18n.locale) = t('main-menu.services')
               li
                 a href=publication_path(locale: I18n.locale) = t('main-menu.publication')
               li
@@ -34,32 +37,38 @@ footer.sf_footer
           h4 = t('footer.titles.soc-networks')
           ul.social-icons-with-link
             li
-              a
-                = image_tag "LT-social-facebook (passive).svg" , class: "social-icon-passiwe"
-                = image_tag ("LT-social-facebook (active).svg"), class: "social-icon-active"
+              a href=(unless contacts.skype.blank? then; "skype:#{contacts.skype}?call" end;)  rel="nofollow"
+                = image_tag "LT-social-skype-(passive).png", class: "social-icon-passiwe"
+                = image_tag "LT-social-skype-(active).png", class: "social-icon-active"
             li
-              a
-                = image_tag ("LT-social-g+ (passive).svg"), class: "social-icon-passiwe"
-                = image_tag ("LT-social-g+ (active).svg"), class: "social-icon-active"
+              a href=(unless contacts.facebook.blank? then; "#{contacts.facebook}" end;) rel="nofollow"
+                = image_tag "LT-social-facebook-(passive).png", class: "social-icon-passiwe"
+                = image_tag "LT-social-facebook-(active).png", class: "social-icon-active"
             li
-              a
-                = image_tag ("LT-social-Twitter (passive).svg"), class: "social-icon-passiwe"
-                = image_tag ("LT-social-Twitter (active).svg"), class: "social-icon-active"
+              a href=(unless contacts.google.blank? then; "#{contacts.google}" end;) rel="nofollow"
+                = image_tag "LT-social-g+-(passive).png", class: "social-icon-passiwe"
+                = image_tag "LT-social-g+-(active).png", class: "social-icon-active"
             li
-              a
-                = image_tag ("LT-social-VK (passive).svg"), class: "social-icon-passiwe"
-                = image_tag ("LT-social-VK (active).svg"), class: "social-icon-active"
+              a href=(unless contacts.vk.blank? then; "#{contacts.vk}" end;) rel="nofollow"
+                = image_tag "LT-social-VK-(passive).png", class: "social-icon-passiwe"
+                = image_tag "LT-social-VK-(active).png", class: "social-icon-active"
         .columns.large-4
           h4 = t('footer.titles.contacts')
           .row
             .columns
-              - if contacts
-                a.phone href="cell:+300676750323" = contacts.phone_one
-
+              - unless contacts.phone_one.blank?
+                - main_phone_number = contacts.phone_one.gsub(/[+( )]/, '')
+                a.phone href="tel:+#{main_phone_number}" rel="nofollow" =contacts.phone_one
           .row
             .columns
-              - if contacts
-                a.phone href="cell:+380322444492" = contacts.phone_two
+              - unless contacts.phone_two.blank?
+                - second_phone_number = contacts.phone_two.gsub(/[+( )]/, '')
+                a.phone href="tel:+#{second_phone_number}" rel="nofollow" =contacts.phone_two
+          .row
+            .columns
+              - unless contacts.phone_three.blank?
+                - last_phone_number = contacts.phone_three.gsub(/[+( )]/, '')
+                a.phone href="tel:+#{last_phone_number}" rel="nofollow" =contacts.phone_three
           .location
             .row
               .columns.large-3
@@ -97,7 +106,12 @@ footer.sf_footer
                     a href="http://voroninstudio.eu/" rel="nofollow" Інформація про сайт
                 .clearfix
             .columns.large-4.medium-4.right
-              p
-                |Правила користування
-              p
-                |Карта сайту
+              .row
+                .columns.large-7.medium-7.small-7
+                  p
+                    a href=privacy_path(locale: I18n.locale)
+                      |Правила користування
+                .columns.large-5.medium-5.small-5
+                  p
+                    a href=sitemap_path(locale: I18n.locale)
+                      |Карта сайту

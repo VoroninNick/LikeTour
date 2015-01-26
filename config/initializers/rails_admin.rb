@@ -36,7 +36,7 @@ RailsAdmin.config do |config|
     # Add the nestable action for configured models
     nestable
   end
-  included_models = [ User, Category, Tour, PhotoGallery, City, FilterWord, WorkRegion, Publication, BrandCarousel, About, Personnel, IndexBanner, ContactsInfo]
+  included_models = [ User, Category, Tour, PhotoGallery, City, FilterWord, WorkRegion, Publication, BrandCarousel, About, Personnel, IndexBanner, ContactsInfo, Service, Regulations]
 
   included_models.each do |model|
 

@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require foundation
 
-//= require_tree .
-
 //= require bxslider
 //= require owl.carousel
+//= require masonry/jquery.masonry
 
+//= require isotope/jquery.isotope
+//= require fancybox
+
+//= require_tree .
 $(function(){ $(document).foundation(); });

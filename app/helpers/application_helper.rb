@@ -68,4 +68,7 @@ module ApplicationHelper
   def contacts
     contact = ContactsInfo.first
   end
+  def service
+    return Service.where(published: true).order(position: :asc)
+  end
 end

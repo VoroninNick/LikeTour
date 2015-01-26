@@ -2,7 +2,7 @@ class IndexBanner < ActiveRecord::Base
   has_paper_trail
   attr_accessible :name, :description, :slug, :link,  :published, :position, :image
 
-  translates :name, :slug, :description, :link, :versioning => :paper_trail # , :versioning => :paper_trail for paper_trail
+  translates :name, :slug, :description, :link, :date_from, :name_text, :where_to_go, :versioning => :paper_trail # , :versioning => :paper_trail for paper_trail
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
@@ -33,7 +33,7 @@ class IndexBanner < ActiveRecord::Base
 
   class Translation
     attr_accessible :locale, :index_banner_id
-    attr_accessible  :name, :slug, :description, :link
+    attr_accessible  :name, :slug, :description, :link, :date_from, :name_text, :where_to_go
 
     rails_admin do
       visible false
@@ -43,18 +43,31 @@ class IndexBanner < ActiveRecord::Base
           label 'Назва'
           help 'Введіть унікальну не повторювану назву'
         end
-        field :description, :ck_editor do
-          label 'Опис'
-          help ''
-        end
         field :slug do
           label 'Транслітерація назви'
           help ''
+        end
+        group :banner_text do
+          label 'Текст для банера:'
+          active false
+          field :date_from do
+            label 'час початку:'
+            help ''
+          end
+          field :name_text do
+            label 'назва:'
+            help ''
+          end
+          field :where_to_go do
+            label 'місце призначення:'
+            help ''
+          end
         end
         field :link do
           label 'Посилання'
           help ''
         end
+
       end
     end
   end
@@ -85,7 +98,7 @@ class IndexBanner < ActiveRecord::Base
 
     list do
       field :name
-      field :slug
+      field :position
       field :image
       field :description
       field :published

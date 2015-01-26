@@ -24,10 +24,16 @@ uk:
     publication:
       title: "Цікаві публікації"
       other: "Інші публікації"
+    errors:
+      title: "Сторінку не знайдено!"
+      subtitle: "Даної сторінки не існує, або ж її було видалено."
+      link: "Повернутись на головну сторінку"
   breadcrumbs:
     home: "// Головна"
+    service: "Послуги"
   main-menu:
     about: "Про нас"
+    services: "Послуги"
     publication: "Публікації"
     contacts: "Контакти"
   buttons:
@@ -35,10 +41,16 @@ uk:
     even-more: "Ще більше!"
     send: "Надіслати"
     pick: "Підібрати!"
+    order-event: "Оформити замовлення"
   title:
     banner-form: "Підберемо щось цікаве?"
     banner-regions: "Ми працюємо у наступних областях:"
     index-publication: "Цікаві публікації"
+    order-event-form: "Форма замовлення"
+  social:
+    publication: 'Поділитись публікацією'
+    event: 'Поділитись туром'
+    service: 'Поділитись послугою'
 
   labels:
     type: "Оберіть тип"
@@ -49,3 +61,4 @@ uk:
       menu: "Меню сайту:"
       soc-networks: "Ми соціальні:"
       contacts: "Конктакти:"
+

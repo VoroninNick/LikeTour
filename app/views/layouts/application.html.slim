@@ -28,10 +28,19 @@ html lang="en"
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
+    javascript:
+      window.___gcfg = {lang: 'uk'};
+
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+
     .sf_container
-      .flash-container-wrap
-        - flash.each do |name, msg|
-          = content_tag :div, msg, class: "alert alert-info"
+      /.flash-container-wrap
+      /  - flash.each do |name, msg|
+      /    = content_tag :div, msg, class: "alert alert-info"
       = render partial: "partials/header"
       .page-wrap
         = yield

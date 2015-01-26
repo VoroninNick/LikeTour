@@ -7,6 +7,25 @@
 @import "mixins"
 @import "compass"
 
+
+p
+    font-family: "Fira Sans", sans-serif !important
+    font-size: 1.125rem
+    font-weight: 300
+    line-height: 1.6rem
+    color: #2a3a4b
+    margin-bottom: 2.5rem
+h1
+    font-size: 2.25rem
+    font-weight: 600
+    color: #2a3a4b
+    text-transform: uppercase
+    line-height: 2.5rem
+    margin-top: -6px
+h5
+    font-size: 1.125rem
+    font-weight: 500
+    color: #2a3a4b
 form
     &#Filters
         margin-left: 0
@@ -19,8 +38,9 @@ form
         .checkbox
             display: inline-block
             height: 30px
+            margin-right: 20px
             .squared-checkbox
-                +my_vertical_align(28%)
+                +my_vertical_align(20%)
 #Container
     .mix
         display: none
@@ -44,7 +64,8 @@ form
     width: 0
     height: 0
     overflow: hidden
-
+.hide
+    display: none!important
 .header-wrap
     transition: transform 0.5s
     -webkit-transform: translateY(-95px)
@@ -57,6 +78,8 @@ form
     z-index: 100
     &.expand
         transform: translateY(0px)
+        #main-menu
+            display: block
     .hide-navigation-wrap
         background: #9c2242 /* Old browsers */
         background: -moz-linear-gradient(top,  #9c2242 0%, #ed1555 100%) /* FF3.6+ */
@@ -69,6 +92,8 @@ form
         height: 100px
         position: relative
         border-bottom: 1px solid #9c2242
+        .main-menu
+            display: none
         #main-menu
             height: 100%
             nav
@@ -87,7 +112,7 @@ form
                             color: #fff
                             text-transform: uppercase
                             font:
-                                size: 1.5rem
+                                size: 1.125rem
                                 weight: 500
                             letter-spacing: .060rem
                             line-height: 100px
@@ -284,6 +309,17 @@ form
         height: 83px
     &.bottom-blur-line
         height: 105px
+    .header-slogan
+        padding-top: 38px
+        h3
+            font:
+                size: 1.1875rem
+                family: "Fira Sans", sans-serif
+                weight: 200
+                style: italic
+            line-height: 1.125rem
+            color: #fff
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
 
 .main-banner
     position: relative
@@ -343,13 +379,48 @@ form
                 bottom: 0
             .content-block-wrap
                 height: 405px
-                -webkit-box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.7)
-                -moz-box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.7)
-                box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.7)
+                -webkit-box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.4), 1px 2px 3px 0px rgba(0,0,0,0.4)
+                -moz-box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.4), 1px 2px 3px 0px rgba(0,0,0,0.4)
+                box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.4), 1px 2px 3px 0px rgba(0,0,0,0.4)
                 position: relative
                 .bx-pager
                     position: absolute
                     top: 0
+        .title-wrap
+            position: absolute
+            left: 0
+            top: 0
+            right: 0
+            bottom: 0
+            .information-block
+                position: absolute
+                right: 0.9375rem
+                bottom: 0
+                padding-right: 35px
+                padding-bottom: 15px
+            h2, h3, h4
+                color: #fff
+                text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
+            h2
+                font:
+                    size: 3.96rem
+                    family: "Fira Sans", sans-serif
+                    weight: 600
+                text-transform: uppercase
+                line-height: 3rem
+                margin-bottom: 0
+            h3
+                font:
+                    size: 2.6975rem
+                    family: "Fira Sans", sans-serif
+                    weight: 600
+                line-height: 2.5rem
+            h4
+                font:
+                    size: 2.095rem
+                    family: "Bad Script", cursive
+                    weight: 400
+                line-height: 2rem
 .custom-thumbnails-wrap
     position: absolute
     z-index: 1
@@ -375,6 +446,7 @@ form
                         fill: #fff
 .logo-wrap
     position: relative
+    height: 1px
     #logo
         width: 160px
         position: absolute
@@ -390,8 +462,100 @@ form
                 height: 100%
 #main-banner-form
     width: 353px
-    height: 100%
     position: absolute
+    @media (min-width : 0em) and (max-width : 40em)
+        position: relative
+        width: 100%
+    &:after
+        display: block
+        content: ''
+        position: absolute
+        right: -1px
+        width: 1px
+        height: 100%
+        top: 0
+        -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.7)
+        -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.7)
+        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.7)
+
+#order-event-form
+    width: 530px
+    .form-wrap
+        position: relative
+        a.close-form
+            width: 33px
+            height: 33px
+            background-image: url('<%=asset_path("LT-menu-close.svg")%>')
+            background-size: 100%
+            position: absolute
+            right: 30px
+            top: 9px
+        .form-inner
+            padding: 35px 30px
+        .ornament-pattern
+            background-position: 140% top
+    form
+        button.order-event
+            margin-top: 15px
+            height: 75px
+            width: 100%
+            background-image: url('<%=asset_path("LT-order-button-passive.png")%>')
+            background-size: 100%
+            padding: 0
+            background-color: transparent
+            background-repeat: no-repeat
+            &:before
+                display: block
+                content: attr(data-name)
+                position: absolute
+                left: 33px
+                top: 0
+                right: 0
+                bottom: 0
+                color: #f1f2f2
+                font-family: "Fira Sans", sans-serif
+                font-size: 1.675rem
+                font-weight: 400
+                color: white
+                line-height: 75px
+                text-transform: uppercase
+                text-align: center
+            &:hover
+                background-image: url('<%=asset_path("LT-order-button-active.png")%>')
+                background-size: 100%
+.special-form-style
+    .input
+    label
+        font-family: "Fira Sans", sans-serif
+        font-size: 0.75rem
+        font-weight: 300
+        color: #939598
+        line-height: 1rem
+        padding-left: 0.75rem
+        padding-bottom: 2px
+    input
+        height: 42px
+        padding-left: 0.75rem
+    input, textarea
+        +placeholder(#ccc,0.875rem,normal)
+        &:focus
+            background: #ccc
+            color: #fff
+            outline: none
+            box-shadow: none
+            font-size: 1.125rem
+    textarea
+        min-height: 135px
+        padding: .5rem .75rem
+        line-height: 1.3rem
+    input[type=checkbox]
+        visibility: visible
+        height: auto
+
+.login-to-dashboard
+    padding: 35px 0 55px 0
+.form-wrap
+    height: 100%
     overflow: hidden
     top: 0
     left: 0
@@ -427,17 +591,22 @@ form
         @include background-image(linear-gradient(top,  #9c2242 0%,#ed1555 100%))
         font:
             family: 'Bad Script', cursive
-            size: 1.3rem
         color: #fff
         line-height: 50px
-        text-align: center
-        letter-spacing: .06rem
         position: relative
+        display: inline-block
+        text-align: left
+        font-weight: 300
+        font-size: 1.25rem
+        padding-left: 30px
+        letter-spacing: .1rem
+        padding-top: 2px
         &:after
             display: block
             content: ''
             +triangle(bottom, 10px, #ed1555)
             right: 35px
+            top: 50px
             position: absolute
 .form
     margin: 0 30px 0 30px
@@ -588,12 +757,17 @@ form
             text-align: center
 .index-tour-tabs-wrap
     margin-top: -53px
+    @media (min-width : 0em) and (max-width : 40em)
+        margin-top: 0
     ul
         margin-left: 0
         li
             list-style: none
             display: inline-block
             width: 25%
+            @media (min-width : 0em) and (max-width : 40em)
+                width: 100%
+
 .index-tour-tab
     height: 50px
     // needs latest Compass, add '@import "compass"' to your scss
@@ -652,7 +826,7 @@ form
             transform: translateY(0)
     .event-content-wrap
         transition: transform 0.5s
-        transform: translateY(65%)
+        transform: translateY(61%)
     .one-event-content, .gradient-for-event-content, .event-content-wrap, .event-layer
         position: absolute
         left: 0
@@ -664,13 +838,14 @@ form
         background-color: #2a3a4b // Old browsers
         @include filter-gradient(#2a3a4b, #0b1b2a, horizontal) // IE6-9
         @include background-image(linear-gradient(left,  #2a3a4b 0%,#0b1b2a 100%))
-        opacity: .5
+        opacity: .7
     .one-event-content
         padding: 10px
         z-index: 1
         .oec-header
             width: 100%
-            height: 35%
+            height: 52px
+            overflow: hidden
         .oec-text
             width: 100%
             height: 65%
@@ -680,14 +855,20 @@ form
             -webkit-text-fill-color: transparent
             font:
                 family: 'Fira Sans', sans-serif
+            text-align: left
         h3
             font:
                 size: 1.5625rem
-            line-height: 1.5rem
+            line-height: 1.6rem
+            text-transform: uppercase
+            font-weight: 600
+            letter-spacing: .05rem
+            padding-top: 3px
         p
             font:
-                size: 1.125rem
-            line-height: 1rem
+                size: 1rem
+                weight: 300
+            line-height: 1.125rem
     .date-time-wrap
         width: 93px
         height: 30px
@@ -695,6 +876,9 @@ form
         top: 10px
         right: -10px
         transition: transform 0.5s
+        background-image: url('<%=asset_path("LT-date-holder.png")%>')
+        background-repeat: no-repeat
+        background-size: 100%
         span
             display: block
             font:
@@ -702,9 +886,16 @@ form
                 size: 1.208125rem
             line-height: 30px
             text-align: center
-            background: -webkit-linear-gradient( #d1d3d4, #ffffff )
-            -webkit-background-clip: text
-            -webkit-text-fill-color: transparent
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
+            color: #fff
+
+.content-page-wrap
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
+    position: relative
+    h2
+        text-transform: uppercase
 
 .event-image
     width: 100% !important
@@ -746,7 +937,7 @@ footer
         right: 0
         bottom: 0
         background-image: url('<%=asset_path("LT-Pattern.png")%>'), url('<%=asset_path("LT-Pattern.png")%>')
-        background-size: 45%, 20%
+        background-size: 77%, 0%
         background-repeat: repeat-x
         background-position: -16% center, 70% 69%
         opacity: .3
@@ -755,10 +946,12 @@ footer
             font:
                 family: 'Fira Sans', sans-serif
                 size: 1.625rem
-                weight: 300
+                weight: 400
+            letter-spacing: .092rem
             color: #F1F2F2
             text-transform: uppercase
             padding-top: 20px
+            padding-bottom: 10px
         nav
             ul
                 margin-left: 0
@@ -766,7 +959,8 @@ footer
                     list-style: none
                     margin: 3px 0
                     a
-                        family: 'Fira Sans', sans-serif
+                        font:
+                            family: 'Fira Sans', sans-serif
                             size: 1.1875rem
                             weight: 300
                         color: #F1F2F2
@@ -774,9 +968,9 @@ footer
             font:
                 family: 'Fira Sans', sans-serif
                 size: 1.83125rem
-                weight: 300
+                weight: 500
             color: #ED1555
-            margin-bottom: 20px
+            margin-bottom: 10px
             display: block
         .location
             p
@@ -790,9 +984,10 @@ ul.social-icons-with-link
     margin-left: 0
     li
         list-style: none
-        width: 32px
-        height: 32px
+        width: 40px
+        height: 40px
         display: inline-block
+        margin-right: 10px
         img
             width: 100%
             height: 100%
@@ -815,13 +1010,18 @@ ul.social-icons-with-link
     box-shadow: 0px 2px 9px 1px rgba(0, 0, 0, 0.3)
     position: relative
     overflow: hidden
+    padding-top: 15px
     h2
         font:
             family: 'Fira Sans', sans-serif
             size: 1.5rem
-            weight: 400
+            weight: 300
+            style: italic
         color: #2A424B
     ul.owl-carousel
+        margin-left: 0
+        margin-top: 15px
+        margin-bottom: 0 !important
         li
             list-style: none
             img
@@ -842,14 +1042,17 @@ ul.social-icons-with-link
         opacity: .1
 
 .index-publication-wrap
+    padding-bottom: 35px
     h2
         font:
             family: 'Fira Sans', sans-serif
             size: 1.5rem
-            weight: 400
+            weight: 300
+            style: italic
         color: #2A424B
         padding: 40px 0 15px 0
     .one-item-wrap
+        padding-bottom: 35px
         .image
             img
         .text-wrap
@@ -858,7 +1061,7 @@ ul.social-icons-with-link
         .text
             background-color: #2A3A4B
             padding: 15px
-            min-height: 230px
+            min-height: 240px
             h3, span, p
                 font:
                     family: 'Fira Sans', sans-serif
@@ -868,18 +1071,25 @@ ul.social-icons-with-link
                     weight: 300
                 color: #fff
                 line-height: 1.125rem
+                margin-bottom: 0
+                padding-bottom: 0
 
             p
                 font:
                     size: .875rem
-                    weight: 300
+                    weight: 200
                 color: #A7A9AC
                 line-height: 1rem
+        &:hover
+            h3
+                color: #ED1555
 span.date
-    fort:
+    font:
         size: .6875rem !important
         weight: 300
     color: #ED1555
+    margin-bottom: 1rem
+    display: inline-block
 .triangle-wrap
     position: relative
     overflow: hidden
@@ -913,14 +1123,14 @@ span.date
         margin: 0
         li
             list-style: none
-            min-height: 180px
+            min-height: 150px
             a
                 display: block
                 position: relative
                 min-height: inherit
                 img
                     width: 60%
-                    +my_vertical_align(50%)
+                    +my_center_align(50%)
                         position: absolute
 
     &:before
@@ -992,9 +1202,21 @@ ul.voronin-block-wrap
 
 .f-about-wrap
     padding-top: 40px
+    margin-bottom: 45px
     .f-about
         padding-top: 20px
         border-top: 1px solid #2A424B
+        p, a
+            letter-spacing: normal !important
+            font-weight: 200
+            font-size: 0.875rem !important
+            font-family: "Fira Sans", sans-serif !important
+            font-style: normal !important
+            color: #3c5f6b !important
+            white-space: nowrap
+            margin-bottom: 0 !important
+            margin-top: 0 !important
+            padding-top: 0px
 
 .no-padding-left
     padding-left: 0
@@ -1043,10 +1265,11 @@ ul.voronin-block-wrap
         a
             color: #F1F2F2
             font:
-                size: 1.5rem
+                size: 1.125rem
                 family: 'Fira Sans', sans-serif
-                weight: 300
-            line-height: 2rem
+                weight: 400
+            line-height: 1.5rem
+            letter-spacing: .09rem
 .text-page-wrap
     padding-top: 145px
 
@@ -1059,9 +1282,10 @@ ul.voronin-block-wrap
             list-style: none
             a
                 color: #2a424b
-                font-size: 1.5rem
+                font-size: 1.125rem
                 font-family: "Fira Sans", sans-serif
-                font-weight: 300
+                font-weight: 500
+                text-transform: uppercase
                 line-height: 35px
                 text-align: center
                 width: 35px
@@ -1087,6 +1311,8 @@ ul.voronin-block-wrap
             position: relative
             left: 11px
     ul.language_menu_switcher
+        right: 0
+        margin: 0 2px
         +my_vertical_align()
             position: absolute
         z-index: 2
@@ -1094,11 +1320,12 @@ ul.voronin-block-wrap
             position: relative
             &>a
                 color: #f1f2f2
-                font-size: 1.5rem
+                font-size: 1.125rem
                 font-family: "Fira Sans", sans-serif
-                font-weight: 300
+                font-weight: 500
                 line-height: 35px
                 text-align: center
+                text-transform: uppercase
                 display: block
                 background-color: #ed1555 // Old browsers
                 @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
@@ -1118,5 +1345,86 @@ ul.voronin-block-wrap
                     @include background-image(linear-gradient(top,  #9c2242 0%,#ed1555 100%))
                 ul
                     display: block
+.send-feedback
+    position: relative !important
+    &:hover .active-button
+        display: block !important
+button:focus
+    outline: none !important
+.feedback-form
+    button
+        width: 220px
+        height: 50px
+        background-image: url('<%=asset_path("LT-button send (passive)-v1.svg")%>')
+        background-size: 100%
+        background-repeat: no-repeat
+        background-color: transparent
+        &:hover
+            background-image: url('<%=asset_path("LT-button send (active)-v1.svg")%>')
+            background-size: 100%
+            background-repeat: no-repeat
+.social-links
+    a
+        display: block
+        width: 40px
+        +my_vertical_align()
+            position: absolute
+        img
+            &.social-icon-active
+                display: none
+        &:hover
+            .social-icon-passiwe
+                display: none
+            .social-icon-active
+                display: inline-block
+
+.location
+    padding-top: 20px
+.slogan-wrap
+    position: relative
+    h3
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 11
+        color: #fff
+        font-size: 1.125rem
+        font-weight: 200
+.breadcrumbs > *
+    font-size: .8rem !important
+    font-weight: 300 !important
+    text-transform: none !important
+.error-wrap
+    padding: 85px 0 140px 0
+    .errors-title-wrap
+        padding-bottom: 95px
+    h2
+        font:
+            size: 2.5rem
+            family: "Fira Sans", sans-serif
+            weight: 600
+        text-transform: uppercase
+        color: #2A3A4B
+    h5
+        font:
+            size: 1.125rem
+            family: "Fira Sans", sans-serif
+            weight: 300
+        color: #2A3A4B
+    a
+        font:
+            size: 1.125rem
+            family: "Fira Sans", sans-serif
+            weight: 300
+            style: italic
+        color: #ED1555
+        text-decoration: none
+        border-bottom: 1px solid rgba(237, 21, 85, 0.5)
+        &:hover
+            border-bottom: 1px solid rgba(237, 21, 85, 1)
+
+.full-height
+    height: 100%
+
 
 

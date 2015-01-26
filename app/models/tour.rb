@@ -1,5 +1,5 @@
 class Tour < ActiveRecord::Base
-  attr_accessible :name, :short_description, :description, :city, :slug, :category, :category_id, :price, :date_begin, :date_end, :published
+  attr_accessible :name, :short_description, :description, :city, :slug, :category, :category_id, :price, :date_begin, :date_end, :published, :string_price
 
   has_many :city_joins
   has_many :cities, through: :city_joins
@@ -12,7 +12,7 @@ class Tour < ActiveRecord::Base
 
   belongs_to :category
 
-  translates :name, :slug, :short_description, :description, :city
+  translates :name, :slug, :short_description, :description, :city, :string_price
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
@@ -43,7 +43,7 @@ class Tour < ActiveRecord::Base
 
   class Translation
     attr_accessible :locale, :tour_id
-    attr_accessible  :name, :slug, :short_description, :description, :city
+    attr_accessible  :name, :slug, :short_description, :description, :city, :string_price
 
     rails_admin do
       visible false
@@ -53,6 +53,10 @@ class Tour < ActiveRecord::Base
           label 'Назва'
           help 'Введіть унікальну не повторювану назву'
         end
+        field :string_price do
+          label 'Ціна'
+          help ''
+        end
         field :short_description, :ck_editor do
           label 'Короткий опис'
           help ''
@@ -61,6 +65,7 @@ class Tour < ActiveRecord::Base
           label 'Опис'
           help ''
         end
+
         field :slug do
           label 'Транслітерація назви'
           help ''
@@ -113,10 +118,6 @@ class Tour < ActiveRecord::Base
         label 'Фотогалерея'
       end
 
-      field :price do
-        label 'Вартість'
-        help ''
-      end
       field :category do
         label 'Категорія'
         help ''

@@ -1,6 +1,9 @@
 class ContactsInfo < ActiveRecord::Base
   attr_accessible :street, :city, :email, :phone_one, :phone_two, :lat, :lng, :coordinate
 
+  attr_accessible :phone_three, :skype, :facebook, :vk, :google, :youtube, :twitter
+
+
   translates :street, :city
   attr_accessible :translations
   accepts_nested_attributes_for :translations
@@ -40,7 +43,6 @@ class ContactsInfo < ActiveRecord::Base
       field :city
       field :email
       field :phone_one
-      field :phone_two
       field :lat
       field :lng
     end
@@ -53,13 +55,55 @@ class ContactsInfo < ActiveRecord::Base
         label 'Електронна скринька'
         help ''
       end
-      field :phone_one do
-        label 'Номер телефону один'
-        help ''
+      group :phones do
+        label 'Номера телефонів'
+        active false
+
+        field :phone_one do
+          label 'Номер телефону один'
+          help ''
+        end
+        field :phone_two do
+          label 'Номер телефону два'
+          help ''
+        end
+        field :phone_three do
+          label 'Номер телефону три'
+          help ''
+        end
       end
-      field :phone_two do
-        label 'Номер телефону два'
-        help ''
+      group :social_networks do
+        label 'Лінки на соціальні мережі та skype'
+        active false
+
+        field :skype do
+          label 'skype:'
+          help 'для прикладу: '
+        end
+        field :facebook do
+          label 'facebook:'
+          help 'для прикладу: '
+        end
+        # field :youtube do
+        #   label 'youtube:'
+        #   help 'для прикладу: '
+        # end
+        # field :twitter do
+        #   label 'twitter:'
+        #   help 'для прикладу: '
+        # end
+        # field :instagram do
+        #   label 'instagram:'
+        #   help 'для прикладу: '
+        # end
+        field :vk do
+          label 'vkontakte:'
+          help 'для прикладу: '
+        end
+        field :google do
+          label 'google plus:'
+          help 'для прикладу: '
+        end
       end
       group :gmap do
         label 'Координати Google maps'

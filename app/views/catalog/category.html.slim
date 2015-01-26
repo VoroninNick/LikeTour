@@ -26,6 +26,7 @@
 .event-detail-page
   -cities = get_cities_from_current_category(@category.id)
   .row
+    /- get_tags_for_events(@category.name)
     .columns.large-4.medium-4
       .event-forms-wrap
         .event-form
@@ -49,6 +50,8 @@
                       option value="" Виберіть місто
                     option value=c.slug
                       =c.name
+            - else
+              .empty-select-city-form
             - get_tags_for_events(@category.name)
             - if @filter_words.count > 0
               ul.event-filters.for-category-page.main-banner-filters
@@ -59,7 +62,7 @@
                       label.ico for="squared-#{f.slug}-#{f.id}-form"
                     label.text for="squared-#{f.slug}-#{f.id}-form"
                       =f.name
-            .filter-button
+            .filter-button.filter-category-page-button
               button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
 
     .columns.large-8.medium-8
@@ -67,38 +70,81 @@
         .row
           .columns
             .right
-              ul.event-filters
-                - @filter_words.each do |ef|
-                  li
-                    .squared-checkbox
-                      input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}" name="check"
-                      label.ico for="squared-#{ef.slug}-#{ef.id}"
-                    label.text for="squared-#{ef.slug}-#{ef.id}"
-                      =ef.name
-      .row
-        - tours = @category.tours
-        - tours.each_with_index do |e, i|
-          .columns.large-6 class="#{'end' if i == tours.count-1}"
+              .row
+                .columns
+                  form.controls#Filters
+                    fieldset
+                      - @filter_words.each do |ef|
+                        .checkbox
+                          .squared-checkbox
+                            input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}" name="check"
+                            label.ico for="squared-#{ef.slug}-#{ef.id}"
+                          label.text for="squared-#{ef.slug}-#{ef.id}"
+                            =ef.name
+      /-if @filter_words.count > 0
+      /  .row
+      /    .columns
+      /      .right
+      /        ul.event-filters
+      /          - @filter_words.each do |ef|
+      /            li
+      /              .squared-checkbox
+      /                input type="checkbox" value="None" id="squared-#{ef.slug}-#{ef.id}" name="check"
+      /                label.ico for="squared-#{ef.slug}-#{ef.id}"
+      /              label.text for="squared-#{ef.slug}-#{ef.id}"
+      /                =ef.name
+      /.row
+      /  - tours = @category.tours
+      /  - tours.each_with_index do |e, i|
+      /    .columns.large-6 class="#{'end' if i == tours.count-1}"
+      /      - names ||= []
+      /      - e.filter_words.each do |c|
+      /        - names << c.name
+      /      .one-event-wrap data-filter-word=names.join(",")
+      /        -category = e.category
+      /        -city = e.cities[0]
+      /        a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+      /          .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+      /          .event-layer
+      /            .event-content-wrap
+      /              .gradient-for-event-content
+      /              .one-event-content
+      /                .oec-header
+      /                  h3
+      /                    =e.name
+      /                .oec-text
+      /                  p
+      /                    =truncate_html e.short_description, lenght: '260'
+      /          .date-time-wrap.red-gradient
+      /            span
+      /              |з&nbsp;
+      /              =e.date_begin.strftime("%d.%m")
+
+      .row#Container.container.tours-container
+        - if @category.tours
+          - tours = @category.tours
+          - tours.each_with_index do |e, i|
             - names ||= []
             - e.filter_words.each do |c|
-              - names << c.name
-            .one-event-wrap data-filter-word=names.join(",")
-              -category = e.category
-              -city = e.cities[0]
-              a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
-                .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
-                .event-layer
-                  .event-content-wrap
-                    .gradient-for-event-content
-                    .one-event-content
-                      .oec-header
-                        h3
-                          =e.name
-                      .oec-text
-                        p
-                          =truncate_html e.short_description, lenght: '260'
-                .date-time-wrap.red-gradient
-                  span
-                    |з&nbsp;
-                    =e.date_begin.strftime("%d.%m")
+              - names << c.slug
+            .columns.large-6.mix class="#{'end' if i == tours.count-1}" class="#{names.join(' ')}"
+              .one-event-wrap
+                -category = e.category
+                -city = e.cities[0]
+                a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+                  .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                  .event-layer
+                    .event-content-wrap
+                      .gradient-for-event-content
+                      .one-event-content
+                        .oec-header
+                          h3
+                            =e.name
+                        .oec-text
+                          p
+                            =truncate_html e.short_description, lenght: '260'
+                  .date-time-wrap.red-gradient
+                    span
+                      |з&nbsp;
+                      =e.date_begin.strftime("%d.%m")
 

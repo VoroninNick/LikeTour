@@ -5,14 +5,25 @@
 @import "compass"
 
 
-
+.checkbox
+    label
+        line-height: 16px !important
 ul.event-filters
-    margin-left: 0
-    margin-top: 5px
-    margin-bottom: 20px
+    margin: 20px 0
     &.main-banner-filters
         li
             width: 50%
+            height: 16px !important
+            @media (min-width : 0em) and (max-width : 40em)
+                height: 30px !important
+                label
+                    line-height: 30px !important
+                    font-size: 1rem
+            label
+                line-height: 16px
+                display: inline-block
+                width: 80%
+                float: left
     &.for-category-page
         li
             display: block
@@ -25,10 +36,20 @@ ul.event-filters
 .squared-checkbox
     width: 11px
     height: 11px
-    margin: 0 15px 0 10px
+    margin: 0 15px 0 -6px
     position: relative
-    display: inline-block
+    display: block
+    float: left
     +my_vertical_align(40%)
+    @media (min-width : 0em) and (max-width : 40em)
+        width: 30px
+        height: 30px
+        label
+            width: 100% !important
+            &.ico
+                width: 30px !important
+                height: 30px !important
+
     label.ico
         cursor: pointer
         position: absolute
@@ -36,10 +57,10 @@ ul.event-filters
         height: 11px
         left: 0px
         top: 0px
-        -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)
-        -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)
-        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)
-
+        /*-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)*/
+        /*-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)*/
+        /*box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)*/
+        border: 1px solid #939598
         // needs latest Compass, add '@import "compass"' to your scss
         background-color: #d1d3d4 // Old browsers
         @include filter-gradient(#fff, #d1d3d4, vertical) // IE6-9
@@ -53,8 +74,8 @@ ul.event-filters
             opacity: 0
             content: ''
             position: absolute
-            width: 11px
-            height: 11px
+            width: 9px
+            height: 9px
             // needs latest Compass, add '@import "compass"' to your scss
             background-color: #9c2242 // Old browsers
             @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
@@ -63,9 +84,6 @@ ul.event-filters
             top: 0px
             left: 0px
 
-            -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5)
-            -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5)
-            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5)
 
 
         &:hover::after
@@ -131,10 +149,11 @@ input[type=checkbox]
             align: center
         font:
             family: 'Fira Sans', sans-serif
-            size: 4.124rem
+            size: 4rem
             weight: bold
         text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
-        letter-spacing: .1rem
+        letter-spacing: .2rem
+        line-height: 4.5rem
 
 
 .breadcrumb-wrap
@@ -144,9 +163,10 @@ input[type=checkbox]
     bottom: 0
     height: 32px
     background: rgba(255, 255, 255, .6)
-    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4), inset 0px -1px 6px 1px rgba(0, 0, 0, 0.4)
-    -moz-box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4), inset 0px -1px 6px 1px rgba(0, 0, 0, 0.4)
-    box-shadow: inset 0px 2px 3px 0px rgba(0,0,0,0.4), inset 0px -1px 6px 1px rgba(0, 0, 0, 0.4)
+    -webkit-box-shadow: inset 0px -4px 8px 1px rgba(0, 0, 0, 0.2)
+    -moz-box-shadow: inset 0px -4px 8px 1px rgba(0, 0, 0, 0.2)
+    box-shadow: inset 0px -4px 8px 1px rgba(0, 0, 0, 0.2)
+    border-top: 1px solid rgba(255, 255, 255, 0.1)
     ul.breadcrumbs
         padding: 0 !important
         background: none !important
@@ -167,6 +187,7 @@ input[type=checkbox]
             a
                 font:
                     style: normal
+                text-transform: inherit
                 &:hover
                     color: #ed1555
             ul.sub-category-breadcrumbs
@@ -189,8 +210,8 @@ input[type=checkbox]
                         color: #9B2141
                         font:
                             family: 'Fira Sans', sans-serif
-                            size: 0.6875rem
-                            weight: 400
+                            size: 0.8rem
+                            weight: 300
                         white-space: nowrap
             &.has-sub-category
                 margin-right: 20px
@@ -211,6 +232,7 @@ input[type=checkbox]
                         position: absolute
                     ul
                         display: block
+
 .event-forms-wrap
     overflow: hidden
     -webkit-transform: translateY(-82px)
@@ -219,13 +241,17 @@ input[type=checkbox]
     -webkit-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
     -moz-box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
     box-shadow: 0px 1px 3px 2px rgba(0, 0, 0, 0.3)
+    position: relative
+    z-index: 11
     .event-form
-        padding-bottom: 30px
+        /*padding-bottom: 30px*/
         position: relative
         // needs latest Compass, add '@import "compass"' to your scss
         background-color: #d1d3d4 // Old browsers
         @include filter-gradient(#ffffff, #d1d3d4, vertical) // IE6-9
         @include background-image(linear-gradient(top,  #ffffff 0%, #d1d3d4 100%))
+        &.one-event-form
+            padding-bottom: 30px
         .ornament-pattern
             height: 540px
             width: 540px
@@ -268,9 +294,12 @@ input[type=checkbox]
                 font:
                     size: 0.631875rem
                 display: block
+                color: #939598
+                letter-spacing: .07rem
             p
                 font:
                     size: 1.125rem
+                    weight: 500
                 margin-bottom: 15px
                 line-height: 29px
                 svg
@@ -278,6 +307,7 @@ input[type=checkbox]
                     height: 32px
                     position: relative
                     top: 8px
+                    margin-right: 5px
 
 .filter-button
     button
@@ -311,6 +341,21 @@ input[type=checkbox]
             background-image: url('<%=asset_path("LT-button find (active) 2.svg")%>')
             background-size: 100%
             background-repeat: no-repeat
+    &.filter-category-page-button
+        button
+            height: 55px
+            &:before
+                line-height: 55px
+
+.event-order-button
+    background-image: url('<%=asset_path("LT-button order (passive)-v2.svg")%>')
+    background-size: 100%
+    background-repeat: no-repeat
+    height: 60px
+    &:hover
+        background-image: url('<%=asset_path("LT-button order (active).svg")%>')
+        background-size: 100%
+        background-repeat: no-repeat
 
 .form-button
     cursor: pointer
@@ -346,42 +391,103 @@ input[type=checkbox]
         text-transform: uppercase
         text-align: center
 
-.event-detail-page
-    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
-    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
-    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4)
-.event-detail-wrap
-    border-bottom: 1px solid #BCBEC0
+
 
 .share-links-wrap
-    padding-top: 30px
-    margin-bottom: 60px
+    padding-top: 25px
+    margin-bottom: 45px
     border-top: 1px solid #BCBEC0
-    cursor: pointer
-    &:hover
-        .icon
-            color: #ED1555
-    .icon
-        width: 220px
-        display: inline-block
+    margin-top: 15px
+    position: relative
+    .inner
         position: relative
-        margin-left: 42px
+        overflow: hidden
+        cursor: pointer
+        &.active
+            .share-buttons-wrap
+                opacity: 1
+    .share-buttons-wrap
+        left: -265px
+        /*left: 265px*/
+        +transition(left,.8s,easy)
+        +my_vertical_align
+            position: absolute
+        height: 40px
+        ul
+            margin: 0
+            height: 100%
+            li
+                list-style: none
+                height: 100%
+                float: left
+                position: relative
+                width: 120px
+                margin-right: 10px
+                .soc-one-item
+                    +my_vertical_align
+                        position: absolute
+                    height: 24px
+                    .fb-share-button
+                        top: -3px
+
+    &:hover
+        .icon path
+            fill: #ED1555
+        .title
+            color: #ED1555
+        .share-buttons-wrap
+            left: 265px
+    .title-wrap
+        height: 50px
+        position: relative
+        width: 220px
+        background: #fff
+        z-index: 11
+    .icon
+        width: 30px
+        height: 30px
+        +my_vertical_align
+            position: absolute
+        float: left
+        z-index: 11
+        svg
+            width: 100%
+            height: 100%
+            path
+                +transition(fill,.5s,easy)
+    .title
+        width: 220px
+        height: 30px
+        +my_vertical_align
+            position: absolute
         line-height: 30px
+        left: 40px
         font:
             family: 'Fira Sans', sans-serif
             size: 1.125rem
             weight: 400
         color: #2A3A4B
-        &:before
-            display: block
-            content: ''
-            background-image: url('<%=asset_path("LT-share.svg")%>')
-            background-size: 90%
-            background-repeat: no-repeat
-            height: 30px
-            width: 30px
-            position: absolute
-            top: 0
-            left: -40px
+        +transition(color,.5s,easy)
     .share-buttons
         display: inline-block
+.empty-select-city-form
+    height: 68px
+.event-detail-wrap
+    padding-top: 35px
+    h2
+        font:
+            size: 2.25rem
+            weight: bold
+        color: #2A3A4B
+        line-height: 2.25rem
+        margin-bottom: 30px
+.recommended-items
+    background: #F1F2F2
+    padding-bottom: 60px
+    h2
+        font-family: "Fira Sans", sans-serif
+        font-size: 1.5rem
+        font-weight: 300
+        font-style: italic
+        color: #2a424b
+        padding: 40px 0 15px 0

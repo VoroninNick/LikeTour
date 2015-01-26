@@ -19,7 +19,8 @@
   .about-wrap
     .row
       .columns.large-8.medium-8.end
-        = raw @content.description
+        .description-wrap
+          = raw @content.description
     - if @content.photo_galleries.count > 0
       .about-photo-banner-wrap
         .row
@@ -59,9 +60,9 @@
                     .triangle
                   .text
                     h3
-                      = c.first_name
-                    h3
                       = c.middle_name
+                    h3
+                      = c.first_name
                     h5
                       = c.work
                     a href="mailto:#{c.email}"

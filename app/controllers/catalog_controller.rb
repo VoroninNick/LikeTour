@@ -14,7 +14,12 @@ class CatalogController < ApplicationController
     @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: @category.id }).pluck(:city_id).uniq)
     params_flags = (params[:flags] || '').split(',')
 
+
+    @tags = FilterWord.where('id in (?)', FilterJoin.joins(:tour).joins(:filter_word).where(tours: { category_id: category.id }).pluck(:filter_word_id).uniq)
     # @filters = FilterWord.joins(filter_joins: [{tour: :category}, :filter_word]).where(categories: {id: @category.id}).where(cities: {id: @city.id}).pluck(:filter_word_id).uniq
+
+    # @tags = FilterWord.joins(filter_joins: :filter_word).pluck(:filter_word_id).uniq
+
     @tours = Tour.joins(city_joins: [{tour: :category}, :city]).where(categories: {id: @category.id}).where(cities: {id: @city.id})
     @checked_flags = params_flags
   end
@@ -51,4 +56,7 @@ class CatalogController < ApplicationController
     render(inline: s)
   end
 
+  def order_event
+
+  end
 end

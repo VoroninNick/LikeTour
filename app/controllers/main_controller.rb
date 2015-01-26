@@ -6,4 +6,13 @@ class MainController < ApplicationController
     @regions = WorkRegion.order(created_at: :asc )
     @publication = Publication.where(published: true).order(created_at: :desc).limit(4)
   end
+  def error_404
+    
+  end
+  def saitmap
+
+  end
+  def privacy
+    @page = Regulations.where(published: true).first
+  end
 end

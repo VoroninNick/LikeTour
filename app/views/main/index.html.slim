@@ -1,4 +1,8 @@
 = render partial: "partials/main_banner"
+.show-for-small-only
+  .row
+    .columns
+      = render partial: 'partials/forms/main_banner_form'
 - if @categories
   .index-tour-tabs-wrap
     .row
@@ -20,7 +24,9 @@
         - @categories.each_with_index do |c,i|
           - names << c.name
         - names.each_with_index do |n,i|
-          = render partial: 'main/event', locals: { hide: i != 0, name: n }
+          - index = i+1
+          = render partial: 'main/event', locals: { hide: i != 0, name: n, index: index }
+
 -if @regions
   .regions-of-working-wrap.grey-gradient
     .background-ornament-layer

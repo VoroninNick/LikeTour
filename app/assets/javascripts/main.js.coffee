@@ -57,6 +57,16 @@ toggleFiltersClass = ($this) ->
     $filter.addClass('active')
 
 $(document).ready ->
+  $("a.fancybox").fancybox
+    padding: 0
+    width: '100%'
+    closeBtn : false
+    tpl:
+      wrap: "<div id=\"popup-wrapper\" class=\"fancybox-wrap popup-wrap\" tabIndex=\"-1\"><div class=\"fancybox-skin\"><div class=\"fancybox-outer\"><div class=\"fancybox-inner\"></div></div></div></div>"
+  $("a.close-form").click (e) ->
+    e.preventDefault()
+    $.fancybox.close()
+
 #  $("#Container").mixItUp()
 # get count items
 #  $('ul.event-filters li label').click ->
@@ -64,6 +74,8 @@ $(document).ready ->
 #    toggleFiltersClass($this)
 #    countTourInCategory($this)
 
+  $('form.filters label').click ->
+    alert 'test'
 #  click on switcher language
   $('li.active_language').click ->
     $this = $(this)
@@ -71,6 +83,13 @@ $(document).ready ->
       $this.removeClass('expand')
     else
       $this.addClass('expand')
+# social links
+  $('.share-links-wrap .icon').click ->
+    $parent = $(this).closest('.inner')
+    if $parent.hasClass('active')
+      $parent.removeClass('active')
+    else
+      $parent.addClass('active')
 
 #  focusout on switcher language
   $('ul.sub-menu-switcher').focusout ->

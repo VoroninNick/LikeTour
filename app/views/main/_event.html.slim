@@ -1,35 +1,72 @@
 .index-tour-page class="#{'hide' if hide }"
   -get_tags_for_events(name)
   -if @category
+    / filters
+    /-if @events.count > 0
+    /  .row
+    /    .columns
+    /      .right
+    /        ul.event-filters
+    /          - @filter_words.each do |ef|
+    /            li
+    /              .squared-checkbox
+    /                input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}.#{hide}" name="check"
+    /                label.ico for="squared-#{ef.slug}-#{ef.id}.#{hide}"
+    /              label.text for="squared-#{ef.slug}-#{ef.id}.#{hide}"
+    /                =ef.name
+    / filters
+    /.filter-wrap data-class-item='.item-tab-#{index}'
+    /  #filters.isotope-filter class='tab-#{index}'
+    /    input type="checkbox" name="red" value=".item-tab-#{index}-red" id="item-tab-#{index}-red"
+    /    label for="item-tab-#{index}-red" red
+    /    input type="checkbox" name="blue" value=".item-tab-#{index}-blue" id="item-tab-#{index}-blue"
+    /    label for="item-tab-#{index}-blue" blue
+    /    input type="checkbox" name="green" value=".item-tab-#{index}-green" id="item-tab-#{index}-green"
+    /    label for="item-tab-#{index}-green" green
+    /    input type="checkbox" name="yellow" value=".item-tab-#{index}-yellow" id="item-tab-#{index}-yellow"
+    /    label for="item-tab-#{index}-yellow" yellow
+    /  #container.isotope-container
+    /    .item.red class="item-tab-#{index}-red" class='item-tab-#{index}'
+    /    .item.blue class="item-tab-#{index}-blue" class='item-tab-#{index}'
+    /    .item.green  class="item-tab-#{index}-green" class='item-tab-#{index}'
+    /    .item.yellow  class="item-tab-#{index}-yellow" class='item-tab-#{index}'
+    /    .item.red class="item-tab-#{index}-red" class='item-tab-#{index}'
+    /    .item.blue class="item-tab-#{index}-blue" class='item-tab-#{index}'
+    /    .item.green  class="item-tab-#{index}-green" class='item-tab-#{index}'
+    /    .item.yellow  class="item-tab-#{index}-yellow" class='item-tab-#{index}'
+    /    .item.red class="item-tab-#{index}-red" class='item-tab-#{index}'
+    /    .item.blue class="item-tab-#{index}-blue" class='item-tab-#{index}'
+    /    .item.green  class="item-tab-#{index}-green" class='item-tab-#{index}'
+    /    .item.yellow  class="item-tab-#{index}-yellow" class='item-tab-#{index}'
+    /    .item.red class="item-tab-#{index}-red" class='item-tab-#{index}'
+    /    .item.blue class="item-tab-#{index}-blue" class='item-tab-#{index}'
+    /    .item.green  class="item-tab-#{index}-green" class='item-tab-#{index}'
+    /    .item.yellow  class="item-tab-#{index}-yellow" class='item-tab-#{index}'
+
     -if @events.count > 0
-      .row
-        .columns
-          .right
-            ul.event-filters
-              - @filter_words.each do |ef|
-                li
-                  .squared-checkbox
-                    input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}.#{hide}" name="check"
-                    label.ico for="squared-#{ef.slug}-#{ef.id}.#{hide}"
-                  label.text for="squared-#{ef.slug}-#{ef.id}.#{hide}"
-                    =ef.name
-      /.row
-      /  .columns
-      /    button.filter data-filter=".category-1" Category 1
-      /    button.filter data-filter=".category-2" Category 2
-      /.row
-      /  .columns
-      /    #Container
-      /      .mix.category-1 data-my-order="1" ...category-1
-      /      .mix.category-1 data-my-order="2" ...category-1
-      /      .mix.category-2 data-my-order="3" ...category-2
-      /      .mix.category-2 data-my-order="4" ...category-2
-      .row
-        .tours-container
+      .filter-wrap data-class-item='.item-tab-#{index}'
+        .row.isotope-filter
+          .columns
+            .right
+              .row
+                .columns
+                  form.controls.filters#Filters2
+                    fieldset
+                      - @filter_words.each do |ef|
+                        .checkbox
+                          .squared-checkbox
+                            input type="checkbox" value=".#{ef.slug}-#{index}" id="squared-#{ef.slug}-#{ef.id}" name="check"
+                            label.ico for="squared-#{ef.slug}-#{ef.id}"
+                          label.text for="squared-#{ef.slug}-#{ef.id}"
+                            =ef.name
+
+        / old version
+        #Container2.row.isotope-container
+          /.tours-container
           -@events.each_with_index do |e, i|
             -category = e.category
             -city = e.cities[0]
-            .columns.large-4.mix class="#{e.filter_words[0].slug}"  class="#{'end' if i == @events.count-1}"
+            .columns.large-4.medium-4.small-6.mix class="#{e.filter_words[0].slug}-#{index}"  class="#{'end' if i == @events.count-1}"
               - names ||= []
               - e.filter_words.each do |c|
                 - names << c.name
@@ -46,12 +83,13 @@
                         .oec-text
                           p
                             =truncate_html e.short_description, lenght: '260'
-                  .date-time-wrap.red-gradient
+                  .date-time-wrap.red-pattern
                     span
                       |з&nbsp;
                       =e.date_begin.strftime("%d.%m")
+
       .row
-        .columns.large-4.right
+        .columns.large-4.medium-4.small-6.right
           .custom-button-wrap.buttons-to-more-events-wrap
             a href=category_path(@category.slug,locale: I18n.locale)
               .find-button data-name="#{t('buttons.even-more')}"

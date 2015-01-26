@@ -18,23 +18,19 @@
               a href="#"
                 =@publication.name
 
-  .publication-one-item-wrap.publication
+  .publication-one-item-wrap.publication.content-page-wrap
     .row
       .columns.large-4
         = image_tag @publication.image.url(:large)
       .columns.large-8
-        h2
+        h1
           =@publication.name
         span.date
           =@publication.created_at.strftime("%d.%m.%Y")
         = raw @publication.description
         .row
           .columns
-            .share-links-wrap
-              .icon
-                |Поділитись публікацією
-              .share-buttons
-                .fb-share-button data-href=request.original_url data-layout="button_count"
+            = render partial: 'partials/forms/social_form', locals: { name: "#{t('social.publication')}"}
 -if @publications
   .other-publication-wrap.index-publication-wrap
     .row

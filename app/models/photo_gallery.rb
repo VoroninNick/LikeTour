@@ -30,7 +30,7 @@ class PhotoGallery < ActiveRecord::Base
   end
 
   has_attached_file :image,
-                    styles: { thumb: "302x200#", large: "1920x1200>"},
+                    styles: { thumb: "302x200#", large: "1920x590>"},
                     convert_options: { thumb: "-quality 94 -interlace Plane",
                                        large: "-quality 94 -interlace Plane" },
                     url: "/assets/images/:class/:id/image_:style.:extension",
@@ -47,7 +47,7 @@ class PhotoGallery < ActiveRecord::Base
 
       field :image, :paperclip do
         label 'Зображення'
-        help 'Зображення для альбому повинне бути 1920. / 1200.'
+        help 'Зображення для альбому повинне бути 1920. / 590.'
       end
 
       field :translations, :globalize_tabs do

@@ -4,24 +4,29 @@ Rails.application.routes.draw do  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+
   get "/get_cities_from_category" => "catalog#get_cities", :as => 'get_cities'
   get "/get_filters_from_category" => "catalog#get_filter_words", :as => 'get_filter_words'
 
   # You can have the root of your site routed with "root"
   scope "(:locale)", :locale => /#{I18n.available_locales.join('|')}/ do
     root 'main#index'
+    post '/order_event' => 'catalog#order_event', as: 'order_event'
+
     get 'about_us' => 'static_page#about'
+    get 'service' => 'service#all', as: 'services'
+    get 'service/:name' => 'service#show', as: 'service'
     get 'publication' => 'static_page#publication'
     get 'publication/:url' => 'static_page#one_publication', as: 'one_publication'
     get 'contacts' => 'static_page#contacts'
 
-    get ':category_name' => 'catalog#category', as: 'category'
-    #get '', to: 'main#filter'
-    get ':category_name/:city_name(?flags=:flags)' => 'catalog#category_with_city', as: 'category_with_city'
-    get ':category_name/:city_name/:tour_name' => 'catalog#tour', as: 'tour'
+    get 'events/:category_name' => 'catalog#category', as: 'category'
+    get 'events/:category_name/:city_name(?flags=:flags)' => 'catalog#category_with_city', as: 'category_with_city'
+    get 'events/:category_name/:city_name/:tour_name' => 'catalog#tour', as: 'tour'
 
+    get 'privacy' => 'main#privacy', as: 'privacy'
+    get 'sitemap' => 'main#saitmap', as: 'sitemap'
     get 'test' => 'static_page#test_page'
-    # get 'one_item' => 'catalog#one_tour', as: 'one_event'
   end
 
   # Example of regular route:
@@ -72,4 +77,5 @@ Rails.application.routes.draw do  mount Ckeditor::Engine => '/ckeditor'
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  match '*a', :to => 'errors#routing', via: :get
 end
