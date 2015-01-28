@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # bind for main menu
-#init = ()->
 $(document).on "click", '.header-wrap .button-open-main-menu', ->
   $currentElement = $(this)
   parentElement = $currentElement.closest('.header-wrap')
@@ -42,7 +41,6 @@ $(document).on "click", '.header-wrap .button-open-main-menu', ->
       $('#main-menu').addClass('hide')
       $('#contacts-menu').removeClass('hide')
 
-#$(document).on('page:load', init)
 
 countTourInCategory = ($this) ->
   $page = $this.closest('.page-wrap')
@@ -56,7 +54,50 @@ toggleFiltersClass = ($this) ->
   else
     $filter.addClass('active')
 
+
+
+
+
+
+#  main page filter tab 1
+#$ ->
+#  $container = $("#container-main-1")
+#  $checkboxes = $("#filters-main-1 input")
+#  $container.isotope itemSelector: ".item-filter-1"
+#  $checkboxes.change ->
+#    filters = []
+#
+#    # get checked checkboxes values
+#    $checkboxes.filter(":checked").each ->
+#      filters.push @value
+#
+#    filters = filters.join(", ")
+#    $container.isotope filter: filters
+#
+##  $items = $container.children()
+
+
 $(document).ready ->
+
+# binder for main filters change
+  $('.filters-main input').change ->
+    filters = []
+    $this = $(this)
+    $parent = $this.closest('.filter-wrap')
+    $checkboxes = $parent.find('input')
+    $container = $parent.find('.container-main')
+    $item = $container.find('.item-filter')
+
+    $container.isotope itemSelector: $item
+
+    # get checked checkboxes values
+    $checkboxes.filter(":checked").each ->
+      filters.push @value
+
+    filters = filters.join(", ")
+    $container.isotope filter: filters
+
+# init fancybox
   $("a.fancybox").fancybox
     padding: 0
     width: '100%'
@@ -67,29 +108,13 @@ $(document).ready ->
     e.preventDefault()
     $.fancybox.close()
 
-#  $("#Container").mixItUp()
-# get count items
-#  $('ul.event-filters li label').click ->
-#    $this =$(this)
-#    toggleFiltersClass($this)
-#    countTourInCategory($this)
-
-  $('form.filters label').click ->
-    alert 'test'
-#  click on switcher language
+#  binder for switcher language
   $('li.active_language').click ->
     $this = $(this)
     if $this.hasClass('expand')
       $this.removeClass('expand')
     else
       $this.addClass('expand')
-# social links
-  $('.share-links-wrap .icon').click ->
-    $parent = $(this).closest('.inner')
-    if $parent.hasClass('active')
-      $parent.removeClass('active')
-    else
-      $parent.addClass('active')
 
 #  focusout on switcher language
   $('ul.sub-menu-switcher').focusout ->
@@ -98,8 +123,15 @@ $(document).ready ->
     if $obj.hasClass('expand')
       $obj.removeClass('expand')
 
+# social links
+  $('.share-links-wrap .icon').click ->
+    $parent = $(this).closest('.inner')
+    if $parent.hasClass('active')
+      $parent.removeClass('active')
+    else
+      $parent.addClass('active')
 
-#  index page region carousel
+# init index page region carousel
   owl1 = $("ul.owl-carousel")
   owl1.owlCarousel
     pagination: false,
@@ -125,7 +157,7 @@ $(document).ready ->
     autoPlay : false
 
 
-#  index page region carousel
+# init index page partners carousel
   owl2 = $(".partners-wrap ul")
   owl2.owlCarousel
     pagination: false,
@@ -150,7 +182,7 @@ $(document).ready ->
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false
 
-#  tabs index
+#  init index page tabs
   $('.index-tour-tabs-wrap ul li').click ->
     current_position = $(this).index()
     $head_tabs = $(this).closest('.index-tour-tabs-wrap')
@@ -199,29 +231,6 @@ jQuery(document).ready ($) ->
       $.each slider_array, (i, elem) ->
         elem.goToNextSlide()
 
-#index page filter
-#$(document).on "click", 'ul.event-filters label', ->
-#  $this = $(this)
-#  currentEvent = $(this).text()
-#  $parentElement = $(this).closest('.index-tour-page')
-#  $childrenList = $parentElement.find('.one-event-wrap')
-#  childrenDataWord = $childrenList.attr "data-filter-word"
-#
-#  arr = childrenDataWord.toLowerCase().split(",")
-#
-#  $items_to_hide = $childrenList.filter(->
-#    arr = $(this).attr("data-filter-word").toLowerCase().split(",")
-#    for item in arr
-#      if item.indexOf(currentEvent.toLowerCase()) == 0
-#
-#        return true
-#    return false
-#  )
-#  if $items_to_hide
-#    alert $items_to_hide.attr "data-filter-word"
-#    $childrenList.addClass('hide')
-#    if $items_to_hide.hasClass('hide')
-#      $items_to_hide.removeClass('hide')
 
 
 

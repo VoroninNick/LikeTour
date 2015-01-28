@@ -91,7 +91,7 @@
               - names ||= []
               - e.filter_words.each do |c|
                 - names << c.slug
-              .columns.large-6.mix class="#{'end' if i == @tours.count-1}" class="#{names.join(' ')}"
+              .columns.large-6 class="#{'end' if i == @tours.count-1}" class="#{names.join(' ')}"
                 .one-event-wrap
                   -category = e.category
                   -city = e.cities[0]

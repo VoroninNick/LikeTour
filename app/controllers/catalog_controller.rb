@@ -5,6 +5,7 @@ class CatalogController < ApplicationController
   def category
     category_url = params[:category_name]
     @category = Category.find_by_slug(category_url)
+    @temp = ''
   end
 
   def category_with_city

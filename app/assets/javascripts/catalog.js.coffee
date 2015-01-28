@@ -48,5 +48,3 @@ $(document).ready ->
     pause: 6000
     pagerCustom: 'ul.event-banner-thumbnails'
     responsive: true
-#  $('.form-button').click ->
-#    alert "На етапі розробки!"
