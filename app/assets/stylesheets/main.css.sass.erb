@@ -7,6 +7,7 @@
 @import "mixins"
 @import "compass"
 
+$small-menu-max-width: 1040px
 
 p
     font-family: "Fira Sans", sans-serif !important
@@ -41,21 +42,26 @@ form
             margin-right: 20px
             .squared-checkbox
                 +my_vertical_align(20%)
-#Container
-    .mix
-        display: none
+
+.small-columns
+    @media only screen and (min-width: 0) and (max-width: #{$small-menu-max-width})
+        padding:
+            left: 0
+            right: 0
+
 // sticky footer
 .sf_container
-    display: table
-    height: 100%
-    width: 100%
-    @media (min-width : 0em) and (max-width : 1022px)
-        display: block
+    /*display: table*/
+    /*height: 100%*/
+    /*width: 100%*/
+    /*@media (min-width : 0em) and (max-width : 1022px)*/
+        /*display: block*/
 
 .sf_footer
-    display: table-row
-    height: 1px
+    /*display: table-row*/
+    /*height: 1px*/
 // end sf
+
 .controls-css3-wrap
     position: absolute
     top: 0
@@ -66,6 +72,24 @@ form
     overflow: hidden
 .hide
     display: none!important
+.show-mobile-language-switcher
+    display: none !important
+    @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+        display: block !important
+.hide-mobile-language-switcher
+    @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+        display: none !important
+.mobile-language-switcher
+    border-left: 1px solid #2a3a4b
+    .one-lang
+        width: 25% !important
+        float: left
+        border-right: 1px solid #2a3a4b
+        &.active
+            // needs latest Compass, add '@import "compass"' to your scss
+            background-color: #2A3A4B // Old browsers
+            @include filter-gradient(#0B1B2A, #2A3A4B, vertical) // IE6-9
+            @include background-image(linear-gradient(top,  #0B1B2A 0%,#2A3A4B 100%))
 .header-wrap
     transition: transform 0.5s
     -webkit-transform: translateY(-95px)
@@ -75,11 +99,42 @@ form
     top: 0
     left: 0
     right: 0
-    z-index: 100
+    z-index: 11111
     &.expand
         transform: translateY(0px)
+        .hide-navigation-wrap
+            @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                height: auto
         #main-menu
             display: block
+            @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                height: auto !important
+                nav
+                    height: auto !important
+                li
+                    width: 100%
+                    height: 60px
+                    // needs latest Compass, add '@import "compass"' to your scss
+                    background-color: #ed1555 // Old browsers
+                    @include filter-gradient(#ed1555, #c71b4c, vertical) // IE6-8
+                    // IE9 SVG, needs conditional override of 'filter' to 'none'
+                    $experimental-support-for-svg: true
+                    @include background-image(linear-gradient(top,  #ed1555 0%,#c71b4c 100%))
+
+                    border-bottom: 1px solid #2a3a4b
+                    padding: 0 !important
+                    a
+                        line-height: 60px !important
+                        padding: 0 16px
+                        text-align: center
+                    ul.dropdown
+                        width: 100% !important
+                        position: static !important
+                        li
+                            height: 60px !important
+                            a
+                                height: 100% !important
+                                line-height: 60px !important
     .hide-navigation-wrap
         background: #9c2242 /* Old browsers */
         background: -moz-linear-gradient(top,  #9c2242 0%, #ed1555 100%) /* FF3.6+ */
@@ -101,6 +156,7 @@ form
                 ul
                     margin-left: 0
                     height: inherit
+                    margin-bottom: 0
                     li
                         display: inline-block
                         list-style: none
@@ -108,6 +164,7 @@ form
                         padding: 0 16px
                         position: relative
                         height: 100%
+                        float: left
                         a
                             color: #fff
                             text-transform: uppercase
@@ -132,8 +189,10 @@ form
                                 right: 30px
                                 position: absolute
                                 top: 45%
+                                @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                                    +triangle(right, 6px, #fff)
 
-                        &:hover
+                        &.ml:hover
                             a
                                 background: -webkit-linear-gradient(#2A3A4B, #0B1B2A)
                                 -webkit-background-clip: text
@@ -146,6 +205,8 @@ form
                                 right: 30px
                                 position: absolute
                                 top: 40%
+                                @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                                    +triangle(left, 6px, #0B1B2A)
                             &:after
                                 display: block
                                 content: ''
@@ -153,18 +214,26 @@ form
                                 right: 35px
                                 position: absolute
                                 z-index: 2
+                                @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                                    top: 26px
+                                    +triangle(left, 6px, #fff)
                             ul
-                                display: block
+                                max-height: 200px
                         ul.dropdown
                             width: 410px
                             margin-left: 0
-                            display: none
+                            max-height: 0
+                            -webkit-transition: max-height 0.8s
+                            -moz-transition: max-height 0.8s
+                            transition: max-height 0.8s
+                            overflow: hidden
                             position: absolute
                             z-index: 1
                             li
                                 list-style: none
                                 display: block
                                 height: 75px
+                                width: 100%
                                 // needs latest Compass, add '@import "compass"' to your scss
                                 background-color: #d1d3d4 // Old browsers
                                 @include filter-gradient(#d1d3d4, #fff, vertical) // IE6-9
@@ -311,6 +380,8 @@ form
         height: 105px
     .header-slogan
         padding-top: 38px
+        @media only screen and (min-width: 0) and (max-width: 700px)
+            display: none
         h3
             font:
                 size: 1.1875rem
@@ -421,6 +492,9 @@ form
                     family: "Bad Script", cursive
                     weight: 400
                 line-height: 2rem
+.bx-controls-direction
+    @media (min-width : 0em) and (max-width : 40em)
+        display: none
 .custom-thumbnails-wrap
     position: absolute
     z-index: 1
@@ -428,10 +502,15 @@ form
         position: relative
         left: 363px
         margin-top: 10px
+        @media (min-width : 0em) and (max-width : 40em)
+            left: 10px
+            li
+                width: 40px !important
+                height: 40px !important
         li
             list-style: none
             display: inline-block
-            width: 20px !important
+            width: 20px
             height: 20px
             margin-right: 10px
             a

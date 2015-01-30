@@ -26,8 +26,10 @@ en:
       other: "Other Publications"
   breadcrumbs:
     home: "// Home"
+    service: "Services"
   main-menu:
     about: "About Us"
+    service: "Services"
     publication: "Publications"
     contacts: "Contacts"
   buttons:

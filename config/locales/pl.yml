@@ -26,8 +26,10 @@ pl:
       other: "Inne publikacje"
   breadcrumbs:
     home: "// Główna"
+    service: "Usługi"
   main-menu:
     about: "O nas"
+    service: "Usługi"
     publication: "Publikacje"
     contacts: "Kontakt"
   buttons:

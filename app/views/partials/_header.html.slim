@@ -2,22 +2,22 @@
   .hide-navigation-wrap
     .main-menu#main-menu
       .row
-        .columns.large-11
+        .columns.large-11.small-columns
           nav
             ul
-              li
+              li.ml
                 a href=about_us_path(locale: I18n.locale) = t('main-menu.about')
               - parent = Category.where(:parent_id => nil)
               - parent.each_with_index do |c, i|
                 -if i < 2
-                  li class=("has-dropdown" if c.child_categories && c.child_categories.count > 0)
+                  li.ml class=("has-dropdown" if c.child_categories && c.child_categories.count > 0)
                     =link_to category_path(c.slug, locale: I18n.locale) do
                       =c.name
                     -if c.child_categories && c.child_categories.count > 0
                       ul.dropdown
                         - c.child_categories.each do |ch|
                           -if ch.tours.count > 0
-                            li
+                            li.ml
                               =link_to category_path(ch.slug, locale: I18n.locale) do
                                 =ch.name
                                 span
@@ -26,17 +26,25 @@
                                   |)
 
               - if service && service.count > 0
-                li.has-dropdown
+                li.has-dropdown.ml
                   a Послуги
                   ul.dropdown
                     - service.each do |s|
                       li
                         a href=service_path(s.slug, locale: I18n.locale) = s.name
-              li
+              li.ml
                 a href=publication_path(locale: I18n.locale) = t('main-menu.publication')
-              li
+              li.ml
                 a href=contacts_path(locale: I18n.locale) = t('main-menu.contacts')
-        .columns.large-1
+              li.show-mobile-language-switcher
+                .mobile-language-switcher
+                  -I18n.available_locales.each do |locale|
+                    .one-lang class="#{'active' if I18n.locale == locale}"
+                      = link_to locale.to_s, locale: locale
+                  .clearfix
+              .clearfix
+
+        .columns.large-1.small-columns.hide-mobile-language-switcher
           .language-switcher-wrap
             ul.language_menu_switcher.right
               li.active_language

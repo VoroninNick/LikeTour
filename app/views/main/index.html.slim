@@ -61,7 +61,7 @@
                   span.date
                     =o.created_at.strftime("%d.%m.%Y")
                   p
-                    = truncate_html o.short_description, length: 121
+                    = truncate o.short_description, length: 121
 
 
 

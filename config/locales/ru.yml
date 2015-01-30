@@ -26,8 +26,10 @@ ru:
       other: "Другие публикации"
   breadcrumbs:
     home: "// Главная"
+    service: "Услуги"
   main-menu:
     about: "О нас"
+    service: "Услуги"
     publication: "Публикации"
     contacts: "Контакты"
   buttons:
