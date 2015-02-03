@@ -16,7 +16,7 @@ footer.sf_footer
     .f-content-part-wrap
       .row
         .columns.large-4
-          h4 = t('footer.titles.menu')
+          h4.hide-for-small-only = t('footer.titles.menu')
           nav
             ul
               li
@@ -34,7 +34,7 @@ footer.sf_footer
               li
                 a href=contacts_path(locale: I18n.locale) = t('main-menu.contacts')
         .columns.large-4
-          h4 = t('footer.titles.soc-networks')
+          h4.hide-for-small-only = t('footer.titles.soc-networks')
           ul.social-icons-with-link
             li
               a href=(unless contacts.skype.blank? then; "skype:#{contacts.skype}?call" end;)  rel="nofollow"
@@ -53,27 +53,31 @@ footer.sf_footer
                 = image_tag "LT-social-VK-(passive).png", class: "social-icon-passiwe"
                 = image_tag "LT-social-VK-(active).png", class: "social-icon-active"
         .columns.large-4
-          h4 = t('footer.titles.contacts')
+          h4.hide-for-small-only = t('footer.titles.contacts')
           .row
-            .columns
+            .columns.small-9
               - unless contacts.phone_one.blank?
                 - main_phone_number = contacts.phone_one.gsub(/[+( )]/, '')
                 a.phone href="tel:+#{main_phone_number}" rel="nofollow" =contacts.phone_one
           .row
-            .columns
+            .columns.small-9
               - unless contacts.phone_two.blank?
                 - second_phone_number = contacts.phone_two.gsub(/[+( )]/, '')
                 a.phone href="tel:+#{second_phone_number}" rel="nofollow" =contacts.phone_two
           .row
-            .columns
+            .columns.small-9
               - unless contacts.phone_three.blank?
                 - last_phone_number = contacts.phone_three.gsub(/[+( )]/, '')
                 a.phone href="tel:+#{last_phone_number}" rel="nofollow" =contacts.phone_three
           .location
             .row
-              .columns.large-3
+              .columns.large-3.medium-3.hide-for-small-only
                 = image_tag('LT-map-marker.png')
-              .columns.large-9
+              .columns.small-3.show-for-small-only
+                a.link-to
+                  = image_tag "LT-location-(passive).png", class: "icon-passiwe"
+                  = image_tag "LT-location-(active).png", class: "icon-active"
+              .columns.large-9.medium-9.small-9
                 .row
                   .columns
                     - if contacts

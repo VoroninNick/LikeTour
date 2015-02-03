@@ -24,12 +24,19 @@ ru:
     publication:
       title: "Интересные публикации"
       other: "Другие публикации"
+    errors:
+      title: "Страница не найдена!"
+      subtitle: "Данной страницы не существует, или же ее было удалено."
+      link: "Вернуться на главную страницу"
   breadcrumbs:
     home: "// Главная"
-    service: "Услуги"
-  main-menu:
     about: "О нас"
     service: "Услуги"
+    sitemap: 'Карта сайта'
+    contacts: 'Конктакты'
+  main-menu:
+    about: "О нас"
+    services: "Услуги"
     publication: "Публикации"
     contacts: "Контакты"
   buttons:
@@ -37,10 +44,30 @@ ru:
     even-more: "Еще больше!"
     send: "Отправить"
     pick: "Подобрать!"
+    order-event: "Оформить заказ"
   title:
     banner-form: "Подберем что-то интересное?"
     banner-regions: "Мы работаем в следующих областях:"
     index-publication: "Интересные публикации"
+    order-event-form: "Форма заказа"
+  index-page:
+    banner:
+      title: 'Туры и экскурсии по Украине (Львова)'
+  tours:
+    one-item:
+      form:
+        title: 'Краткая информация'
+        date: 'Дата проведения'
+        place: 'Место проведения'
+        price: 'Цена'
+      more: 'Рекомендуемые туры'
+  about:
+    our_office: 'Посетите наш офис'
+    our_team: 'Знакомьтесь с нашей командой'
+  social:
+    publication: 'Поделиться публикацией'
+    event: 'Поделиться туром'
+    service: 'Поделиться услугой'
 
   labels:
     type: "Выберите тип"
@@ -49,5 +76,5 @@ ru:
   footer:
     titles:
       menu: "Меню сайта:"
-      soc-networks: "Мы социальные:"
-      contacts: "Контакты:"
+      soc-networks: "мы социальные:"
+      contacts: "Конктакты:"

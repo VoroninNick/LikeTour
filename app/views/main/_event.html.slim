@@ -47,6 +47,15 @@
           .columns.large-4.medium-4.small-6.right
             .custom-button-wrap.buttons-to-more-events-wrap
               a href=category_path(@category.slug,locale: I18n.locale)
-                .find-button data-name="#{t('buttons.even-more')}"
-                  = image_tag ("LT-button find (passive) 2.svg"), class: "main-find-icon-passive"
-                  = image_tag ("LT-button find (active) 2.svg"), class: "main-find-icon-active"
+                .button
+                  .button-inner
+                    .elements-wrap
+                      .elements
+                        .b-ico.b-parts
+                          h4
+                            =t('buttons.even-more')
+                        .clearfix
+                    .b-border.b-parts
+                /.find-button data-name="#{t('buttons.even-more')}"
+                /  = image_tag ("LT-button find (passive) 2.svg"), class: "main-find-icon-passive"
+                /  = image_tag ("LT-button find (active) 2.svg"), class: "main-find-icon-active"

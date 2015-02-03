@@ -24,6 +24,72 @@ en:
     publication:
       title: "Interesting publications"
       other: "Other Publications"
+    errors:
+      title: "Page not found!"
+      subtitle: "This page does not exist or has been deleted."
+      link: "Return to main page"
+  breadcrumbs:
+    home: "// Home"
+    about: "About Us"
+    service: "Services"
+    sitemap: 'Site map'
+    contacts: 'Contacts'
+  main-menu:
+    about: "About us"
+    services: "Services"
+    publication: "Publications"
+    contacts: "Contacts"
+  buttons:
+    order: "Order"
+    even-more: "Even more!"
+    send: "Send"
+    pick: "Match!"
+    order-event: "Checkout"
+  title:
+    banner-form: "Choose something interesting?"
+    banner-regions: "We work in the following areas:"
+    index-publication: "Interesting publications"
+    order-event-form: "Order form"
+  index-page:
+    banner:
+      title: 'Tours and excursions in Ukraine (Lviv)'
+  tours:
+    one-item:
+      form:
+        title: 'Quick Overview'
+        date: 'Dates'
+        place: 'Location'
+        price: 'Price'
+      more: 'Recommended tours'
+  about:
+    our_office: 'Visit our office'
+    our_team: 'Meet our team'
+  social:
+    publication: 'Share publication'
+    event: 'Share round'
+    service: 'Share service'
+
+  labels:
+    type: "Select type"
+    city: "Choose a city"
+
+  footer:
+    titles:
+      menu: "Menu:"
+      soc-networks: "We are social:"
+      contacts: "Contacts:"
+
+
+
+
+
+
+
+
+  static-pages:
+    publication:
+      title: "Interesting publications"
+      other: "Other Publications"
   breadcrumbs:
     home: "// Home"
     service: "Services"

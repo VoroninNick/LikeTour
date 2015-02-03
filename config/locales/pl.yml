@@ -24,30 +24,79 @@ pl:
     publication:
       title: "Ciekawe publikacje"
       other: "Inne publikacje"
+    errors:
+      title: "Nie znaleziono strony!"
+      subtitle: "Ta strona nie istnieje lub został usunięty."
+      link: "Powrót do strony głównej"
   breadcrumbs:
     home: "// Główna"
-    service: "Usługi"
-  main-menu:
     about: "O nas"
     service: "Usługi"
+    sitemap: 'Mapa strony'
+    contacts: 'Kontakt'
+  main-menu:
+    about: "O nas"
+    services: "Usługi"
     publication: "Publikacje"
     contacts: "Kontakt"
   buttons:
     order: "Zamówienie"
     even-more: "Więcej!"
-    send: "Wysłać"
+    send: "Odoslat"
     pick: "Podobrat!"
+    order-event: "Złożyć zamówienie"
   title:
-    banner-form: "Możemy wybrać coś ciekawego?"
-    banner-regions: "Pracujemy w następujących obszarach:"
+    banner-form: "Znajdziemy coś ciekawego?"
+    banner-regions: "Pracujemy w następujących voevodstvach:"
     index-publication: "Ciekawe publikacje"
+    order-event-form: "Formularz zamówienia"
+  index-page:
+    banner:
+      title: 'Wycieczki na Ukrainie (Lwów)'
+  tours:
+    one-item:
+      form:
+        title: 'Krótka informacja'
+        date: 'Terminy'
+        place: 'Miejsce'
+        price: 'Cena'
+      more: 'Polecane wycieczki'
+  about:
+    our_office: 'Zapraszamy do naszego biura'
+    our_team: 'Nasi współpracownicy'
+  contacts-page:
+    banner:
+      title: 'KONTAKT'
+    our-address: 'Nasza adressa'
+    we-in-soc-networks: 'Sieci społecznościowe'
+    contacts-phones: 'Telefony'
+    feedback-form:
+      title: 'Форма зворотнього звязку'
+      name:
+        label: 'Ваше ім’я'
+        placeholder: 'Воронін Микола'
+      phone:
+        label: 'Контактний телефон'
+      email:
+        label: 'Електронна скринька'
+      message:
+        label: 'Додаткові відомості'
+        placeholder: 'Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон.'
+
+  social:
+    publication: 'Поділитись публікацією'
+    event: 'Поділитись туром'
+    service: 'Поділитись послугою'
 
   labels:
     type: "Wybierz typ"
-    city: "Wybierz miasto"
+    city: "Wybierz miejsce"
 
   footer:
     titles:
-      menu: "Menu:"
-      soc-networks: "Jesteśmy społecznej:"
-      contacts: "Konktakty:"
+      menu: "Menu strony:"
+      soc-networks: "Sieci społecznościowe:"
+      contacts: "Kontakt:"
+
+
+

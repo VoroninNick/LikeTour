@@ -94,3 +94,5 @@ gem 'masonry-rails'
 gem 'fancybox2-rails', '~> 0.2.8'
 
 gem "squeel"
+
+gem 'iye'

@@ -34,7 +34,7 @@
 .event-detail-page
     .row
       - get_tags_for_events(@category.name)
-      .columns.large-4.medium-4
+      .columns.large-4.medium-4.small-12.filter-panel-wrap
         /= render partial: 'main/filters_form_catalog_page', locals: { categories: @categories, category: @category, cities: @cities, city: @city, filters: @filter_words, flags: @checked_flags }
         .event-forms-wrap
           .event-form
@@ -66,9 +66,17 @@
                       label.text for="squared-#{f.slug}-#{f.id}-form"
                         =f.name
               .filter-button
-                button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
+                button.button.b-height-60 type="submit" name="filter_form" value="true"
+                  .button-inner
+                    .elements-wrap
+                      .elements
+                        .b-ico.b-parts
+                          h4
+                            =t('buttons.pick')
+                        .clearfix
+                    .b-border.b-parts
 
-      .columns.large-8.medium-8
+      .columns.large-8.medium-8.small-12
         .filter-wrap
           -if @tags && @tags.count > 0
             .row

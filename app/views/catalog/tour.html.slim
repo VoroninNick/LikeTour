@@ -61,13 +61,11 @@
         .event-forms-wrap
           .event-form.one-event-form
             .ornament-pattern
-            .header-title
-              |Коротка інформація
+            .header-title = t('tours.one-item.form.title')
             .info
               .row
                 .columns
-                  span
-                    |Дата проведення
+                  span = t('tours.one-item.form.date')
               .row
                 .columns
                   p
@@ -77,8 +75,7 @@
                     =@event.date_end.strftime("%d.%m.%Y")
               .row
                 .columns
-                  span
-                    |Місце проведення
+                  span =t('tours.one-item.form.place')
               .row
                 .columns
                   p
@@ -92,21 +89,28 @@
                           |,&nbsp;
               .row
                 .columns
-                  span
-                    |Ціна
+                  span = t('tours.one-item.form.price')
               .row
                 .columns
                   p
                     = embedded_svg ("LT-gruvna.svg"), class: "form-icon"
                     = @event.string_price
-              a.fancybox.form-button.event-order-button data-name="#{t('buttons.order')}" href="#order-event-form"
+              a.fancybox.form-button.event-order-button href="#order-event-form"
+                .button.b-height-60
+                  .button-inner
+                    .elements-wrap
+                      .elements
+                        .b-ico.b-parts.b-order
+                          h4
+                            =t('buttons.order')
+                        .clearfix
+                    .b-border.b-parts
 
 -if @events
   .recommended-events-wrap.recommended-items
     .row
       .columns
-        h2
-          |Рекомендовані тури
+        h2 = t('tours.one-item.more')
     .row
       -@events.each_with_index do |e, i|
         .columns.large-4.medium-4 class="#{'end' if i == @events.count-1}"

@@ -28,4 +28,13 @@
               label.text for="squared-#{f.slug}-#{f.id}-form"
                 =f.name
       .filter-button
-        button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
+        /button type="submit" name="filter_form" value="true" data-name="#{t('buttons.pick')}"
+        button.button type="submit" name="filter_form" value="true"
+          .button-inner
+            .elements-wrap
+              .elements
+                .b-ico.b-parts
+                  h4
+                    =t('buttons.pick')
+                .clearfix
+            .b-border.b-parts

@@ -10,11 +10,9 @@
       .columns.large
         ul.breadcrumbs
           li
-            a href=root_path(locale: I18n.locale)
-              |// Головна
+            a href=root_path(locale: I18n.locale)  = t('breadcrumbs.home')
           li.current
-            a href="#"
-              |Карта сайту
+            a href="#" = t('breadcrumbs.sitemap')
 .site-map-page-wrap
   .row
     .columns
@@ -47,4 +45,4 @@
                 li
                   =link_to s.name, service_path(s.slug, locale: I18n.locale)
         li
-          = link_to 'Контакти', contacts_path(locale: I18n.locale)
+          = link_to "#{t('breadcrumbs.contacts')}", contacts_path(locale: I18n.locale)

@@ -143,15 +143,15 @@ $(document).ready ->
     items: 6 #10 items above 1000px browser width
     itemsDesktop: [ #5 items between 1000px and 901px
       1000
-      3
+      5
     ]
     itemsDesktopSmall: [ # betweem 900px and 601px
       900
-      2
+      4
     ]
     itemsTablet: [ #2 items between 600 and 0
       780
-      2
+      3
     ]
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false
@@ -173,11 +173,11 @@ $(document).ready ->
     ]
     itemsDesktopSmall: [ # betweem 900px and 601px
       900
-      2
+      4
     ]
     itemsTablet: [ #2 items between 600 and 0
       780
-      2
+      3
     ]
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false

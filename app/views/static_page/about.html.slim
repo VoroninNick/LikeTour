@@ -10,11 +10,9 @@
       .columns.large
         ul.breadcrumbs
           li
-            a href=root_path(locale: I18n.locale)
-              |// Головна
+            a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
           li.current
-            a href="#"
-              |Про нас
+            a href="#" = t('breadcrumbs.about')
 - if @content
   .about-wrap
     .row
@@ -25,8 +23,7 @@
       .about-photo-banner-wrap
         .row
           .columns
-            h3
-              |Відвідайте наш офіс
+            h3.text-align-center-for-small = t('about.our_office')
         .row
           .columns
             ul.about-image-banner
@@ -47,11 +44,11 @@
       .command-wrap
         .row
           .columns
-            h3.right
-              |Знайомтесь з нашою командою
+            h3.right.text-align-center-for-small = t('about.our_team')
+              |
         .row
           - @content.personnels.each_with_index do |c, i|
-            .columns.large-3.medium-3 class="#{'end' if i == @content.personnels.count-1}"
+            .columns.large-3.medium-4.small-6.end class="#{'end' if i == @content.personnels.count-1}"
               .one-person-wrap
                 .image
                   .pbi style="background: url('#{c.image.url(:large)}')no-repeat center center;"

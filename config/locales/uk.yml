@@ -30,7 +30,10 @@ uk:
       link: "Повернутись на головну сторінку"
   breadcrumbs:
     home: "// Головна"
+    about: "Про нас"
     service: "Послуги"
+    sitemap: 'Карта сайту'
+    contacts: 'Контакти'
   main-menu:
     about: "Про нас"
     services: "Послуги"
@@ -47,6 +50,39 @@ uk:
     banner-regions: "Ми працюємо у наступних областях:"
     index-publication: "Цікаві публікації"
     order-event-form: "Форма замовлення"
+  index-page:
+    banner:
+      title: 'Тури та екскурсії по Україні (Львову)'
+  tours:
+    one-item:
+      form:
+        title: 'Коротка інформація'
+        date: 'Дата проведення'
+        place: 'Місце проведення'
+        price: 'Ціна'
+      more: 'Рекомендовані тури'
+  about:
+    our_office: 'Відвідайте наш офіс'
+    our_team: 'Знайомтесь з нашою командою'
+  contacts-page:
+    banner:
+      title: 'КОНТАКТИ'
+    our-address: 'Наша адреса'
+    we-in-soc-networks: 'Ми в соціальних мережах'
+    contacts-phones: 'Контактний телефон'
+    feedback-form:
+      title: 'Форма зворотнього звязку'
+      name:
+        label: 'Ваше ім’я'
+        placeholder: 'Воронін Микола'
+      phone:
+        label: 'Контактний телефон'
+      email:
+        label: 'Електронна скринька'
+      message:
+        label: 'Додаткові відомості'
+        placeholder: 'Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон.'
+
   social:
     publication: 'Поділитись публікацією'
     event: 'Поділитись туром'

@@ -40,6 +40,8 @@ form
             display: inline-block
             height: 30px
             margin-right: 20px
+            @media (min-width : 0em) and (max-width : 40em)
+                margin-bottom: 20px
             .squared-checkbox
                 +my_vertical_align(20%)
 
@@ -61,7 +63,17 @@ form
     /*display: table-row*/
     /*height: 1px*/
 // end sf
-
+a.link-to
+    img
+        &.ico-active
+            display: none
+        &.ico-passiwe
+            display: block
+    &:hover
+        &.ico-passiwe
+            display: none
+        &.ico-active
+            display: block
 .controls-css3-wrap
     position: absolute
     top: 0
@@ -317,6 +329,11 @@ form
             width: 74px
             top: -8px
             right: 0
+            @media (min-width : 0em) and (max-width : 40em)
+                width: 88px !important
+                .button-open-main-menu
+                    width: 40px !important
+                    height: 40px !important
             .button-open-main-menu
                 display: inline-block
                 width: 33px
@@ -545,6 +562,10 @@ form
     @media (min-width : 0em) and (max-width : 40em)
         position: relative
         width: 100%
+        margin-top: 0.9375rem
+        -webkit-box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.4), 1px 2px 3px 0px rgba(0,0,0,0.4)
+        -moz-box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.4), 1px 2px 3px 0px rgba(0,0,0,0.4)
+        box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.4), 1px 2px 3px 0px rgba(0,0,0,0.4)
     &:after
         display: block
         content: ''
@@ -556,7 +577,8 @@ form
         -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.7)
         -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.7)
         box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.7)
-
+        @media (min-width : 0em) and (max-width : 40em)
+            display: none
 #order-event-form
     width: 530px
     .form-wrap
@@ -691,6 +713,10 @@ form
     margin: 0 30px 0 30px
     position: relative
     min-height: 325px
+    @media (min-width : 0em) and (max-width : 40em)
+        min-height: inherit
+        &.index-page-form
+            height: auto !important
     &.index-page-form
         height: 325px
     .input
@@ -796,6 +822,9 @@ form
         bottom: 0
         cursor: pointer
         height: 66px
+        @media (min-width : 0em) and (max-width : 40em)
+            position: static
+            height: auto
     &.buttons-to-more-events-wrap
         height: 71px
         margin:
@@ -837,13 +866,15 @@ form
 .index-tour-tabs-wrap
     margin-top: -53px
     @media (min-width : 0em) and (max-width : 40em)
-        margin-top: 0
+        margin-top: 100px
     ul
         margin-left: 0
         li
             list-style: none
             display: inline-block
             width: 25%
+            @media (min-width : 0em) and (max-width : 850px)
+                width: 50%
             @media (min-width : 0em) and (max-width : 40em)
                 width: 100%
 
@@ -1010,6 +1041,10 @@ footer
     position: relative
     overflow: hidden
 
+.text-align-center-for-small
+    @media (min-width : 0em) and (max-width : 40em)
+        text-align: center
+
 .f-navigation-wrap
     position: relative
     overflow: hidden
@@ -1041,6 +1076,9 @@ footer
                 li
                     list-style: none
                     margin: 3px 0
+                    @media (min-width : 0em) and (max-width : 40em)
+                        margin-right: 20px
+                        float: left
                     a
                         font:
                             family: 'Fira Sans', sans-serif
@@ -1434,18 +1472,170 @@ ul.voronin-block-wrap
         display: block !important
 button:focus
     outline: none !important
-.feedback-form
-    button
-        width: 220px
-        height: 50px
-        background-image: url('<%=asset_path("LT-button send (passive)-v1.svg")%>')
-        background-size: 100%
-        background-repeat: no-repeat
-        background-color: transparent
-        &:hover
-            background-image: url('<%=asset_path("LT-button send (active)-v1.svg")%>')
+
+/*.filter-button*/
+    /*button*/
+        /*background-color: transparent !important*/
+        /*border: none !important*/
+        /*box-shadow: none !important*/
+        /*width: 100%*/
+        /*outline: none !important*/
+        /*height: 67px*/
+        /*background-image: url('<%=asset_path("LT-button find (passive) 2.svg")%>')*/
+        /*background-size: 100%*/
+        /*background-repeat: no-repeat*/
+        /*&:before*/
+            /*display: block*/
+            /*content: attr(data-name)*/
+            /*position: absolute*/
+            /*left: 33px*/
+            /*top: 0*/
+            /*right: 0*/
+            /*bottom: 0*/
+            /*color: #F1F2F2*/
+            /*font:*/
+                /*family: 'Fira Sans', sans-serif*/
+                /*size: 1.675rem*/
+                /*weight: 400*/
+            /*color: #fff*/
+            /*line-height: 60px*/
+            /*text-transform: uppercase*/
+            /*text-align: center*/
+        /*&:hover*/
+            /*background-image: url('<%=asset_path("LT-button find (active) 2.svg")%>')*/
+            /*background-size: 100%*/
+            /*background-repeat: no-repeat*/
+    /*&.filter-category-page-button*/
+        /*button*/
+            /*height: 55px*/
+            /*&:before*/
+                /*line-height: 55px*/
+
+.filter-button, .button-wrap
+    width: 100%
+.button
+    width: 100%
+    height: 67px
+    position: relative
+    background: transparent
+    &:hover
+        background: transparent
+    &:focus
+        background: transparent
+        outline: none
+    &.b-height-60
+        height: 60px
+        .b-ico
+            h4
+                line-height: 60px !important
+            &:before
+                width: 65px !important
+                height: 65px !important
+        .b-border
+            height: 65px !important
+            width: 65px !important
+    .button-inner
+        position: absolute
+        left: 0
+        top: 0
+        right: 15px
+        bottom: 0
+        background-color: #ed1555 // Old browsers
+        @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
+        @include background-image(linear-gradient(top,  #ed1555 0%,#9c2242 100%))
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,1)
+        -moz-box-shadow: 0px 1px 1px 0px rgba(0,0,0,1)
+        box-shadow: 0px 1px 1px 0px rgba(0,0,0,1)
+        .elements-wrap
+            position: relative
+            z-index: 1
+            .elements
+                display: inline-block
+                text-align: center
+    .b-parts
+        height: inherit
+        position: relative
+        &.b-ico
+            h4
+                font-family: "Fira Sans", sans-serif
+                font-size: 1.675rem
+                font-weight: 400
+                color: white
+                line-height: 66px
+                text-transform: uppercase
+                white-space: nowrap
+                float: left
+
+            &:before
+                display: block
+                content: ''
+                background-image: url('<%=asset_path("LT-button-find-part1-(passive).png")%>')
+                background-size: 100%
+                background-repeat: no-repeat
+                height: 73px
+                width: 73px
+                position: relative
+                float: left
+                /*margin-left: -73px*/
+        &.b-border
+            background-image: url('<%=asset_path("LT-button-find-part2-(passive).png")%>')
             background-size: 100%
             background-repeat: no-repeat
+            height: 73px
+            width: 73px
+            position: absolute
+            top: 0
+            right: -15px
+        &.b-feedback
+            &:before
+                display: block
+                content: ''
+                background-image: url('<%=asset_path("LT-button-send-part1-(passive).png")%>')
+                background-size: 100%
+                background-repeat: no-repeat
+                height: 73px
+                width: 73px
+                position: relative
+                float: left
+        &.b-order
+            &:before
+                display: block
+                content: ''
+                background-image: url('<%=asset_path("LT-button-order-part1-(passive).png")%>')
+                background-size: 100%
+                background-repeat: no-repeat
+                height: 73px
+                width: 73px
+                position: relative
+                float: left
+    &:hover .button-inner
+        background: #ed1555
+    &:hover .b-ico:before
+        display: block
+        content: ''
+        background-image: url('<%=asset_path("LT-button-find-part1-(active).png")%>')
+    &:hover .b-feedback:before
+        display: block
+        content: ''
+        background-image: url('<%=asset_path("LT-button-send-part1-(active).png")%>')
+    &:hover .b-order:before
+        display: block
+        content: ''
+        background-image: url('<%=asset_path("LT-button-order-part1-(active).png")%>')
+    &:hover .b-border
+        background-image: url('<%=asset_path("LT-button-find-part2-(active).png")%>')
+/*.feedback-form*/
+    /*button*/
+        /*width: 220px*/
+        /*height: 50px*/
+        /*background-image: url('<%=asset_path("LT-button send (passive)-v1.svg")%>')*/
+        /*background-size: 100%*/
+        /*background-repeat: no-repeat*/
+        /*background-color: transparent*/
+        /*&:hover*/
+            /*background-image: url('<%=asset_path("LT-button send (active)-v1.svg")%>')*/
+            /*background-size: 100%*/
+            /*background-repeat: no-repeat*/
 .social-links
     a
         display: block

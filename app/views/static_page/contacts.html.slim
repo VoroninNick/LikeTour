@@ -4,51 +4,49 @@
     .row
       .columns
         .title
-          h2 Контакти
+          h2 = t('contacts-page.banner.title')
   .breadcrumb-wrap
     .row
       .columns.large
         ul.breadcrumbs
           li
-            a href=root_path(locale: I18n.locale)
-              |// Головна
+            a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
           li.current
-            a href="#"
-              |Контакти
+            a href="#" = t('breadcrumbs.contacts')
 .contacts-wrap
   .row
     .columns.large-4.medium-4
-      h4 Наша адреса
+      h4.text-align-center-for-small = t('contacts-page.our-address')
       - if contacts
         p = contacts.street
         p = contacts.city
         a.link-to-email href="mailto:info@travel.lviv.ua" = contacts.email
     .columns.large-4.medium-4
-      h4 Ми в соціальних мережах
+      h4.text-align-center-for-small = t('contacts-page.we-in-soc-networks')
       .social-links
         .row
-          .columns.large-2.medium-3
+          .columns.large-2.medium-3.small-3
             .soc-icon
               a href=(unless contacts.skype.blank? then; "skype:#{contacts.skype}?call" end;)  rel="nofollow"
                 = image_tag "LT-social-skype-(passive).png", class: "social-icon-passiwe"
                 = image_tag "LT-social-skype-(active).png", class: "social-icon-active"
-          .columns.large-2.medium-3
+          .columns.large-2.medium-3.small-3
             .header-height.soc-icon
               a href=(unless contacts.facebook.blank? then; "#{contacts.facebook}" end;) rel="nofollow"
                 = image_tag "LT-social-facebook-(passive).png", class: "social-icon-passiwe"
                 = image_tag "LT-social-facebook-(active).png", class: "social-icon-active"
-          .columns.large-2.medium-3
+          .columns.large-2.medium-3.small-3
             .header-height.soc-icon
               a href=(unless contacts.google.blank? then; "#{contacts.google}" end;) rel="nofollow"
                 = image_tag "LT-social-g+-(passive).png", class: "social-icon-passiwe"
                 = image_tag "LT-social-g+-(active).png", class: "social-icon-active"
-          .columns.large-2.medium-3.end
+          .columns.large-2.medium-3.small-3.end
             .header-height.soc-icon
               a href=(unless contacts.vk.blank? then; "#{contacts.vk}" end;) rel="nofollow"
                 = image_tag "LT-social-VK-(passive).png", class: "social-icon-passiwe"
                 = image_tag "LT-social-VK-(active).png", class: "social-icon-active"
     .columns.large-4.medium-4
-      h4 Контактний телефон
+      h4.text-align-center-for-small = t('contacts-page.contacts-phones')
       p.phone
         - unless contacts.phone_one.blank?
           - main_phone_number = contacts.phone_one.gsub(/[+( )]/, '')
@@ -69,13 +67,13 @@
 .feedback-form
   .row
     .columns
-      h2 Форма зворотнього звязку
+      h2.text-align-center-for-small = t('contacts-page.feedback-form.title')
   .row
     form method="POST" action="/index"
       .columns.large-6.medium-6
         .input
-          label Ваше ім’я
-          input type="text" placeholder="Воронін Микола" name="name" required=""
+          label = t('contacts-page.feedback-form.name.label')
+          input type="text" placeholder="#{t('contacts-page.feedback-form.name.placeholder')}" name="name" required=""
         .input
           label Контактний телефон
           input type="text" placeholder="+38 (050) 417 07 28|" name="phone" required=""
@@ -89,9 +87,16 @@
               label Додаткові відомості
               textarea type="textarea" placeholder="Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон." name="message"
         .row
-          .columns.large-6.medium-6.right
-            button.send-feedback.form-button data-name="#{t('buttons.send')}"
-            /  = image_tag "LT-button send (passive)-v1.svg", class: 'passive-button'
-            /  = image_tag "LT-button send (active)-v1.svg", class: 'active-button hide'
-            /.clearfix
+          .columns.large-7.medium-7.right
+            /button.send-feedback.form-button data-name="#{t('buttons.send')}"
+            .button-wrap
+              button.button type="submit" name="filter_form" value="true"
+                .button-inner
+                  .elements-wrap
+                    .elements
+                      .b-ico.b-parts.b-feedback
+                        h4
+                          =t('buttons.send')
+                      .clearfix
+                  .b-border.b-parts
 
