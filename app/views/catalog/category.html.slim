@@ -118,5 +118,6 @@
                     .date-time-wrap.red-gradient
                       span
                         |з&nbsp;
-                        =e.date_begin.strftime("%d.%m")
+                        - if  e && e.date_begin
+                          =e.date_begin.strftime("%d.%m")
 
