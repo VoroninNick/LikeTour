@@ -70,9 +70,10 @@
                 .columns
                   p
                     = embedded_svg ("LT-calendar.svg"), class: "form-icon"
-                    =@event.date_begin.strftime("%d.%m.%Y")
-                    |&nbsp;-&nbsp;
-                    =@event.date_end.strftime("%d.%m.%Y")
+                    - if @event && @event.date_begin && @event.date_end
+                      =@event.date_begin.strftime("%d.%m.%Y")
+                      |&nbsp;-&nbsp;
+                      =@event.date_end.strftime("%d.%m.%Y")
               .row
                 .columns
                   span =t('tours.one-item.form.place')
