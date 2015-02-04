@@ -115,9 +115,9 @@
                           .oec-text
                             p
                               =truncate_html e.short_description, lenght: '260'
-                    .date-time-wrap.red-gradient
-                      span
-                        |з&nbsp;
-                        - if  e && e.date_begin
+                    - if  e && e.date_begin
+                      .date-time-wrap.red-gradient
+                        span
+                          |з&nbsp;
                           =e.date_begin.strftime("%d.%m")
 
