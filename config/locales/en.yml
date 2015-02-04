@@ -64,6 +64,13 @@ en:
   about:
     our_office: 'Visit our office'
     our_team: 'Meet our team'
+  sitemap:
+    banner:
+      title: 'SITE MAP'
+    main-page: 'Home'
+    about: 'About us'
+    publications: 'Publications'
+    services: 'Services'
   social:
     publication: 'Share publication'
     event: 'Share round'
@@ -72,6 +79,7 @@ en:
   labels:
     type: "Select type"
     city: "Choose a city"
+    select-city: "Choose a city"
 
   footer:
     titles:

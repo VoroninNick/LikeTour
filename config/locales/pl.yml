@@ -64,6 +64,13 @@ pl:
   about:
     our_office: 'Zapraszamy do naszego biura'
     our_team: 'Nasi współpracownicy'
+  sitemap:
+    banner:
+      title: 'MAPA STRONY'
+    main-page: 'Główna strona'
+    about: 'O nas'
+    publications: 'Publikacje'
+    services: 'Usługi'
   contacts-page:
     banner:
       title: 'KONTAKT'
@@ -71,17 +78,17 @@ pl:
     we-in-soc-networks: 'Sieci społecznościowe'
     contacts-phones: 'Telefony'
     feedback-form:
-      title: 'Форма зворотнього звязку'
+      title: 'Formularz зворотнього звязку'
       name:
-        label: 'Ваше ім’я'
-        placeholder: 'Воронін Микола'
+        label: 'Twoje imię'
+        placeholder: 'Nikołaj Woronin'
       phone:
-        label: 'Контактний телефон'
+        label: 'Telefon'
       email:
-        label: 'Електронна скринька'
+        label: 'E-mail'
       message:
-        label: 'Додаткові відомості'
-        placeholder: 'Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон.'
+        label: 'Więcej informacji'
+        placeholder: "Jezioro Tytykaka volnoobrazno. Konevodstvo, Gdzie vhodyat Peak District, Snoudonyya i inne mnohochyslennыe naczional`ny'j rezervatы Duże powiatów i Londyn."
 
   social:
     publication: 'Поділитись публікацією'
@@ -91,6 +98,7 @@ pl:
   labels:
     type: "Wybierz typ"
     city: "Wybierz miejsce"
+    select-city: "Wybierz miasto"
 
   footer:
     titles:

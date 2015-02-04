@@ -167,7 +167,7 @@ a.link-to
                 height: 100px
                 ul
                     margin-left: 0
-                    height: inherit
+                    /*height: inherit*/
                     margin-bottom: 0
                     li
                         display: inline-block
@@ -230,17 +230,21 @@ a.link-to
                                     top: 26px
                                     +triangle(left, 6px, #fff)
                             ul
-                                max-height: 200px
+                                display: block
+                                @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                                    max-height: 200px
                         ul.dropdown
                             width: 410px
                             margin-left: 0
-                            max-height: 0
                             -webkit-transition: max-height 0.8s
                             -moz-transition: max-height 0.8s
                             transition: max-height 0.8s
                             overflow: hidden
                             position: absolute
                             z-index: 1
+                            display: none
+                            @media only screen and (min-width: 0) and (max-width: $small-menu-max-width)
+                                max-height: 0
                             li
                                 list-style: none
                                 display: block

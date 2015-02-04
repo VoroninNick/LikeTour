@@ -47,7 +47,7 @@
                 select.fancy-select name="city"
                   - cities.each_with_index do |c, i|
                     -if i==0
-                      option value="" Виберіть місто
+                      option value="" = t('labels.select-city')
                     option value=c.slug
                       =c.name
             - else

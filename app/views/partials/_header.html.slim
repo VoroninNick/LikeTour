@@ -1,4 +1,4 @@
-.header-wrap
+.header-wrap.expand
   .hide-navigation-wrap
     .main-menu#main-menu
       .row
@@ -27,7 +27,7 @@
 
               - if service && service.count > 0
                 li.has-dropdown.ml
-                  a Послуги
+                  a href=services_path(locale: I18n.locale) = t('main-menu.services')
                   ul.dropdown
                     - service.each do |s|
                       li

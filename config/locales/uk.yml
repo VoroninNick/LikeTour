@@ -64,6 +64,13 @@ uk:
   about:
     our_office: 'Відвідайте наш офіс'
     our_team: 'Знайомтесь з нашою командою'
+  sitemap:
+    banner:
+      title: 'КАРТА САЙТУ'
+    main-page: 'Головна сторінка'
+    about: 'Про нас'
+    publications: 'Публікації'
+    services: 'Послуги'
   contacts-page:
     banner:
       title: 'КОНТАКТИ'
@@ -91,6 +98,7 @@ uk:
   labels:
     type: "Оберіть тип"
     city: "Оберіть місто"
+    select-city: "Виберіть місто"
 
   footer:
     titles:

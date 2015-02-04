@@ -55,17 +55,17 @@ footer.sf_footer
         .columns.large-4
           h4.hide-for-small-only = t('footer.titles.contacts')
           .row
-            .columns.small-9
+            .columns.large-12.medium-12.small-9
               - unless contacts.phone_one.blank?
                 - main_phone_number = contacts.phone_one.gsub(/[+( )]/, '')
                 a.phone href="tel:+#{main_phone_number}" rel="nofollow" =contacts.phone_one
           .row
-            .columns.small-9
+            .columns.large-12.medium-12.small-9
               - unless contacts.phone_two.blank?
                 - second_phone_number = contacts.phone_two.gsub(/[+( )]/, '')
                 a.phone href="tel:+#{second_phone_number}" rel="nofollow" =contacts.phone_two
           .row
-            .columns.small-9
+            .columns.large-12.medium-12.small-9
               - unless contacts.phone_three.blank?
                 - last_phone_number = contacts.phone_three.gsub(/[+( )]/, '')
                 a.phone href="tel:+#{last_phone_number}" rel="nofollow" =contacts.phone_three

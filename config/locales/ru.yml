@@ -64,6 +64,13 @@ ru:
   about:
     our_office: 'Посетите наш офис'
     our_team: 'Знакомьтесь с нашей командой'
+  sitemap:
+    banner:
+      title: 'КАРТА САЙТА'
+    main-page: 'Главная страница'
+    about: 'О нас'
+    publications: 'Публикации'
+    services: 'Услуги'
   social:
     publication: 'Поделиться публикацией'
     event: 'Поделиться туром'
@@ -72,6 +79,7 @@ ru:
   labels:
     type: "Выберите тип"
     city: "Выберите город"
+    select-city: "Выберите город"
 
   footer:
     titles:

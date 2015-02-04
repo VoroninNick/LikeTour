@@ -11,8 +11,7 @@
         .columns.large
           ul.breadcrumbs
             li
-              a href=root_path(locale: I18n.locale)
-                |// Головна
+              a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
             li.current
               a href="#"
                 =@page.name
