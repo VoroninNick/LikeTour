@@ -30,11 +30,12 @@ class PhotoGallery < ActiveRecord::Base
   end
 
   has_attached_file :image,
-                    styles: { thumb: "302x200#", large: "1920x590>"},
+                    styles: { thumb: "302x200!", large: "1920x590>"},
                     convert_options: { thumb: "-quality 94 -interlace Plane",
                                        large: "-quality 94 -interlace Plane" },
                     url: "/assets/images/:class/:id/image_:style.:extension",
-                    path:':rails_root/public:url'
+                    path:':rails_root/public:url',
+                    default_url:"asset_path('default_image.png')"
 
 
   validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
@@ -43,9 +44,13 @@ class PhotoGallery < ActiveRecord::Base
     label 'Фотогалерея'
     label_plural 'Фотогалереї'
     visible false
+
+    # configure :avatar, :jcrop
+
     edit do
 
       field :image, :paperclip do
+        # jcrop_options aspectRatio: 500.0/320.0
         label 'Зображення'
         help 'Зображення для альбому повинне бути 1920. / 590.'
       end

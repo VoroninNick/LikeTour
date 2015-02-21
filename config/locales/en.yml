@@ -71,6 +71,26 @@ en:
     about: 'About us'
     publications: 'Publications'
     services: 'Services'
+
+  contacts-page:
+    banner:
+      title: 'КОНТАКТИ'
+    our-address: 'Наша адреса'
+    we-in-soc-networks: 'Ми в соціальних мережах'
+    contacts-phones: 'Контактний телефон'
+    feedback-form:
+      title: 'Форма зворотнього звязку'
+      name:
+        label: 'Ваше ім’я'
+        placeholder: 'Воронін Микола'
+      phone:
+        label: 'Контактний телефон'
+      email:
+        label: 'Електронна скринька'
+      message:
+        label: 'Додаткові відомості'
+        placeholder: 'Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон.'
+
   social:
     publication: 'Share publication'
     event: 'Share round'
@@ -93,35 +113,3 @@ en:
 
 
 
-
-  static-pages:
-    publication:
-      title: "Interesting publications"
-      other: "Other Publications"
-  breadcrumbs:
-    home: "// Home"
-    service: "Services"
-  main-menu:
-    about: "About Us"
-    service: "Services"
-    publication: "Publications"
-    contacts: "Contacts"
-  buttons:
-    order: "Order"
-    even-more: "More!"
-    send: "Send"
-    pick: "Pick!"
-  title:
-    banner-form: "We choose something interesting?"
-    banner-regions: "We work in the following areas:"
-    index-publication: "Interesting publications"
-
-  labels:
-    type: "Select type"
-    city: "Choose a city"
-
-  footer:
-    titles:
-      menu: "Menu:"
-      soc-networks: "We are social:"
-      contacts: "Contacts:"

@@ -1,5 +1,6 @@
 class Tour < ActiveRecord::Base
   attr_accessible :name, :short_description, :description, :city, :slug, :category, :category_id, :price, :date_begin, :date_end, :published, :string_price
+  attr_accessible :comment
 
   has_many :city_joins
   has_many :cities, through: :city_joins
@@ -76,7 +77,7 @@ class Tour < ActiveRecord::Base
 
   has_many :photo_galleries, as: :imageable
   attr_accessible :photo_galleries
-  accepts_nested_attributes_for :photo_galleries
+  accepts_nested_attributes_for :photo_galleries, :allow_destroy => true
   attr_accessible :photo_galleries_attributes
 
   def self.get_item_class
@@ -101,6 +102,10 @@ class Tour < ActiveRecord::Base
     end
 
     edit do
+      field :comment, :ck_editor do
+        label 'Примітки:'
+        help 'Це поле виключно для менеджерів! На сайті воно не відображається.'
+      end
       field :published do
         label 'Опубліковано:'
         help ''

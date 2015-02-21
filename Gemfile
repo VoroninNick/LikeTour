@@ -96,3 +96,5 @@ gem 'fancybox2-rails', '~> 0.2.8'
 gem "squeel"
 
 gem 'iye'
+
+# gem 'rails_admin_jcrop'

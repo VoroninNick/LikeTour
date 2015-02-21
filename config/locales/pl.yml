@@ -71,6 +71,7 @@ pl:
     about: 'O nas'
     publications: 'Publikacje'
     services: 'Usługi'
+
   contacts-page:
     banner:
       title: 'KONTAKT'
@@ -78,7 +79,7 @@ pl:
     we-in-soc-networks: 'Sieci społecznościowe'
     contacts-phones: 'Telefony'
     feedback-form:
-      title: 'Formularz зворотнього звязку'
+      title: 'Форма зворотнього звязку'
       name:
         label: 'Twoje imię'
         placeholder: 'Nikołaj Woronin'

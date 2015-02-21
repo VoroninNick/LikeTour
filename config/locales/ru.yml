@@ -71,6 +71,27 @@ ru:
     about: 'О нас'
     publications: 'Публикации'
     services: 'Услуги'
+
+  contacts-page:
+    banner:
+      title: 'КОНТАКТИ'
+    our-address: 'Наша адреса'
+    we-in-soc-networks: 'Ми в соціальних мережах'
+    contacts-phones: 'Контактний телефон'
+    feedback-form:
+      title: 'Форма зворотнього звязку'
+      name:
+        label: 'Ваше ім’я'
+        placeholder: 'Воронін Микола'
+      phone:
+        label: 'Контактний телефон'
+      email:
+        label: 'Електронна скринька'
+      message:
+        label: 'Додаткові відомості'
+        placeholder: 'Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон.'
+
+
   social:
     publication: 'Поделиться публикацией'
     event: 'Поделиться туром'
