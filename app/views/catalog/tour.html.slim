@@ -109,34 +109,34 @@
                         .clearfix
                     .b-border.b-parts
 
--if @events
-  .recommended-events-wrap.recommended-items
-    .row
-      .columns
-        h2 = t('tours.one-item.more')
-    .row
-      -@events.each_with_index do |e, i|
-        .columns.large-4.medium-4 class="#{'end' if i == @events.count-1}"
-          .one-event-wrap
-            -category = e.categories[0]
-            -city = e.cities[0]
-            a
-              /href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
-              .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
-              .event-layer
-                .event-content-wrap
-                  .gradient-for-event-content
-                  .one-event-content
-                    .oec-header
-                      h3
-                        =e.name
-                    .oec-text
-                      p
-                        =truncate_html e.short_description, lenght: '260'
-              .date-time-wrap.red-pattern
-                span
-                  |з&nbsp;
-                  =e.date_begin.strftime("%d.%m")
+/-if @events
+/  .recommended-events-wrap.recommended-items
+/    .row
+/      .columns
+/        h2 = t('tours.one-item.more')
+/    .row
+/      -@events.each_with_index do |e, i|
+/        .columns.large-4.medium-4 class="#{'end' if i == @events.count-1}"
+/          .one-event-wrap
+/            -category = e.categories[0]
+/            -city = e.cities[0]
+/            a
+/              /href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+/              .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+/              .event-layer
+/                .event-content-wrap
+/                  .gradient-for-event-content
+/                  .one-event-content
+/                    .oec-header
+/                      h3
+/                        =e.name
+/                    .oec-text
+/                      p
+/                        =truncate_html e.short_description, lenght: '260'
+/              .date-time-wrap.red-pattern
+/                span
+/                  |з&nbsp;
+/                  =e.date_begin.strftime("%d.%m")
 
 = render partial: 'partials/popup/order_event', locals: {tour: @event.name }
 
