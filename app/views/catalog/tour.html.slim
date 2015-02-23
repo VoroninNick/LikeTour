@@ -13,8 +13,11 @@
             li
               a data-slide-index=i href=""
                 = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
-    /-else
-    /  .bi.blur-slide-image style="background: url('#{if @event.photo_galleries[0] then @event.photo_galleries[0].image.url(:large) else asset_path('default_image.png') end}')no-repeat center center;"
+    -else
+      -if @event.photo_galleries[0] && @event.photo_galleries[0].image.exists?
+        .bi.blur-slide-image style="background: url('#{@event.photo_galleries[0].image.url(:large)}')no-repeat center center;"
+      -else
+        .bi.blur-slide-image style="background: url('#{asset_path('default_image.png')}')no-repeat center center;"
 
     .breadcrumb-wrap
       .row
