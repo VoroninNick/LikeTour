@@ -76,11 +76,11 @@
 
 
 initialize = ->
-  lat = 49.847205
-  lng = 24.025483
+  lat = $("#g-map").attr 'data-lat'
+  lng = $("#g-map").attr 'data-lng'
   myLatlng = new google.maps.LatLng(lat, lng)
   mapOptions =
-    zoom: 14
+    zoom: 17
     center: myLatlng
 
   map = new google.maps.Map(document.getElementById("g-map"), mapOptions)

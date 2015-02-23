@@ -1,6 +1,6 @@
 module CatalogHelper
   def other_category(category)
-    categories = Category.where.not(id: category).order(created_at: :asc)
+    categories = Category.where.not(id: category).where.not( id: '1').order(created_at: :asc)
   end
 
   def all_city_from_current_category(category)

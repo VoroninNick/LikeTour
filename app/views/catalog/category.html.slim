@@ -52,10 +52,10 @@
                       =c.name
             - else
               .empty-select-city-form
-            - get_tags_for_events(@category.name)
-            - if @filter_words.count > 0
+            - get_tags(@category.name)
+            - if @tags.count > 0
               ul.event-filters.for-category-page.main-banner-filters
-                - @filter_words.each do |f|
+                - @tags.each do |f|
                   li
                     .squared-checkbox
                       input type="checkbox" value="None" id="squared-#{f.slug}-#{f.id}-form" name="check[]"
@@ -76,7 +76,7 @@
 
     .columns.large-8.medium-8.small-12
       .filter-wrap
-        -if @filter_words.count > 0
+        -if @tags.count > 0
           .row
             .columns
               .right
@@ -84,7 +84,7 @@
                   .columns
                     form.controls#Filters.filters-main
                       fieldset
-                        - @filter_words.each do |ef|
+                        - @tags.each do |ef|
                           .checkbox
                             .squared-checkbox
                               input type="checkbox" value=".#{ef.slug}" id="squared-#{ef.slug}-#{ef.id}" name="check"
@@ -101,9 +101,8 @@
                 - names << c.slug
               .columns.large-6.medium-6.small-6.item-filter class="#{names.join(' ')}" class="#{'end' if i == tours.count-1}"
                 .one-event-wrap
-                  -category = e.category
                   -city = e.cities[0]
-                  a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+                  a href=tour_path(@category.slug, city.slug, e.slug, locale: I18n.locale)
                     .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
                     .event-layer
                       .event-content-wrap

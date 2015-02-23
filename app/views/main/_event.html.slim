@@ -1,7 +1,8 @@
 .index-tour-page class="#{'hide' if hide }"
-  -get_tags_for_events(name)
+  /-get_tags_for_events(name)
+  -get_tags(name)
   -if @category
-    -if @events.count > 0
+    -if @tags.count > 0
       .filter-wrap
         .row
           .columns
@@ -10,7 +11,7 @@
                 .columns
                   form.controls.filters.filters-main id='filters-main'
                     fieldset
-                      - @filter_words.each do |ef|
+                      - @tags.each do |ef|
                         .checkbox
                           .squared-checkbox
                             input type="checkbox" value=".#{ef.slug}-#{index}" id="squared-#{ef.slug}-#{index}" name="check"
@@ -20,14 +21,16 @@
 
         .row.container.container-main id='container-main'
           -@events.each_with_index do |e, i|
-            -category = e.category
+            /-category = e.categories[0]
             -city = e.cities[0]
             - names ||= []
             - e.filter_words.each do |c|
               - names << "#{c.slug}-#{index}"
             .columns.large-4.medium-4.small-6.item-filter class=names.join(" ")  class="#{'end' if i == @events.count-1}"
               .one-event-wrap
-                a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+                -cat = Category.where(name: category).first
+                -cat_slug = cat.try :slug
+                a href=tour_path(cat_slug, city.slug, e.slug, locale: I18n.locale)
                   .event-image style="background: url('#{ if e.photo_galleries[0] then e.photo_galleries[0].image.url(:thumb) else asset_path('default_image.png') end }')no-repeat center center;"
                   .event-layer
                     .event-content-wrap

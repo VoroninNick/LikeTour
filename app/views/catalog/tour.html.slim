@@ -19,13 +19,15 @@
       .row
         .columns.large
           -category = Category.order(created_at: :asc)
+          -current_categorie = Category.find_by_slug(params[:category_name])
           ul.breadcrumbs
             li
               a href=root_path(locale: I18n.locale) = t('breadcrumbs.home')
             li.has-sub-category
               a href="#"
-                = @event.category.name
-                - categories = other_category(@event.category.id)
+                -current_categorie = Category.find_by_slug(params[:category_name])
+                = current_categorie.name
+                - categories = other_category(current_categorie.id)
                 -if categories
                   ul.sub-category-breadcrumbs
                     -categories.each do |c|
@@ -34,14 +36,14 @@
                           =c.name
 
             li.has-sub-category
-              - city_name = @event.cities[0].name
+              - city_name = City.find_by_slug(params[:city_name])
               a href="#"
-                = city_name
+                = city_name.name
               - if @cities
                 ul.sub-category-breadcrumbs
                   -@cities.each do |c|
                     li
-                      =link_to category_with_city_path(@event.category.slug, c.slug, locale: I18n.locale) do
+                      =link_to category_with_city_path(current_categorie.slug, c.slug, locale: I18n.locale) do
                         =c.name
             li.current
               a href="#"
@@ -116,9 +118,10 @@
       -@events.each_with_index do |e, i|
         .columns.large-4.medium-4 class="#{'end' if i == @events.count-1}"
           .one-event-wrap
-            -category = e.category
+            -category = e.categories[0]
             -city = e.cities[0]
-            a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+            a
+              /href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
               .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
               .event-layer
                 .event-content-wrap
@@ -135,5 +138,5 @@
                   |з&nbsp;
                   =e.date_begin.strftime("%d.%m")
 
-= render partial: 'partials/popup/order_event'
+= render partial: 'partials/popup/order_event', locals: {tour: @event.name }
 

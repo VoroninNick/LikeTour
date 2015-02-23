@@ -67,6 +67,10 @@ class WorkRegion < ActiveRecord::Base
     label_plural 'Області'
 
     list do
+      field :published do
+        label 'Опубліковано'
+        help ''
+      end
       field :name do
         label 'Назва'
       end
@@ -82,16 +86,16 @@ class WorkRegion < ActiveRecord::Base
     end
 
     edit do
+      field :published do
+        label 'Публікувати?'
+        help ''
+      end
       field :translations, :globalize_tabs do
         label 'Локалізації'
       end
       field :image, :paperclip do
         label 'Зображення'
         help 'Зображення повинне мати розмір 200px / 200px'
-      end
-      field :published do
-        label 'Зняти з публікації?'
-        help ''
       end
     end
   end

@@ -6,12 +6,15 @@ class Category < ActiveRecord::Base
   has_many :child_categories, class_name: "Category",
            foreign_key: "parent_id"
   belongs_to :parent, class_name: "Category"
-  has_many :tours
+  # has_many :tours
 
   translates :name, :slug, :description
   attr_accessible :translations
   accepts_nested_attributes_for :translations
   attr_accessible :translations_attributes
+
+  # has_and_belongs_to_many :join_tour_tables
+  has_and_belongs_to_many :tours, join_table: :join_tour_tables
 
   # generate slug for locale if other locale empty set value slug current name and slug with index locale name
   validates :name, :uniqueness => true, presence: true

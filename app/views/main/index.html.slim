@@ -25,7 +25,7 @@
           - names << c.name
         - names.each_with_index do |n,i|
           - index = i+1
-          = render partial: 'main/event', locals: { hide: i != 0, name: n, index: index }
+          = render partial: 'main/event', locals: { hide: i != 0, name: n, index: index, category: n }
 
 -if @regions
   .regions-of-working-wrap.grey-gradient

@@ -33,16 +33,27 @@ module ApplicationHelper
 
   def get_cities_from_current_category(category)
     category = Category.find(category)
-    cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq)
+    # cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq)
+    cities = City.joins(tours: :categories).where(categories: {id: category.id}).uniq
   end
+
   def get_filters_from_current_category(category)
     category = Category.find(category)
-    words = FilterWord.where('id in (?)', FilterJoin.joins(:tour).joins(:filter_word).where(tours: { category_id: category.id }).pluck(:filter_word_id).uniq)
+    # words = FilterWord.where('id in (?)', FilterJoin.joins(:tour).joins(:filter_word).where(tours: { category_id: category.id }).pluck(:filter_word_id).uniq)
+    words = FilterWord.joins(tours: :categories).where(categories: {id: category.id}).uniq
   end
+
+  def get_tags(cat_name)
+    @category = Category.find_by_name(cat_name)
+    @tags = FilterWord.joins(tours: :categories).where(categories: {id: @category.id}).uniq
+    # @events = Tour.where(category_id: @category.id, published: true)
+    @events = Tour.joins(:categories).where(categories: {id: @category.id}, published: true)
+  end
+
   def get_tags_for_events(cat_name)
     @category = Category.find_by_name(cat_name)
     if @category
-      @events = Tour.where(:category => @category.id, published: true).includes(:filter_words)
+      @events = Tour.joins(:join_tour_tables).where(join_tour_tables: {category_id: @category.id}, published: true).includes(:filter_words)
 
       names = []
       @filter_words = []
@@ -58,6 +69,7 @@ module ApplicationHelper
       end
     end
   end
+
   def words_limit(limit)
     string_arr = self.split(' ')
     string_arr.count > limit ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
@@ -70,5 +82,9 @@ module ApplicationHelper
   end
   def service
     return Service.where(published: true).order(position: :asc)
+  end
+
+  def google_map
+    ContactsInfo.first
   end
 end

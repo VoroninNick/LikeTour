@@ -1,5 +1,5 @@
 class Tour < ActiveRecord::Base
-  attr_accessible :name, :short_description, :description, :city, :slug, :category, :category_id, :price, :date_begin, :date_end, :published, :string_price
+  attr_accessible :name, :short_description, :description, :city, :slug, :categories, :category_id, :price, :date_begin, :date_end, :published, :string_price
   attr_accessible :comment
 
   has_many :city_joins
@@ -11,7 +11,9 @@ class Tour < ActiveRecord::Base
   # has_and_belongs_to_many :filter_words, join_table: 'filter_joins'
   attr_accessible :filter_words, :filter_word_ids
 
-  belongs_to :category
+  # has_and_belongs_to_many :join_tour_tables
+  has_and_belongs_to_many :categories, join_table: :join_tour_tables
+  attr_accessible :categories, :category_ids
 
   translates :name, :slug, :short_description, :description, :city, :string_price
   attr_accessible :translations
@@ -95,7 +97,7 @@ class Tour < ActiveRecord::Base
 
     list do
       field :name
-      field :category
+      field :categories
       field :slug
       field :short_description
       field :description
@@ -123,7 +125,7 @@ class Tour < ActiveRecord::Base
         label 'Фотогалерея'
       end
 
-      field :category do
+      field :categories do
         label 'Категорія'
         help ''
       end
