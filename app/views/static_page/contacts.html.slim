@@ -71,34 +71,52 @@
     .columns
       h2.text-align-center-for-small = t('contacts-page.feedback-form.title')
   .row
-    form method="POST" action="/index"
-      .columns.large-6.medium-6
-        .input
-          label = t('contacts-page.feedback-form.name.label')
-          input type="text" placeholder="#{t('contacts-page.feedback-form.name.placeholder')}" name="name" required=""
-        .input
-          label = t('contacts-page.feedback-form.phone.label')
-          input type="text" placeholder="+38 (050) 417 07 28|" name="phone" required=""
-        .input
-          label = t('contacts-page.feedback-form.email.label')
-          input type="text" placeholder="voronin.nick@gmail.com" name="email" required=""
-      .columns.large-6.medium-6
-        .row
-          .columns
-            .input
-              label = t('contacts-page.feedback-form.message.label')
-              textarea type="textarea" placeholder="#{ t('contacts-page.feedback-form.message.placeholder')}" name="message"
-        .row
-          .columns.large-7.medium-7.right
-            /button.send-feedback.form-button data-name="#{t('buttons.send')}"
-            .button-wrap
-              button.button type="submit" name="filter_form" value="true"
-                .button-inner
-                  .elements-wrap
-                    .elements
-                      .b-ico.b-parts.b-feedback
-                        h4
-                          =t('buttons.send')
-                      .clearfix
-                  .b-border.b-parts
+    .wrap-for-sending-form
+      .sending-status-wrap.hide
+        .sending-inner
+          .sending-wrap
+            =image_tag 'loading.gif'
+          .success-wrap.hide
+            .success-box-wrap
+              .form-wrap
+                .ornament-pattern
+                .header-title
+                  .close-modal-button
+                .content
+                  .row.text-center
+                    .columns
+                      h3 Ваша повідомлення надіслане!
+
+      form action=feedback_path(locale: I18n.locale) method="POST"
+        input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
+        .columns.large-6.medium-6
+          .input
+            label = t('contacts-page.feedback-form.name.label')
+            input type="text" placeholder="#{t('contacts-page.feedback-form.name.placeholder')}" name="name" required=""
+          .input
+            label = t('contacts-page.feedback-form.phone.label')
+            input type="text" placeholder="+38 (050) 417 07 28|" name="phone" required=""
+          .input
+            label = t('contacts-page.feedback-form.email.label')
+            input type="text" placeholder="voronin.nick@gmail.com" name="email" required=""
+        .columns.large-6.medium-6
+          .row
+            .columns
+              .input
+                label = t('contacts-page.feedback-form.message.label')
+                textarea type="textarea" placeholder="#{ t('contacts-page.feedback-form.message.placeholder')}" name="message"
+          .row
+            .columns.large-7.medium-7.right
+              /button.send-feedback.form-button data-name="#{t('buttons.send')}"
+              .button-wrap
+                button.button name="filter_form"
+                  .button-inner
+                    .elements-wrap
+                      .elements
+                        .b-ico.b-parts.b-feedback
+                          h4
+                            =t('buttons.send')
+                        .clearfix
+                    .b-border.b-parts
+        .clearfix
 

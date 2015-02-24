@@ -6,12 +6,14 @@ Rails.application.routes.draw do  mount Ckeditor::Engine => '/ckeditor'
 
 
   get "/get_cities_from_category" => "catalog#get_cities", :as => 'get_cities'
+  get "/get_filters_from_category_c" => "catalog#get_filters_from_category", :as => 'get_filter_words_c'
   get "/get_filters_from_category" => "catalog#get_filter_words", :as => 'get_filter_words'
 
   # You can have the root of your site routed with "root"
   scope "(:locale)", :locale => /#{I18n.available_locales.join('|')}/ do
     root 'main#index'
     post '/order_event' => 'catalog#order_event', as: 'order_event'
+    post '/feedback_form' => 'catalog#feedback', as: 'feedback'
 
     get 'about_us' => 'static_page#about'
     get 'service' => 'service#all', as: 'services'

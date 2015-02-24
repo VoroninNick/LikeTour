@@ -1,5 +1,19 @@
 div style="display: none;"
-  #order-event-form
+  #order-event-form.order-event-form-wrap.wrap-for-sending-form
+    .sending-status-wrap.hide
+      .sending-inner
+        .sending-wrap
+          =image_tag 'loading.gif'
+        .success-wrap.hide
+          .success-box-wrap
+            .form-wrap
+              .ornament-pattern
+              .header-title
+                .close-modal-button
+              .content
+                .row.text-center
+                  .columns
+                    h3 Ваша замовлення надіслане!
     .form-wrap
       .ornament-pattern
       .header-title
@@ -7,7 +21,9 @@ div style="display: none;"
         a.close-form
       .form-inner
         form.special-form-style action=order_event_path(locale: I18n.locale) method="POST"
+          input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
           h3 =tour
+          input type="hidden" name="eventname" value=tour
           .input
             label Ваше ім’я
             input type="text" placeholder="Воронін Микола" name="name" required=""

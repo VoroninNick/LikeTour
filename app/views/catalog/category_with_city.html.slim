@@ -31,7 +31,7 @@
                     li
                       =link_to category_with_city_path(@category.slug, c.slug, locale: I18n.locale) do
                         =c.name
-.event-detail-page
+.event-detail-page.category-with-city-wrap
     .row
       - get_tags(@category.name)
       .columns.large-4.medium-4.small-12.filter-panel-wrap
@@ -52,13 +52,15 @@
                 .input.select-city
                   label = t('labels.city')
                   select.fancy-select name="city"
+                    option value=@city.slug selected="selected"
+                      =@city.name
                     - @cities.each do |c|
-                      option value=c.slug selected=("selected" if c.name == @city.name)
+                      option value=c.slug
                         =c.name
 
-              - if @tags.count > 0
+              - if @tags_s.count > 0
                 ul.event-filters.for-category-page.main-banner-filters
-                  - @tags.each do |f|
+                  - @tags_s.each do |f|
                     li
                       .squared-checkbox
                         input type="checkbox" value="#{f.slug}" id="squared-#{f.slug}-#{f.id}-form" name="check[]" checked=("checked" if @checked_flags.include?(f.slug) )

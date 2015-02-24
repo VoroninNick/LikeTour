@@ -56,28 +56,23 @@ toggleFiltersClass = ($this) ->
 
 
 
-
-
-
-#  main page filter tab 1
-#$ ->
-#  $container = $("#container-main-1")
-#  $checkboxes = $("#filters-main-1 input")
-#  $container.isotope itemSelector: ".item-filter-1"
-#  $checkboxes.change ->
-#    filters = []
-#
-#    # get checked checkboxes values
-#    $checkboxes.filter(":checked").each ->
-#      filters.push @value
-#
-#    filters = filters.join(", ")
-#    $container.isotope filter: filters
-#
-##  $items = $container.children()
-
-
 $(document).ready ->
+  $FiltersSelector = $('.category-with-city-wrap .filters-main input')
+  filters = []
+  $container = $('.category-with-city-wrap .tours-container')
+
+  $FiltersSelector.filter(":checked").each ->
+    filters.push @value
+  filters = filters.join(", ")
+
+  console.log("filters:", filters)
+
+  $container.imagesLoaded ->
+    $container.isotope
+      itemSelector: '.category-with-city-wrap .item-filter'
+      layoutMode: 'fitRows'
+      filter: filters
+
 
 # binder for main filters change
   $('.filters-main input').change ->
@@ -230,6 +225,55 @@ jQuery(document).ready ($) ->
     else if $(this).hasClass("bx-next")
       $.each slider_array, (i, elem) ->
         elem.goToNextSlide()
+
+#        order event form
+  $('.wrap-for-sending-form form').submit (event) ->
+  # Stop the browser from submitting the form.
+    event.preventDefault()
+  # Serialize the form data.
+    $wrapper = $(this).closest('.wrap-for-sending-form')
+    $statusWindow = $wrapper.find('.sending-status-wrap')
+    $loading = $statusWindow.find('.sending-wrap')
+    $succes = $statusWindow.find('.success-wrap')
+
+    $thisForm = $(this).closest('form')
+
+    formData = $thisForm.serialize()
+  # Submit the form using AJAX.
+    $.ajax
+      type: "POST"
+      url: $thisForm.attr("action")
+      data: formData
+      beforeSend: ->
+        $statusWindow.removeClass('hide')
+      success: ->
+        $loading.addClass('hide')
+        $succes.removeClass('hide')
+      complete: ->
+        setTimeout (->
+          $thisForm.find("input[type=text],input[type=email], textarea").val("")
+        ), 3000
+      error: ->
+        alert "Something went wrong!"
+
+
+
+
+  $('.close-modal-button').click ->
+    $statusWrap = $(this).closest('.sending-status-wrap')
+    $sendingWrap = $statusWrap.find('.sending-wrap')
+
+    $modalWrap = $(this).closest('.success-wrap')
+
+    $wrapper = $(this).closest('.order-event-form-wrap')
+    $thisForm = $wrapper.find('form')
+
+    $statusWrap.addClass('hide')
+    $sendingWrap.removeClass('hide')
+    $modalWrap.addClass('hide')
+
+
+
 
 
 

@@ -1709,5 +1709,43 @@ button:focus
 .full-height
     height: 100%
 
+.wrap-for-sending-form
+    position: relative
+    .sending-status-wrap
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: 8010
+        background-image: url('<%=asset_path("fancybox_overlay.png")%>')
+        background-size: 100%
+        background-repeat: repeat
+        .sending-inner
+            width: 100%
+            height: 100%
+            position: relative
+            .sending-wrap, .success-wrap
+                +my_center_align
+                    position: absolute
+            .sending-wrap
+                width: 70px
+            .success-wrap
+                .content
+                    padding: 55px 0 65px 0
+            .success-wrap, .success-box-wrap
+                width: 100%
+.close-modal-button
+    width: 33px
+    height: 33px
+    background-image: url('<%=asset_path("LT-menu-close.svg")%>')
+    background-size: 100%
+    position: absolute
+    right: 30px
+    top: 9px
+    cursor: pointer
+
+
+
 
 

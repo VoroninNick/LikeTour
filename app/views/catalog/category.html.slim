@@ -103,7 +103,10 @@
                 .one-event-wrap
                   -city = e.cities[0]
                   a href=tour_path(@category.slug, city.slug, e.slug, locale: I18n.locale)
-                    .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                    -if e.photo_galleries[0] && e.photo_galleries[0].image.exists?
+                      .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                    -else
+                      .event-image  style="background: url('#{asset_path('default_image.png')}')no-repeat center center;"
                     .event-layer
                       .event-content-wrap
                         .gradient-for-event-content

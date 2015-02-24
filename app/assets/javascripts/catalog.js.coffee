@@ -2,8 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on "click", ".fancy-select ul.options li", ->
+$(document).on "click", ".select-category .fancy-select ul.options li", ->
   $value = $(this).attr "data-raw-value"
+  console.log('category:', $value)
   valuesToSubmit = {category: $value}
   $.ajax
     url: '/get_cities_from_category'
@@ -11,6 +12,7 @@ $(document).on "click", ".fancy-select ul.options li", ->
     dataType: "json"
     data: valuesToSubmit
     beforeSend: ->
+#      alert 'start send'+valuesToSubmit+$value
     success: (data) ->
       $select = $('.select-city select')
       $select.children().remove()
@@ -20,10 +22,11 @@ $(document).on "click", ".fancy-select ul.options li", ->
       $select.trigger("update.fs")
     complete: ->
       $.ajax
-        url: '/get_filters_from_category'
+        url: '/get_filters_from_category_c'
         type: "GET"
         data: valuesToSubmit
         beforeSend: ->
+#          alert 'start send'+valuesToSubmit+$value
         success: (data) ->
           $filterWrap = $('ul.main-banner-filters')
           $filterWrap.children().remove()
@@ -32,6 +35,30 @@ $(document).on "click", ".fancy-select ul.options li", ->
           $.each filters, (index, name) ->
             $filterWrap.append '<li><div class="squared-checkbox"><input id="squared-zimovi-'+index+'-form" name="check" type="checkbox" value="None"><label class="ico" for="squared-zimovi-'+index+'-form"></label></div><label class="text" for="squared-zimovi-'+index+'-form">'+name+'</label></li>'
         complete: ->
+
+
+$(document).on "click", ".select-city .fancy-select ul.options li", ->
+  $parent = $(this).closest('.form')
+  $category = $parent.find('.select-category option:selected').val()
+  console.log('category:', $category)
+  $value = $(this).attr "data-raw-value"
+  console.log('city:', $value)
+  valuesToSubmit = {category: $category ,city: $value}
+  $.ajax
+    url: '/get_filters_from_category'
+    type: "GET"
+    dataType: "json"
+    data: valuesToSubmit
+    beforeSend: ->
+    success: (data) ->
+      $filterWrap = $('ul.main-banner-filters')
+      $filterWrap.children().remove()
+      w = data
+      filters = w.split(',')
+      $.each filters, (index, name) ->
+        $filterWrap.append '<li><div class="squared-checkbox"><input id="squared-zimovi-'+index+'-form" name="check" type="checkbox" value="None"><label class="ico" for="squared-zimovi-'+index+'-form"></label></div><label class="text" for="squared-zimovi-'+index+'-form">'+name+'</label></li>'
+        $select.trigger("update.fs")
+    complete: ->
 
 $(document).ready ->
   fancySelect = $('.fancy-select')
