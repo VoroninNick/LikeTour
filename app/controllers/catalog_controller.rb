@@ -11,12 +11,12 @@ class CatalogController < ApplicationController
     @categories = Category.order(created_at: :asc)
     @city = City.find_by_slug(params[:city_name])
     # @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: @category.id }).pluck(:city_id).uniq)
-    @cities = City.joins(tours: :categories).where(categories: {id: @category.id}).where.not(id: @city.id ).uniq
+    @cities = City.joins(tours: :categories).where(tours: {published: true}).where(categories: {id: @category.id}).where.not(id: @city.id ).uniq
     params_flags = (params[:flags] || '').split(',')
     # @tags = FilterWord.joins(filter_joins: [{tour: [{city_joins: :city}, :category]}]).where(categories: {id: @category.id}).where(cities: {id: @city.id}).uniq  # приклад для наслідування зі складним запитом))
-    @tags_s = FilterWord.joins(tours: [:categories, :cities]).where(categories: {id: @category.id}, cities: {id: @city.id}).uniq
+    @tags_s = FilterWord.joins(tours: [:categories, :cities]).where(tours: {published: true}).where(categories: {id: @category.id}, cities: {id: @city.id}).uniq
     # @tours = Tour.joins(city_joins: [{tour: :category}, :city]).where(categories: {id: @category.id}).where(cities: {id: @city.id})
-    @tours = Tour.joins(:categories, :cities).where(categories: {id: @category.id}, cities: {id: @city.id})
+    @tours = Tour.joins(:categories, :cities).where(tours: {published: true}).where(categories: {id: @category.id}, cities: {id: @city.id})
     @checked_flags = params_flags
   end
 
@@ -34,7 +34,7 @@ class CatalogController < ApplicationController
   def get_cities
     category = Category.find_by_slug(params[:category])
     # cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq)
-    cities = City.joins(tours: :categories).where(categories: {id: category.id}).uniq
+    cities = City.joins(tours: :categories).where(tours: {published: true}).where(categories: {id: category.id}).uniq
     city_name = []
     cities.each do |c|
       city_name.push( {name: c.name, slug: c.slug} )
@@ -49,14 +49,15 @@ class CatalogController < ApplicationController
 
     # words = FilterWord.joins(tours: :categories)
     # words = words.where(categories: {id: category.id}).uniq if category.try(&:id)
-    words = FilterWord.joins(tours: [:categories, :cities]).where(categories: {id: category.id}, cities: {id: city.id}).uniq
+    words = FilterWord.joins(tours: [:categories, :cities]).where(tours: {published: true}).where(categories: {id: category.id}, cities: {id: city.id}).uniq
     # words = FilterWord.joins(tours: [:categories, :cities]).where(categories: {id: category.id}, cities: {id: city.id}).uniq
     words_name = []
     words.each do |c|
-      words_name.push(c.name)
+      words_name.push( {name: c.name, slug: c.slug} )
     end
-    s = words_name.join(',')
-    render(inline: s)
+    # s = words_name.join(',')
+    # render(inline: s)
+    render(inline: words_name.to_json)
   end
 
 
@@ -65,13 +66,16 @@ class CatalogController < ApplicationController
     city = City.find_by_slug(params[:city])
     # words = FilterWord.where('id in (?)', FilterJoin.joins(:tour).joins(:filter_word).where(tours: { category_id: category.id }).pluck(:filter_word_id).uniq)
     # words = FilterWord.joins(tours: :categories).where(categories: {id: category.id}).uniq
-    words = FilterWord.joins(tours: [:categories, :cities]).where(categories: {id: category.id}, cities: {id: city.id}).uniq
+    # words = FilterWord.joins(tours: [:categories, :cities]).where(categories: {id: category.id}, cities: {id: city.id}).uniq
+    words = FilterWord.joins(tours: [:categories, :cities]).where(tours: {published: true}).where(categories: {id: category.id}, cities: {id: city.id}).uniq
     words_name = []
     words.each do |c|
-      words_name.push(c.name)
+      # words_name.push(c.name)
+      words_name.push( {name: c.name, slug: c.slug} )
     end
-    s = words_name.join(',')
-    render(inline: s)
+    # s = words_name.join(',')
+    # render(inline: s)
+    render(inline: words_name.to_json)
   end
 
   def order_event

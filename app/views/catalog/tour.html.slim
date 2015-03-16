@@ -124,8 +124,7 @@
           .one-event-wrap
             -category = e.categories[0]
             -city = e.cities[0]
-            a
-              /href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
+            a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
               .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
               .event-layer
                 .event-content-wrap

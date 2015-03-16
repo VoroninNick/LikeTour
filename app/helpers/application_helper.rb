@@ -53,7 +53,7 @@ module ApplicationHelper
   def get_tags_for_events(cat_name)
     @category = Category.find_by_name(cat_name)
     if @category
-      @events = Tour.joins(:join_tour_tables).where(join_tour_tables: {category_id: @category.id}, published: true).includes(:filter_words)
+      @events = Tour.joins(:join_tour_tables).where(join_tour_tables: {category_id: @category.id}, published: true).includes(:filter_words).where(published: true)
 
       names = []
       @filter_words = []

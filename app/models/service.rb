@@ -1,5 +1,5 @@
 class Service < ActiveRecord::Base
-  attr_accessible :name, :slug, :page, :published, :position
+  attr_accessible :name, :slug, :page, :published, :position, :comment
 
   translates :name, :slug, :page
   attr_accessible :translations
@@ -75,6 +75,10 @@ class Service < ActiveRecord::Base
     end
 
     edit do
+      field :comment, :ck_editor do
+        label 'Примітки:'
+        help 'Це поле виключно для менеджерів! На сайті воно не відображається.'
+      end
       field :published do
         label 'опубліковано:'
         help ''

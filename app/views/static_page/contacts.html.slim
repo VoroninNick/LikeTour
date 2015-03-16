@@ -62,7 +62,7 @@
 .g-map-wrap
   - lattitude = google_map.lat
   - longitude = google_map.lng
-  #g-map.g-map data-lat="#{lattitude}" data-lng="#{longitude}"
+  #g-map.g-map data-lat="#{lattitude}" data-lng="#{longitude}" data-address="#{contacts.try(:street)}" data-city="#{contacts.try(:city)}" data-phone1="#{contacts.try(:phone_one)}"   data-phone2="#{contacts.try(:phone_two)}"  data-phone3="#{contacts.try(:phone_three)}"
   .row
     .columns
       .drop-down-map.right

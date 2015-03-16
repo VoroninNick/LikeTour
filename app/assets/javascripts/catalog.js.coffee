@@ -25,15 +25,13 @@ $(document).on "click", ".select-category .fancy-select ul.options li", ->
         url: '/get_filters_from_category_c'
         type: "GET"
         data: valuesToSubmit
+        dataType: 'json'
         beforeSend: ->
-#          alert 'start send'+valuesToSubmit+$value
         success: (data) ->
           $filterWrap = $('ul.main-banner-filters')
           $filterWrap.children().remove()
-          w = data
-          filters = w.split(',')
-          $.each filters, (index, name) ->
-            $filterWrap.append '<li><div class="squared-checkbox"><input id="squared-zimovi-'+index+'-form" name="check" type="checkbox" value="None"><label class="ico" for="squared-zimovi-'+index+'-form"></label></div><label class="text" for="squared-zimovi-'+index+'-form">'+name+'</label></li>'
+          $.each data, (index, obj) ->
+            $filterWrap.append "<li><div class='squared-checkbox'><input id='squared-zimovi-"+index+"-form' name='check' type='checkbox' value="+obj.slug+"><label class='ico' for='squared-zimovi-"+index+"-form'></label></div><label class='text' for='squared-zimovi-"+index+"-form'>"+obj.name+"</label></li>"
         complete: ->
 
 
@@ -53,11 +51,11 @@ $(document).on "click", ".select-city .fancy-select ul.options li", ->
     success: (data) ->
       $filterWrap = $('ul.main-banner-filters')
       $filterWrap.children().remove()
-      w = data
-      filters = w.split(',')
-      $.each filters, (index, name) ->
-        $filterWrap.append '<li><div class="squared-checkbox"><input id="squared-zimovi-'+index+'-form" name="check" type="checkbox" value="None"><label class="ico" for="squared-zimovi-'+index+'-form"></label></div><label class="text" for="squared-zimovi-'+index+'-form">'+name+'</label></li>'
-        $select.trigger("update.fs")
+#      w = data
+#      filters = w.split(',')
+      $.each data, (index, obj) ->
+        $filterWrap.append "<li><div class='squared-checkbox'><input id='squared-zimovi-"+index+"-form' name='check' type='checkbox' value="+obj.slug+"><label class='ico' for='squared-zimovi-"+index+"-form'></label></div><label class='text' for='squared-zimovi-"+index+"-form'>"+obj.name+"</label></li>"
+      $select.trigger("update.fs")
     complete: ->
 
 $(document).ready ->
