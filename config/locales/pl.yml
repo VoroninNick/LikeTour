@@ -62,6 +62,8 @@ pl:
         price: 'Cena'
       more: 'Polecane wycieczki'
   about:
+    title: "O nas"
+    certificate: "Certyfikaty"
     our_office: 'Zapraszamy do naszego biura'
     our_team: 'Nasi współpracownicy'
   sitemap:

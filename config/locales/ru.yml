@@ -62,6 +62,8 @@ ru:
         price: 'Цена'
       more: 'Рекомендуемые туры'
   about:
+    title: "О нас"
+    certificate: "Сертификаты"
     our_office: 'Посетите наш офис'
     our_team: 'Знакомьтесь с нашей командой'
   sitemap:

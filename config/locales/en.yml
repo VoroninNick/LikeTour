@@ -62,6 +62,8 @@ en:
         price: 'Price'
       more: 'Recommended tours'
   about:
+    title: "About us"
+    certificate: "Certificates"
     our_office: 'Visit our office'
     our_team: 'Meet our team'
   sitemap:

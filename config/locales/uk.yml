@@ -62,6 +62,8 @@ uk:
         price: 'Ціна'
       more: 'Рекомендовані тури'
   about:
+    title: "Про нас"
+    certificate: "Сертефікати"
     our_office: 'Відвідайте наш офіс'
     our_team: 'Знайомтесь з нашою командою'
   sitemap:

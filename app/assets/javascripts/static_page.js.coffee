@@ -14,7 +14,7 @@ $(document).ready ->
   $('ul.about-image-banner').bxSlider
 #    mode: 'fade'
     controls: false
-    auto: true
+#    auto: true
     pause: 6000
     pagerCustom: 'ul#about-thumbnails'
 

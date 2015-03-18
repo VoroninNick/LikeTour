@@ -4,7 +4,7 @@
     .row
       .columns
         .title
-          h2 Про нас
+          h2 =t('about.title')
   .breadcrumb-wrap
     .row
       .columns.large
@@ -19,24 +19,27 @@
       .columns.large-8.medium-8.end
         .description-wrap
           = raw @content.description
-    - if @content.photo_galleries.count > 0
+    - if @content.certificates.count > 0
       .about-photo-banner-wrap
         .row
           .columns
-            h3.text-align-center-for-small = t('about.our_office')
+            h3.text-align-center-for-small = t('about.certificate')
         .row
           .columns
             ul.about-image-banner
-              - @content.photo_galleries.each do |cp|
+              - @content.certificates.in_groups_of(3, false).each_with_index do |row_tasks, index|
                 li
-                  .abi style="background: url('#{cp.image.url(:large)}')no-repeat center center;"
+                  - row_tasks.each_with_index do |task, index|
+                    .columns.large-4.medium-5 class="#{'end' if index == row_tasks.count-1}"
+                      =image_tag task.image.url(:thumb)
+
         .row
           .columns
             .custom-thumbnails-wrap
               ul#about-thumbnails
-                - @content.photo_galleries.each_with_index do |cp, i|
+                - @content.certificates.in_groups_of(3, false).each_with_index do |row_tasks, index|
                   li
-                    a data-slide-index=i href=""
+                    a data-slide-index=index href=""
                       = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
         .clearfix
 

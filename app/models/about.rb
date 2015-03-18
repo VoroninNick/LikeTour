@@ -22,10 +22,10 @@ class About < ActiveRecord::Base
     end
   end
 
-  has_many :photo_galleries, as: :imageable
-  attr_accessible :photo_galleries
-  accepts_nested_attributes_for :photo_galleries
-  attr_accessible :photo_galleries_attributes
+  has_many :certificates, as: :imageable
+  attr_accessible :certificates
+  accepts_nested_attributes_for :certificates
+  attr_accessible :certificates_attributes
 
   has_many :personnels, as: :personnel
   attr_accessible :personnels
@@ -39,7 +39,7 @@ class About < ActiveRecord::Base
 
     list do
       field :name
-      field :photo_galleries
+      field :certificates
       field :description
       field :published
     end
@@ -56,8 +56,8 @@ class About < ActiveRecord::Base
       field :translations, :globalize_tabs do
         label 'Локалізації'
       end
-      field :photo_galleries do
-        label 'Фотогалерея'
+      field :certificates do
+        label 'Сертефікати'
       end
       field :personnels do
         label 'Фахівці'

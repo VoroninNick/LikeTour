@@ -1747,9 +1747,33 @@ button:focus
 
 table
     width: 100%
+    border-collapse: collapse
     thead
         tr
+            font:
+                size: rem-calc(16)
+                family: "Fira Sans", sans-serif
+            line-height: rem-calc(32)
+
             th
+                // needs latest Compass, add '@import "compass"' to your scss
+                background-color: #ed1555 // Old browsers
+                @include filter-gradient(#ed1555, #9c2242, vertical) // IE6-9
+                @include background-image(linear-gradient(top,  #ed1555 0%,#9c2242 100%))
+                margin-left: 2px
+                margin-right: 2px
+                -webkit-box-shadow: inset 0px -9px 27px -13px rgba(0, 0, 0, 0.7)
+                -moz-box-shadow: inset 0px -9px 27px -13px rgba(0, 0, 0, 0.7)
+                box-shadow: inset 0px -9px 27px -13px rgba(0, 0, 0, 0.7)
+                color: #E6E7E8
+                text-align: center
+                font:
+                    weight: 300
+    tbody
+        tr
+            td
+                color: #2A3A4B
+                text-align: center
 
 .info-window
     /*background-color: #2A3A4B*/
