@@ -96,11 +96,11 @@ class Tour < ActiveRecord::Base
     label_plural 'Події'
 
     list do
+      field :published
       field :name
       field :categories
-      field :slug
-      field :short_description
-      field :description
+      field :cities
+      field :filter_words
     end
 
     edit do

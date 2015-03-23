@@ -104,10 +104,12 @@
                   - names << c.slug
                 .columns.large-6.item-filter class="#{names.join(' ')}" class="#{'end' if i == @tours.count-1}"
                   .one-event-wrap
-                    /-category = e.category
-                    /-city = e.cities[0]
                     a href=tour_path(@category.slug, @city.slug, e.slug, locale: I18n.locale)
-                      .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                      -if e.photo_galleries[0] && e.photo_galleries[0].image.exists?
+                        .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                      -else
+                        .event-image style="background: url('#{asset_path('default_image.png')}')no-repeat center center;"
+
                       .event-layer
                         .event-content-wrap
                           .gradient-for-event-content
@@ -118,7 +120,8 @@
                             .oec-text
                               p
                                 =truncate_html e.short_description, lenght: '260'
-                      .date-time-wrap.red-pattern
-                        span
-                          |з&nbsp;
-                          =e.date_begin.strftime("%d.%m")
+                      - if  e && e.date_begin
+                        .date-time-wrap.red-pattern
+                          span
+                            |з&nbsp;
+                            =e.date_begin.strftime("%d.%m")
