@@ -80,9 +80,6 @@ class WorkRegion < ActiveRecord::Base
       field :image do
         label 'Зображення'
       end
-      field :published do
-      label 'Зняти з публікації?'
-      end
     end
 
     edit do
