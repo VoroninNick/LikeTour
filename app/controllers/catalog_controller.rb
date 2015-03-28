@@ -4,11 +4,14 @@ class CatalogController < ApplicationController
 
   def category
     @category = Category.find_by_slug(params[:category_name])
+    @categories = Category.joins(:tours).order(name: :asc).uniq
+    # category_list = Category.order(name: :asc)
   end
 
   def category_with_city
     @category = Category.find_by_slug(params[:category_name])
-    @categories = Category.order(created_at: :asc)
+    # @categories = Category.order(created_at: :asc)
+    @categories = Category.joins(:tours).order(name: :asc).uniq
     @city = City.find_by_slug(params[:city_name])
     # @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: @category.id }).pluck(:city_id).uniq)
     @cities = City.joins(tours: :categories).where(tours: {published: true}).where(categories: {id: @category.id}).where.not(id: @city.id ).uniq

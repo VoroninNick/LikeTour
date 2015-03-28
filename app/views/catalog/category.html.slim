@@ -35,9 +35,8 @@
           form.form
             .input.select-category
               label = t('labels.type')
-              - category_list = Category.order(name: :asc)
               select.fancy-select name="type"
-                -category_list.each do |c|
+                -@categories.each do |c|
                   option value=c.slug selected=("selected" if c.id == @category.id)
                     =c.name
 
