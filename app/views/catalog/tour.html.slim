@@ -136,10 +136,10 @@
                     .oec-text
                       p
                         =truncate_html e.short_description, lenght: '260'
-              .date-time-wrap.red-pattern
+              .date-time-wrap.red-pattern class=(e.date_begin.present? ? nil : "hide")
                 span
                   |з&nbsp;
-                  =e.date_begin.strftime("%d.%m")
+                  =e.date_begin.try{|d| d.strftime("%d.%m")}
 
 = render partial: 'partials/popup/order_event', locals: {tour: @event.name }
 
