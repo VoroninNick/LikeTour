@@ -1,3 +1,6 @@
+- content_for :f_image, @page.photo_galleries[0].image.url(:large)
+- content_for :f_title, @page.name
+
 -if @page
   .page_header_banner_wrap
     h2 = @page.name
