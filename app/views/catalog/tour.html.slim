@@ -57,6 +57,7 @@
     .row
       .columns.large-8.medium-8
         -if @event
+          =image_tag @event.photo_galleries[0].image.url(:large), rel: "Facebook image", style: 'display: none;'
           .event-detail-wrap
             h2 =@event.name
             = raw @event.description
