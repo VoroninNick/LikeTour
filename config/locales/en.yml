@@ -76,22 +76,24 @@ en:
 
   contacts-page:
     banner:
-      title: 'КОНТАКТИ'
-    our-address: 'Наша адреса'
-    we-in-soc-networks: 'Ми в соціальних мережах'
-    contacts-phones: 'Контактний телефон'
+      title: 'CONTACTS'
+    our-address: 'OUR address'
+    we-in-soc-networks: 'Our social networks'
+    contacts-phones: 'Telephone numbers'
     feedback-form:
-      title: 'Форма зворотнього звязку'
+      title: 'Contact with us'
       name:
-        label: 'Ваше ім’я'
-        placeholder: 'Воронін Микола'
+        label: 'Your name'
+        placeholder: 'Smith John'
       phone:
-        label: 'Контактний телефон'
+        label: 'Tel. number'
       email:
-        label: 'Електронна скринька'
+        label: 'Email'
       message:
-        label: 'Додаткові відомості'
-        placeholder: 'Озеро Титикака волнообразно. Коневодство, куда входят Пик-Дистрикт, Сноудония и другие многочисленные национальные резерваты графств и Большой Лондон.'
+        label: 'Additional info'
+        placeholder: "Good morning!
+                      I'm interested in excursion for two persons for 1-3 of May.
+                      Could you please specify which tours are available and what are the prices?"
 
   social:
     publication: 'Share publication'

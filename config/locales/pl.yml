@@ -81,22 +81,23 @@ pl:
     we-in-soc-networks: 'Sieci społecznościowe'
     contacts-phones: 'Telefony'
     feedback-form:
-      title: 'Форма зворотнього звязку'
+      title: 'Skontaktuj się z nami'
       name:
         label: 'Twoje imię'
-        placeholder: 'Nikołaj Woronin'
+        placeholder: 'Kowalski Jan'
       phone:
         label: 'Telefon'
       email:
         label: 'E-mail'
       message:
         label: 'Więcej informacji'
-        placeholder: "Jezioro Tytykaka volnoobrazno. Konevodstvo, Gdzie vhodyat Peak District, Snoudonyya i inne mnohochyslennыe naczional`ny'j rezervatы Duże powiatów i Londyn."
+        placeholder: "Dzień dobry
+                     Interesuje nas zwiedzanie Lwowa w datach 1-3 maja dla dwóch osób. Prosimy o podanie informacji co do możliwych opcji oraz cen"
 
   social:
-    publication: 'Поділитись публікацією'
-    event: 'Поділитись туром'
-    service: 'Поділитись послугою'
+    publication: 'Udostępnić publikacje'
+    event: 'Udostępnić wycieczkę'
+    service: 'Udostępnić usługę'
 
   labels:
     type: "Wybierz typ"
