@@ -1,3 +1,7 @@
+/- facebook = {image: @event.photo_galleries[0].image.url(:large), title: @event.title, description: @event.short_description }
+
+- content_for :f_image,@event.photo_galleries[0].image.url(:large)
+
 -if @event
   .page_header_banner_wrap
     h2 = @event.name
