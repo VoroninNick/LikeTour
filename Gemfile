@@ -39,7 +39,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'slim-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.2.1.0'
 
 gem 'thin'
 gem 'nokogiri'
