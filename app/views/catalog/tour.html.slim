@@ -132,7 +132,7 @@
             -category = e.categories[0]
             -city = e.cities[0]
             a href=tour_path(category.slug, city.slug, e.slug, locale: I18n.locale)
-              - if e.photo_galleries[0].image.exists?
+              - if e.photo_galleries.any? && e.photo_galleries[0].image.exists?
                 .event-image style="background: url('#{e.photo_galleries[0].image.url(:thumb) }')no-repeat center center;"
               .event-layer
                 .event-content-wrap
