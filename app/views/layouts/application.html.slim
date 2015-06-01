@@ -7,10 +7,12 @@ html lang="en"
     - if content_for?(:f_image)
       meta property="og:image" content=content_for(:f_image)
 
-    meta property="og:title" content="This will be the title displayed!"
-    meta property="og:description" content="This will be the description that shows below the title!"
+    - if content_for?(:f_title)
+      meta property="og:title" content=content_for(:f_title)
 
-    meta property="og:image" content="http://davidwalsh.name/wp-content/themes/klass/img/facebooklogo.png"
+    - if content_for?(:f_description)
+      meta property="og:description" content=content_for(:f_description)
+
 
     title
       = content_for?(:title) ? yield(:title) : "Like Tour"
