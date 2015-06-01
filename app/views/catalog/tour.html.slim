@@ -109,17 +109,17 @@
                   p
                     = embedded_svg ("LT-gruvna.svg"), class: "form-icon"
                     = @event.string_price
-                  .clearfix
-              a.fancybox.form-button.event-order-button href="#order-event-form"
-                .button.b-height-60
-                  .button-inner
-                    .elements-wrap
-                      .elements
-                        .b-ico.b-parts.b-order
-                          h4
-                            =t('buttons.order')
-                        .clearfix
-                    .b-border.b-parts
+              .eob-wrap
+                a.fancybox.form-button.event-order-button href="#order-event-form"
+                  .button.b-height-60
+                    .button-inner
+                      .elements-wrap
+                        .elements
+                          .b-ico.b-parts.b-order
+                            h4
+                              =t('buttons.order')
+                          .clearfix
+                      .b-border.b-parts
 
 -if @events
   .recommended-events-wrap.recommended-items
