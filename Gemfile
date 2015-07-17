@@ -97,4 +97,5 @@ gem "squeel"
 
 gem 'iye'
 
+gem 'cancancan'
 # gem 'rails_admin_jcrop'
