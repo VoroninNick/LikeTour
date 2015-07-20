@@ -20,8 +20,7 @@
                             =ef.name
 
         .row.container.container-main id='container-main'
-          -@events.each_with_index do |e, i|
-            /-category = e.categories[0]
+          -@events.published.each_with_index do |e, i|
             -city = e.cities[0]
             - names ||= []
             - e.filter_words.each do |c|

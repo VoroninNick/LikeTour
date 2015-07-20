@@ -44,6 +44,8 @@ class Tour < ActiveRecord::Base
     end
   end
 
+  scope :published, ->{where(published: :t)}
+
   class Translation
     attr_accessible :locale, :tour_id
     attr_accessible  :name, :slug, :short_description, :description, :city, :string_price
