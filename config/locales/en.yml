@@ -55,6 +55,7 @@ en:
       title: 'Tours and excursions in Ukraine (Lviv)'
   tours:
     one-item:
+      begin: "from "
       form:
         title: 'Quick Overview'
         date: 'Dates'
