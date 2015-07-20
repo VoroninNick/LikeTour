@@ -99,3 +99,7 @@ gem 'iye'
 
 gem 'cancancan'
 # gem 'rails_admin_jcrop'
+
+gem 'ya2yaml'
+
+gem 'translate-rails3', :require => 'translate', :group => :development
