@@ -23,7 +23,7 @@ en:
   static-pages:
     publication:
       title: "Interesting publications"
-      other: "Other Publications"
+      other: "Other publications"
     errors:
       title: "Page not found!"
       subtitle: "This page does not exist or has been deleted."
@@ -98,8 +98,8 @@ en:
 
   social:
     publication: 'Share publication'
-    event: 'Share round'
-    service: 'Share service'
+    event: 'Share tour'
+    service: 'Share services'
 
   labels:
     type: "Select type"
