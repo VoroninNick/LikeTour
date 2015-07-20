@@ -26,14 +26,14 @@ ru:
       other: "Другие публикации"
     errors:
       title: "Страница не найдена!"
-      subtitle: "Данной страницы не существует, или же ее было удалено."
+      subtitle: "Данной страницы не существует, или же она была удалена."
       link: "Вернуться на главную страницу"
   breadcrumbs:
     home: "// Главная"
     about: "О нас"
     service: "Услуги"
     sitemap: 'Карта сайта'
-    contacts: 'Конктакты'
+    contacts: 'Контакты'
   main-menu:
     about: "О нас"
     services: "Услуги"
@@ -52,7 +52,7 @@ ru:
     order-event-form: "Форма заказа"
   index-page:
     banner:
-      title: 'Туры и экскурсии по Украине (Львова)'
+      title: 'Туры и экскурсии по Украине (Львову)'
   tours:
     one-item:
       begin: "c "
@@ -78,7 +78,7 @@ ru:
   contacts-page:
     banner:
       title: 'КОНТАКТЫ'
-    our-address: 'Наша адреса'
+    our-address: 'Наш адрес'
     we-in-soc-networks: 'Ми в социальних сетях'
     contacts-phones: 'Контактный телефон'
     feedback-form:
@@ -110,4 +110,4 @@ ru:
     titles:
       menu: "Меню сайта:"
       soc-networks: "мы социальные:"
-      contacts: "Конктакты:"
+      contacts: "Контакты:"
