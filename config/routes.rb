@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   authenticate :user do
     scope "/admin" do
       get 'translate' => 'translate#index', :as => :my_translate_list
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'translate/reload' => 'translate#reload', :as => :my_translate_reload
     end
   end
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get "/get_cities_from_category" => "catalog#get_cities", :as => 'get_cities'
   get "/get_filters_from_category_c" => "catalog#get_filters_from_category", :as => 'get_filter_words_c'

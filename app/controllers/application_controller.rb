@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   skip_before_filter  :verify_authenticity_token
 
   before_action :set_locale, if: ->{params[:controller]!='translate'}
-  before_action :authenticate_user!, if: ->{params[:controller]=='translate'}
 
   rescue_from ActionController::RoutingError, :with => :render_404
   # rescue_from ActionController::UnknownAction, :with => :render_404
