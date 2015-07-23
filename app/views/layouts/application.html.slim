@@ -11,8 +11,8 @@ html lang="en"
     - if content_for?(:f_title)
       meta property="og:title" content=content_for(:f_title)
 
-    /- if content_for?(:f_description)
-    /  meta property="og:description" content=content_for(:f_description)
+    - if content_for?(:f_description)
+      meta property="og:description" content=content_for(:f_description)
 
 
     title

@@ -1,8 +1,7 @@
 
 - content_for :f_image, @event.photo_galleries[0].image.url(:large)
 - content_for :f_title, @event.name
-/- content_for :f_description do
-/  =@event.short_description
+- content_for :f_description, @event.short_description
 
 -if @event
   .page_header_banner_wrap
