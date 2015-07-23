@@ -81,7 +81,7 @@ class Tour < ActiveRecord::Base
           label 'Ціна'
           help ''
         end
-        field :short_description, :ck_editor do
+        field :short_description do
           label 'Короткий опис'
           help ''
         end
