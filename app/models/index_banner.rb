@@ -1,4 +1,16 @@
 class IndexBanner < ActiveRecord::Base
+
+  include ActiveRecordResourceExpiration
+  after_save :expire
+  after_destroy :expire
+
+  def expire
+  	I18n.available_locales.each do |locale|
+  		expire_page("#{locale}.html")
+  	end
+  end
+
+
   has_paper_trail
   attr_accessible :name, :description, :slug, :link,  :published, :position, :image
 

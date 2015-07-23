@@ -1,4 +1,14 @@
 class BrandCarousel < ActiveRecord::Base
+  include ActiveRecordResourceExpiration
+  after_save :expire
+  after_destroy :expire
+
+  def expire
+  	I18n.available_locales.each do |locale|
+  		expire_page("#{locale}.html")
+  	end
+  end
+
   attr_accessible :name, :slug, :image, :link, :published, :position
 
 

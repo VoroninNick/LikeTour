@@ -1,4 +1,14 @@
 class Publication < ActiveRecord::Base
+  include ActiveRecordResourceExpiration
+  after_save :expire
+  after_destroy :expire
+
+  def expire
+  	I18n.available_locales.each do |locale|
+  		expire_page("#{locale}.html")
+  	end
+  end
+
   attr_accessible :name, :short_description, :description, :image, :banner_image, :banner, :published, :position
 
   translates :name, :slug, :short_description, :description

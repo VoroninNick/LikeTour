@@ -1,4 +1,15 @@
 class Tour < ActiveRecord::Base
+  include ActiveRecordResourceExpiration
+  after_save :expire
+  after_destroy :expire
+
+  def expire
+  	I18n.available_locales.each do |locale|
+  		expire_page("#{locale}.html")
+  	end
+  end
+
+
   attr_accessible :name, :short_description, :description, :city, :slug, :categories, :category_id, :price, :date_begin, :date_end, :published, :string_price
   attr_accessible :comment
   attr_accessible :public_uk, :public_en, :public_pl, :public_ru
@@ -44,6 +55,8 @@ class Tour < ActiveRecord::Base
       end
     end
   end
+
+
 
   scope :published, ->{where(published: :t).where("public_#{I18n.locale} = 't'")}
 

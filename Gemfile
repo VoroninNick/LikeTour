@@ -98,8 +98,13 @@ gem "squeel"
 gem 'iye'
 
 gem 'cancancan'
-# gem 'rails_admin_jcrop'
 
 gem 'ya2yaml'
 
 gem 'translate-rails3', :require => 'translate', :group => :development
+
+gem "htmlcompressor"
+
+gem 'rack-page_caching'
+
+gem 'quiet_assets'
