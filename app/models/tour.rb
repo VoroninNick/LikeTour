@@ -1,6 +1,7 @@
 class Tour < ActiveRecord::Base
   attr_accessible :name, :short_description, :description, :city, :slug, :categories, :category_id, :price, :date_begin, :date_end, :published, :string_price
   attr_accessible :comment
+  attr_accessible :public_uk, :public_en, :public_pl, :public_ru
 
   has_many :city_joins
   has_many :cities, through: :city_joins
@@ -27,13 +28,13 @@ class Tour < ActiveRecord::Base
     if self.errors[:name].empty?
       self.translations_by_locale.keys.each do |locale|
         t = self.translations_by_locale[locale.to_sym]
-        if !t.slug || t.slug == ''
+        if t.slug.blank?
           #current_locale = I18n.locale
           req_locale = locale.to_sym
           req_locale = :ru if req_locale.to_sym == :uk
 
           I18n.with_locale req_locale do
-            if t.name && t.name != ''
+            if t.name.present?
               t.slug = t.name.parameterize
             else
               t.slug = "#{ I18n.with_locale(:ru) {|locale|self.name.parameterize } }-#{locale}"
@@ -44,7 +45,12 @@ class Tour < ActiveRecord::Base
     end
   end
 
-  scope :published, ->{where(published: :t)}
+  scope :published, ->{where(published: :t).where("public_#{I18n.locale} = 't'")}
+
+  def with_translations(*locales)
+    locales = translated_locales if locales.empty?
+    includes(:translations).with_locales(locales).with_required_attributes
+  end
 
   class Translation
     attr_accessible :locale, :tour_id
@@ -106,9 +112,35 @@ class Tour < ActiveRecord::Base
     end
 
     edit do
+      group :public do
+        label "На яких мовах публікувати ?"
+        # active false
+      end
+      field :public_uk do
+        label 'Українською'
+        group :public
+      end
+      field :public_en do
+        label 'Англійською'
+        group :public
+      end
+      field :public_pl do
+        label 'Польською'
+        group :public
+      end
+      field :public_ru do
+        label 'російською'
+        group :public
+      end
+
+
       field :comment, :ck_editor do
         label 'Примітки:'
         help 'Це поле виключно для менеджерів! На сайті воно не відображається.'
+      end
+      field :published do
+        label 'Опубліковано:'
+        help ''
       end
       field :published do
         label 'Опубліковано:'

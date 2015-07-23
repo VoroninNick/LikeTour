@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+
   before_filter :filters, only: :index
 
   def index

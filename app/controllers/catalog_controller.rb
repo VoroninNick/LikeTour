@@ -20,6 +20,10 @@ class CatalogController < ApplicationController
     @tags_s = FilterWord.joins(tours: [:categories, :cities]).where(tours: {published: true}).where(categories: {id: @category.id}, cities: {id: @city.id}).uniq
     # @tours = Tour.joins(city_joins: [{tour: :category}, :city]).where(categories: {id: @category.id}).where(cities: {id: @city.id})
     @tours = Tour.joins(:categories, :cities).where(tours: {published: true}).where(categories: {id: @category.id}, cities: {id: @city.id})
+
+
+    # @tours = @tours.select{|e| e.translations_by_locale.keys.include?(I18n.locale) }
+
     @checked_flags = params_flags
   end
 
@@ -30,7 +34,8 @@ class CatalogController < ApplicationController
     # @cities = City.where('id in (?)', CityJoin.joins(:tour).joins(:city).where(tours: { category_id: category.id }).pluck(:city_id).uniq).where.not(id: @event.cities[0])
     # @cities = City.joins(city_joins: [{tour: :categories}]).where(categories: {id: @category.id}).where.not(id: @event.cities[0])  # приклад для наслідування зі складним запитом))
     @cities = City.joins(tours: :categories).where(categories: {id: category.id}).where.not(id: city.id ).uniq
-    @events = Tour.joins(:categories).where(categories: {id: category.id}).where.not(id: @event.id ).limit(3)
+    @events = Tour.joins(:categories).published.where(categories: {id: category.id}).where.not(id: @event.id ).limit(3)
+
   end
 
 #   ajax requests

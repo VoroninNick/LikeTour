@@ -98,7 +98,7 @@
 
           .row#Container.container.tours-container.container-main
             - if @tours
-              - @tours.each_with_index do |e, i|
+              - @tours.published.each_with_index do |e, i|
                 - names ||= []
                 - e.filter_words.each do |c|
                   - names << c.slug

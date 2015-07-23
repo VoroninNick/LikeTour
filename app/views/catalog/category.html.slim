@@ -94,11 +94,11 @@
         .row#Container.container.tours-container.container-main
           - if @category.tours
             - tours = @category.tours
-            - tours.each_with_index do |e, i|
+            - tours.published.each_with_index do |e, i|
               - names ||= []
               - e.filter_words.each do |c|
                 - names << c.slug
-              .columns.large-6.medium-6.small-6.item-filter class="#{names.join(' ')}" class="#{'end' if i == tours.count-1}"
+              .columns.large-6.medium-6.small-6.item-filter class="#{names.join(' ')}" class="#{'end' if e == tours.last}"
                 .one-event-wrap
                   -city = e.cities[0]
                   a href=tour_path(@category.slug, city.slug, e.slug, locale: I18n.locale)

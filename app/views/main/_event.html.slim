@@ -25,7 +25,7 @@
             - names ||= []
             - e.filter_words.each do |c|
               - names << "#{c.slug}-#{index}"
-            .columns.large-4.medium-4.small-6.item-filter class=names.join(" ")  class="#{'end' if i == @events.count-1}"
+            .columns.large-4.medium-4.small-6.item-filter.left class=names.join(" ")  class="#{'end' if e == @events.last}"
               .one-event-wrap
                 -cat = Category.where(name: category).first
                 -cat_slug = cat.try :slug
