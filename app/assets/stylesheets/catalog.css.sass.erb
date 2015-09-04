@@ -480,3 +480,69 @@ input[type=checkbox]
         font-style: italic
         color: #2a424b
         padding: 40px 0 15px 0
+
+.event-image-gallery
+    height: 200px
+    position: relative
+    overflow: hidden
+    margin-bottom: 40px
+    ul
+        list-style: none
+        margin: 0
+        height: 100%
+        li
+            .image
+                max-width: 100%
+                width: 100% !important
+                height: 0
+                padding-bottom: 60%
+                overflow: hidden !important
+                -webkit-background-size: cover !important
+                -moz-background-size: cover !important
+                -o-background-size: cover !important
+                background-size: cover !important
+    .owl-controls
+        display: block!important
+        .owl-buttons
+            .owl-prev, .owl-next
+                position: absolute
+                z-index: 1111
+                width: 40px
+                height: 220px
+                background: rgba(42, 58, 75, .4)
+                top: -20px
+                -webkit-border-radius: 0
+                -moz-border-radius: 0
+                border-radius: 0
+                margin: 0
+                padding: 0
+            .owl-prev
+                left: 0
+                &:after
+                    display: block
+                    content: ''
+                    background: asset-url("owl-prev.svg")
+                    width: 12px
+                    height: 20px
+                    position: relative
+                    top: 92px
+                    left: 10px
+            .owl-next
+                right: 0
+                &:after
+                    display: block
+                    content: ''
+                    background: asset-url("owl-next.svg")
+                    width: 12px
+                    height: 20px
+                    position: relative
+                    top: 92px
+                    right: -16px
+
+    .ei-gallery-button
+        position: absolute
+        left: 40px
+        top: 0
+        right: 40px
+        bottom: 0
+        cursor: pointer

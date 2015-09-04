@@ -108,3 +108,5 @@ gem "htmlcompressor"
 gem 'rack-page_caching'
 
 gem 'quiet_assets'
+
+gem "bower-rails"

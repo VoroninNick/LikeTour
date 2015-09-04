@@ -59,6 +59,33 @@ $(document).on "click", ".select-city .fancy-select ul.options li", ->
     complete: ->
 
 $(document).ready ->
+#  one item gallery
+  owleg = $(".event-image-gallery ul")
+  owleg.owlCarousel
+    navigation: true
+    pagination: false
+
+#  one item galeery on click
+  $('.event-detail-page').on 'click', '.ei-gallery-button', ->
+    $wrap =$(@).closest('.event-image-gallery')
+    slides = $wrap.find('.image')
+
+    elmenetsListData = $.map($wrap.find('.image'), (el) ->
+      {
+      src: $(el).attr 'data-gallery-src'
+      thumb: $(el).attr 'data-gallery-thumb'
+#      subHtml: 'test'
+      }
+    )
+
+    $(@).lightGallery
+      dynamic: true
+      dynamicEl: elmenetsListData
+
+
+#  $("#lightgallery").lightGallery
+#    thumbnail: true
+
   fancySelect = $('.fancy-select')
   fancySelect.fancySelect()
   fancySelect.trigger('update')

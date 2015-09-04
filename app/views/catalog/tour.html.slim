@@ -66,9 +66,7 @@
           .event-detail-wrap
             h2 =@event.name
             = raw @event.description
-          .row
-            .columns
-              = render partial: 'partials/forms/social_form', locals: { name: "#{t('social.event')}"}
+
       .columns.large-4.medium-4
         .event-forms-wrap
           .event-form.one-event-form
@@ -122,6 +120,21 @@
                               =t('buttons.order')
                           .clearfix
                       .b-border.b-parts
+
+    .event-image-gallery
+      -if @event && @event.photo_galleries.count > 1
+        -if @event && @event.photo_galleries.count > 0
+          ul#lightgallery
+            -@event.photo_galleries.each_with_index do |p, i|
+              li
+                .image style="background: url('#{p.image.url(:thumb)}')no-repeat center center;" data-gallery-thumb=p.image.url(:thumb)  data-gallery-src=p.image.url(:large)
+      .ei-gallery-button
+    .row
+      .columns.large-8.medium-8
+        .row
+          .columns
+            = render partial: 'partials/forms/social_form', locals: { name: "#{t('social.event')}"}
+      .columns.large-4.medium-4
 
 -if @events
   .recommended-events-wrap.recommended-items
