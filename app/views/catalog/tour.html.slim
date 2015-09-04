@@ -121,9 +121,9 @@
                           .clearfix
                       .b-border.b-parts
 
-    .event-image-gallery
-      -if @event && @event.photo_galleries.count > 1
-        -if @event && @event.photo_galleries.count > 0
+    -if @event && @event.photo_galleries.count > 1
+      -if @event && @event.photo_galleries.count > 0
+        .event-image-gallery
           ul#lightgallery
             -@event.photo_galleries.each_with_index do |p, i|
               li
