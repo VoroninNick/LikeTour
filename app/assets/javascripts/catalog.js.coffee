@@ -65,22 +65,35 @@ $(document).ready ->
     navigation: true
     pagination: false
 
+#  $('.event-image-gallery .image').click ->
+#    alert 't'
 #  one item galeery on click
-  $('.event-detail-page').on 'click', '.ei-gallery-button', ->
+#  $('.event-detail-page').on 'click', 'event-image-gallery .image', ->
+
+  gallery = null
+  $('.event-image-gallery .owl-item').click ->
     $wrap =$(@).closest('.event-image-gallery')
     slides = $wrap.find('.image')
 
+    cii = $(@).index()
     elmenetsListData = $.map($wrap.find('.image'), (el) ->
       {
       src: $(el).attr 'data-gallery-src'
       thumb: $(el).attr 'data-gallery-thumb'
-#      subHtml: 'test'
       }
     )
-
-    $(@).lightGallery
+    console.log("cii", cii)
+    $gallery = $('#lightgallery')
+    $gallery.lightGallery
       dynamic: true
       dynamicEl: elmenetsListData
+      index: cii
+
+    gallery ?= $gallery.data("lightGallery")
+    gallery.index = cii
+    console.log("gallery", gallery)
+    window.gallery = gallery
+
 
 
 #  $("#lightgallery").lightGallery
