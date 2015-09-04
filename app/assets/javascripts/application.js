@@ -21,9 +21,9 @@
 //= require isotope/jquery.isotope
 //= require fancybox
 
-//= require lightgallery/dist/js/lightgallery.min
-//= require lightgallery/dist/js/lg-thumbnail.min
-//= require lightgallery/dist/js/lg-fullscreen.min
+//= require lightgallery/dist/js/lightgallery.min.js
+//= require lightgallery/dist/js/lg-thumbnail.min.js
+//= require lightgallery/dist/js/lg-fullscreen.min.js
 
 //= require_tree .
 $(function(){ $(document).foundation(); });
