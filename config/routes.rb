@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
 
     root 'main#index'
+
+    match '/' => 'main#index', via: [:get, :post]
+
     post '/order_event' => 'catalog#order_event', as: 'order_event'
     post '/feedback_form' => 'catalog#feedback', as: 'feedback'
 
@@ -39,7 +42,7 @@ Rails.application.routes.draw do
     get 'contacts' => 'static_page#contacts'
 
     get 'events/:category_name' => 'catalog#category', as: 'category'
-    get 'events/:category_name/:city_name(?flags=:flags)' => 'catalog#category_with_city', as: 'category_with_city'
+    match 'events/:category_name/:city_name(?flags=:flags)' => 'catalog#category_with_city', as: 'category_with_city', via: [:get, :post]
     get 'events/:category_name/:city_name/:tour_name' => 'catalog#tour', as: 'tour'
 
     get 'privacy' => 'main#privacy', as: 'privacy'

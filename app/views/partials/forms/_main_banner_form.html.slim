@@ -4,7 +4,7 @@
   - category_list = Category.order(name: :asc)
   - cities = get_cities_from_current_category(category_list[1])
   - filters = get_filters_from_current_category(category_list[1])
-  form.form.index-page-form.event-form action="#{}"
+  form.form.index-page-form.event-form action="#{}" method="post"
     - if category_list
       .input.select-category
         label = t('labels.type')
