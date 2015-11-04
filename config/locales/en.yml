@@ -52,7 +52,8 @@ en:
     order-event-form: "Order form"
   index-page:
     banner:
-      title: 'Tours and excursions in Ukraine (Lviv)'
+      title: 'Tours and excursions in Ukraine (Lviv), or'
+      navigation: ' another country tours'
   tours:
     one-item:
       form:
@@ -61,6 +62,7 @@ en:
         place: 'Location'
         price: 'Price'
       more: 'Recommended tours'
+      begin: 'from '
   about:
     our_office: 'Visit our office'
     our_team: 'Meet our team'
@@ -106,6 +108,7 @@ en:
       menu: "Menu:"
       soc-networks: "We are social:"
       contacts: "Contacts:"
+      recommended: "RECOMMENDED:"
 
     handcrafted: "Handcrafted "
     studio: "in Voronin Design studio "

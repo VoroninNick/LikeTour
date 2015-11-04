@@ -14,7 +14,10 @@
             .row
               .columns.large-9.medium-9.large-offset-3.medium-offset-3
                 .header-slogan
-                  h3 = t('index-page.banner.title')
+                  h3
+                    = t('index-page.banner.title')
+                    a
+                      = t('index-page.banner.navigation')
           .row
             .columns
               .content-block-wrap

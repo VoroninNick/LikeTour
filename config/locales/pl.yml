@@ -43,7 +43,7 @@ pl:
     order: "Zamówienie"
     even-more: "Więcej!"
     send: "Wysłać"
-    pick: "Znaleść!"
+    pick: "Wyszukaj!"
     order-event: "Złożyć zamówienie"
   title:
     banner-form: "Poszukamy fajną ofertę?"
@@ -52,7 +52,8 @@ pl:
     order-event-form: "Formularz zamówienia"
   index-page:
     banner:
-      title: 'Wycieczki po Ukrainie (Lwów)'
+      title: 'Wycieczki po Ukrainie (Lwów), lub'
+      navigation: ' wycieczki za granicą'
   tours:
     one-item:
       form:
@@ -61,6 +62,7 @@ pl:
         place: 'Miejsce'
         price: 'Cena'
       more: 'Polecane wycieczki'
+      begin: 'od '
   about:
     our_office: 'Zapraszamy do naszego biura'
     our_team: 'Nasza ekipa'
@@ -106,6 +108,7 @@ pl:
       menu: "Menu strony:"
       soc-networks: "Siecie społecznościowe:"
       contacts: "Kontakt:"
+      recommended: "zaleca się:"
 
     handcrafted: "Wykonane prez "
     studio: "Voronin Design Studio"

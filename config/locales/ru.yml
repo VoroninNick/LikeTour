@@ -52,7 +52,8 @@ ru:
     order-event-form: "Форма заказа"
   index-page:
     banner:
-      title: 'Туры и экскурсии по Украине (Львову)'
+      title: 'Туры и экскурсии по Украине (Львову), или'
+      navigation: ' туры за рубеж'
   tours:
     one-item:
       form:
@@ -61,6 +62,7 @@ ru:
         place: 'Место проведения'
         price: 'Цена'
       more: 'Рекомендуемые туры'
+      begin: 'с '
   about:
     our_office: 'Посетите наш офис'
     our_team: 'Знакомьтесь с нашей командой'
@@ -107,6 +109,7 @@ ru:
       menu: "Меню сайта:"
       soc-networks: "Мы социальные:"
       contacts: "Контакты:"
+      recommended: "РЕКОМЕНДУЕМ:"
 
     handcrafted: "Сделано "
     studio: "дизайн студией Н. Воронина "

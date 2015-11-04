@@ -33,25 +33,33 @@ footer.sf_footer
                 a href=publication_path(locale: I18n.locale) = t('main-menu.publication')
               li
                 a href=contacts_path(locale: I18n.locale) = t('main-menu.contacts')
+
         .columns.large-4
-          h4.hide-for-small-only = t('footer.titles.soc-networks')
-          ul.social-icons-with-link
-            li
-              a href=(unless contacts.skype.blank? then; "skype:#{contacts.skype}?call" end;)  rel="nofollow"
-                = image_tag "LT-social-skype-(passive).png", class: "social-icon-passiwe"
-                = image_tag "LT-social-skype-(active).png", class: "social-icon-active"
-            li
-              a href=(unless contacts.facebook.blank? then; "#{contacts.facebook}" end;) rel="nofollow"
-                = image_tag "LT-social-facebook-(passive).png", class: "social-icon-passiwe"
-                = image_tag "LT-social-facebook-(active).png", class: "social-icon-active"
-            li
-              a href=(unless contacts.google.blank? then; "#{contacts.google}" end;) rel="nofollow"
-                = image_tag "LT-social-g+-(passive).png", class: "social-icon-passiwe"
-                = image_tag "LT-social-g+-(active).png", class: "social-icon-active"
-            li
-              a href=(unless contacts.vk.blank? then; "#{contacts.vk}" end;) rel="nofollow"
-                = image_tag "LT-social-VK-(passive).png", class: "social-icon-passiwe"
-                = image_tag "LT-social-VK-(active).png", class: "social-icon-active"
+          .row
+            .columns
+              h4.hide-for-small-only = t('footer.titles.soc-networks')
+              ul.social-icons-with-link
+                li
+                  a href=(unless contacts.skype.blank? then; "skype:#{contacts.skype}?call" end;)  rel="nofollow"
+                    = image_tag "LT-social-skype-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-skype-(active).png", class: "social-icon-active"
+                li
+                  a href=(unless contacts.facebook.blank? then; "#{contacts.facebook}" end;) rel="nofollow"
+                    = image_tag "LT-social-facebook-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-facebook-(active).png", class: "social-icon-active"
+                li
+                  a href=(unless contacts.google.blank? then; "#{contacts.google}" end;) rel="nofollow"
+                    = image_tag "LT-social-g+-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-g+-(active).png", class: "social-icon-active"
+                li
+                  a href=(unless contacts.vk.blank? then; "#{contacts.vk}" end;) rel="nofollow"
+                    = image_tag "LT-social-VK-(passive).png", class: "social-icon-passiwe"
+                    = image_tag "LT-social-VK-(active).png", class: "social-icon-active"
+          .row
+            .columns.footer-recommended
+              h4 =t("footer.titles.recommended")
+              a
+                =image_tag "other-page-banner.jpg"
         .columns.large-4
           h4.hide-for-small-only = t('footer.titles.contacts')
           .row

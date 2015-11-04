@@ -52,7 +52,8 @@ uk:
     order-event-form: "Форма замовлення"
   index-page:
     banner:
-      title: 'Тури та екскурсії по Україні (Львову)'
+      title: 'Тури та екскурсії по Україні (Львову), або'
+      navigation: ' тури за кордон'
   tours:
     one-item:
       form:
@@ -61,6 +62,7 @@ uk:
         place: 'Місце проведення'
         price: 'Ціна'
       more: 'Рекомендовані тури'
+      begin: 'з '
   about:
     our_office: 'Відвідайте наш офіс'
     our_team: 'Познайомтеся з нашою командою'
@@ -106,6 +108,7 @@ uk:
       menu: "Меню сайту:"
       soc-networks: "Ми соціальні:"
       contacts: "Контакти:"
+      recommended: "РЕКОМЕНДУЄМО:"
 
     handcrafted: "Розроблено "
     studio: "в студії М. Вороніна "
