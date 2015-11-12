@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   skip_before_filter  :verify_authenticity_token
 
   before_action :set_locale, if: ->{params[:controller]!='translate'}
+  before_action :set_admin_locale, if: proc{params[:controller].scan(/rails_admin/).any?}
 
   rescue_from ActionController::RoutingError, :with => :render_404
   # rescue_from ActionController::UnknownAction, :with => :render_404
@@ -39,6 +40,10 @@ class ApplicationController < ActionController::Base
         I18n.locale = locale
       end
     end
+  end
+
+  def set_admin_locale
+    I18n.locale = :uk
   end
 
   def filters
