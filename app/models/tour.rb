@@ -33,7 +33,7 @@ class Tour < ActiveRecord::Base
   attr_accessible :translations_attributes
 
   # generate slug for locale if other locale empty set value slug current name and slug with index locale name
-  validates :name, :uniqueness => true, presence: true
+  # validates :name, :uniqueness => true, presence: true
   after_validation :generate_slug
   def generate_slug
     if self.errors[:name].empty?
