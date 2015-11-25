@@ -181,7 +181,7 @@ class Tour < ActiveRecord::Base
       end
       field :image, :paperclip do
         label 'Банер'
-        help ''
+        help 'Розмір зображення 1920 х 590 '
       end
       field :photo_galleries do
         label 'Фотогалерея'
