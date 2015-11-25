@@ -97,6 +97,17 @@ class Tour < ActiveRecord::Base
       end
     end
   end
+  attr_accessible :image
+
+  has_attached_file :image,
+                    styles: { large: "1920 x 590>"},
+                    convert_options: { thumb: "-quality 94 -interlace Plane"},
+                    url: "/assets/images/:class/:id/image_:style.:extension",
+                    path:':rails_root/public:url',
+                    default_url:"asset_path('default_image.png')"
+
+  validates_attachment_content_type :image, :content_type => /\Aimage/
+  validates_presence_of :image, :message => "Виберіть обготку! Не можна зберегти альбом без обгортки."
 
   has_many :photo_galleries, as: :imageable
   attr_accessible :photo_galleries
@@ -167,6 +178,10 @@ class Tour < ActiveRecord::Base
       end
       field :filter_words do
         label 'Слово фільтр'
+      end
+      field :image, :paperclip do
+        label 'Банер'
+        help ''
       end
       field :photo_galleries do
         label 'Фотогалерея'

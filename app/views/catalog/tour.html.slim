@@ -6,7 +6,11 @@
 -if @event
   .page_header_banner_wrap
     h2 = @event.name
-    -if @event && @event.photo_galleries.count > 1
+    -if @event.image.exists?
+      .bi.blur-slide-image style="background: url('#{@event.image.url(:large)}')no-repeat center center;"
+    -else
+      .bi.blur-slide-image style="background: url('#{asset_path('default_image.png')}')no-repeat center center;"
+    /-if @event && @event.photo_galleries.count > 1
       -if @event && @event.photo_galleries.count > 0
         ul.page-header-slides
           -@event.photo_galleries.each_with_index do |p, i|
@@ -18,7 +22,9 @@
             li
               a data-slide-index=i href=""
                 = embedded_svg ("LT-Ornament.svg"), class: "pager-icon"
-    -else
+
+
+    /-else
       -if @event.photo_galleries[0] && @event.photo_galleries[0].image.exists?
         .bi.blur-slide-image style="background: url('#{@event.photo_galleries[0].image.url(:large)}')no-repeat center center;"
       -else
